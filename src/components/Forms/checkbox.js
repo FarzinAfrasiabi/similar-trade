@@ -1,7 +1,7 @@
-const Checkbox = () => {
+const Checkboxs = () => {
     return ( 
         <input type="checkbox"  />
      );
 }
  
-export default Checkbox;
+export default Checkboxs;

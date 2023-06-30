@@ -4,7 +4,7 @@ const Links = ({ href, text }) => {
   return (
     <Link
       href={`${href}`}
-      className="text-blue-600 text-sm hover:underline hover:underline-offset-2"
+      className="text-blue-600 text-sm hover:underline hover:underline-offset-2 font-thin"
     >
       {text}
     </Link>
