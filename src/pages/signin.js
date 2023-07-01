@@ -6,7 +6,6 @@ import Selected from "@/components/Forms/Select";
 import Buttons from "@/components/Forms/button";
 import Password from "@/components/Forms/password";
 import RegisterLayout from "@/container/Register/RegisterLayout";
-import { countryCode } from "@/utils/CountryCode";
 import { Checkbox } from "@mui/material";
 import { useState } from "react";
 
@@ -19,8 +18,11 @@ const Signin = () => {
   };
   return (
     <RegisterLayout>
-      <div className="p-4 md:max-w-sm lg:max-w-lg w-full flex flex-col gap-y-4">
+      <div className="p-4 md:max-w-xl lg:max-w-lg w-full flex flex-col gap-y-4">
         <h1 className="text-2xl lg:text-4xl text-slate-900">Register</h1>
+        <p className="text-sm block lg:hidden text-gray-500 text-center">
+          Let’s Sign up first for enter into SimilarTrade Website
+        </p>
         {openPrivacypopup && (
           <FormPopUp onClick={() => setOpenPrivacyPopup(false)} />
         )}
@@ -30,23 +32,20 @@ const Signin = () => {
             <Selected label={"Register as"} seleceted={RegisterAsSelected} />
           </div>
           {/* name and last name */}
-          <div className="w-full flex items-center gap-x-4">
+          <div className="w-full flex flex-col lg:flex-row items-center gap-4">
             <Inputs label={"First Name"} />
             <Inputs label={"Last Name"} />
           </div>
           {/* userName and email */}
-          <div className="w-full flex items-center gap-x-4">
+          <div className="w-full flex flex-col lg:flex-row items-center gap-4">
             <Inputs label={"UserName"} />
             <Inputs type="email" label={"Mail Address"} />
           </div>
           {/* country coode */}
-          <div className="w-full flex items-center gap-x-4">
-            <CountrySelect onChnage={changeHandler} value={selectCountryId} />
-            {/* <Inputs label={"phone Number"} /> */}
-          </div>
+          <CountrySelect onChnage={changeHandler} value={selectCountryId} />
           {/* password */}
           <div className="flex flex-col gap-y-1">
-            <div className="w-full flex items-center gap-x-4">
+            <div className="w-full flex flex-col lg:flex-row lg:items-center gap-4">
               <Password label={"Password"} />
               <Password label={"Confrim Password"} />
               {/* text */}
@@ -58,7 +57,7 @@ const Signin = () => {
           <div className="flex flex-col ite gap-y-6 pt-14">
             <div className="flex items-center ">
               <Checkbox />
-              <span className="text-sm ">
+              <span className="text-xs lg:text-sm ">
                 I aggre Square s <b className="text-blue-600">Cookie</b> and{" "}
                 <b
                   onClick={() => setOpenPrivacyPopup(true)}

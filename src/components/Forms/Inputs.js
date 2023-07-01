@@ -3,7 +3,7 @@ const Inputs = ({ label, type = "text" }) => {
   return (
     <TextField
       size="medium"
-      // fullWidth
+      fullWidth
       type={type}
       InputLabelProps={{
         sx: {

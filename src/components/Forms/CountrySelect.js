@@ -9,7 +9,7 @@ import Inputs from "./Inputs";
 const CountrySelect = ({ onChnage, value }) => {
   console.log(value);
   return (
-    <div className="flex w-full gap-x-2">
+    <div className="flex flex-col lg:flex-row w-full gap-4">
       <FormControl className="flex-1">
         <InputLabel id="demo-simple-select-autowidth-label">
           Your Country
@@ -38,7 +38,7 @@ const CountrySelect = ({ onChnage, value }) => {
       </FormControl>
       <div className="flex items-center gap-x-2 flex-1">
         <span
-          className={`w-12 h-14 py-2 px-2  rounded-lg ring-1 flex items-center justify-center  ${
+          className={`w-12 h-[54px] py-2 px-2  rounded-lg ring-1 flex items-center justify-center  ${
             value.length !== 0 ? "ring-blue-500 ring-2" : "ring-gray-300  "
           } text-sm transition-all ease-in-out duration-150`}
         >
