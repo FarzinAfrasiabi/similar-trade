@@ -6,6 +6,7 @@ import RegisterLayout from "@/container/Register/RegisterLayout";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import validationSchema from "@/validation/formValidation";
+import loginValidationSchema from "@/validation/loginValidation";
 const initialValues = {
   email: "",
   password: "",
@@ -17,7 +18,7 @@ const Login = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema,
+    validationSchema : loginValidationSchema,
   });
   return (
     <RegisterLayout>

@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const validationSchema = Yup.object().shape({
+const signInValidationSchema = Yup.object().shape({
   RegisterAs: Yup.string().required("please select Register"),
   name: Yup.string()
     .matches(/^[A-Za-z ]*$/, "Please enter valid name")
@@ -31,4 +31,4 @@ const validationSchema = Yup.object().shape({
     AcceptSquare: Yup.bool().oneOf([true], "You must read the Privacy Policy"),
 });
 
-export default validationSchema;
+export default signInValidationSchema;

@@ -8,7 +8,7 @@ import Password from "@/components/Forms/password";
 import RegisterLayout from "@/container/Register/RegisterLayout";
 import { useState } from "react";
 import { useFormik } from "formik";
-import validationSchema from "@/validation/formValidation";
+import signInValidationSchema from "@/validation/formValidation";
 import CheckBoxes from "@/components/Forms/checkbox";
 
 const initialValues = {
@@ -38,7 +38,7 @@ const Signin = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema,
+    validationSchema : signInValidationSchema,
   });
 
   return (
