@@ -7,7 +7,7 @@ const Password = ({ label }) => {
     <div className="relative flex items-center ">
       <TextField
         size="medium"
-        // fullWidth
+        fullWidth
         type={showPassword ? "text" : "password"}
         InputLabelProps={{
           sx: {
