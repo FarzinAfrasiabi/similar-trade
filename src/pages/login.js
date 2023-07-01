@@ -4,18 +4,44 @@ import Buttons from "@/components/Forms/button";
 import Password from "@/components/Forms/password";
 import RegisterLayout from "@/container/Register/RegisterLayout";
 import { Checkbox } from "@mui/material";
-
+import { useFormik } from "formik";
+import validationSchema from "@/validation/formValidation";
+const initialValues = {
+  email: "",
+  password: "",
+};
 const Login = () => {
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  });
   return (
     <RegisterLayout>
       <div className="p-4 md:max-w-sm lg:max-w-lg w-full flex flex-col gap-y-4">
-        <h1 className="text-2xl lg:text-4xl text-slate-900 text-center lg:text-start">Login</h1>
+        <h1 className="text-2xl lg:text-4xl text-slate-900 text-center lg:text-start">
+          Login
+        </h1>
         <p className="text-sm block lg:hidden text-gray-500 text-center">
           Just sign in if you have an account in here. Enjoy our Website
         </p>
-        <form className="bg-white w-full p-4 flex flex-col gap-y-6 shadow-lg rounded-lg ">
-          <Inputs label={"Youre Email / UserName"} />
-          <Password label={"Enter Password"} />
+        <form
+          className="bg-white w-full p-4 flex flex-col gap-y-6 shadow-lg rounded-lg "
+          onSubmit={formik.handleSubmit}
+        >
+          <Inputs
+            formik={formik}
+            name={"email"}
+            label={"Youre Email / UserName"}
+          />
+          <Password
+            formik={formik}
+            name={"password"}
+            label={"Enter Password"}
+          />
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center">
               {/* checkbox */}

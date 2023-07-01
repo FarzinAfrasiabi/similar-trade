@@ -6,8 +6,23 @@ import Selected from "@/components/Forms/Select";
 import Buttons from "@/components/Forms/button";
 import Password from "@/components/Forms/password";
 import RegisterLayout from "@/container/Register/RegisterLayout";
-import { Checkbox } from "@mui/material";
 import { useState } from "react";
+import { useFormik } from "formik";
+import validationSchema from "@/validation/formValidation";
+import CheckBoxes from "@/components/Forms/checkbox";
+
+const initialValues = {
+  RegisterAs: "",
+  name: "",
+  lastName: "",
+  userName: "",
+  email: "",
+  countryCode: "",
+  phone: "",
+  password: "",
+  confirmPassword: "",
+  AcceptSquare: false,
+};
 
 const RegisterAsSelected = ["Signaler", "Signal Reciver"];
 const Signin = () => {
@@ -16,6 +31,16 @@ const Signin = () => {
   const changeHandler = (event) => {
     setSelectCountryId(event.target.value);
   };
+
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  });
+
   return (
     <RegisterLayout>
       <div className="p-4 md:max-w-xl lg:max-w-lg w-full flex flex-col gap-y-4">
@@ -26,28 +51,49 @@ const Signin = () => {
         {openPrivacypopup && (
           <FormPopUp onClick={() => setOpenPrivacyPopup(false)} />
         )}
-        <form className="bg-white w-full p-4 flex flex-col gap-y-6 shadow-lg rounded-lg ">
+        <form
+          className="bg-white w-full p-4 flex flex-col gap-y-6 shadow-lg rounded-lg "
+          onSubmit={formik.handleSubmit}
+        >
           {/* Register as */}
           <div className="w-full">
-            <Selected label={"Register as"} seleceted={RegisterAsSelected} />
+            <Selected
+              formik={formik}
+              name="RegisterAs"
+              label={"Register as"}
+              seleceted={RegisterAsSelected}
+            />
           </div>
           {/* name and last name */}
           <div className="w-full flex flex-col lg:flex-row items-center gap-4">
-            <Inputs label={"First Name"} />
-            <Inputs label={"Last Name"} />
+            <Inputs name="name" formik={formik} label={"First Name"} />
+            <Inputs name={"lastName"} formik={formik} label={"Last Name"} />
           </div>
           {/* userName and email */}
           <div className="w-full flex flex-col lg:flex-row items-center gap-4">
-            <Inputs label={"UserName"} />
-            <Inputs type="email" label={"Mail Address"} />
+            <Inputs name={"userName"} formik={formik} label={"UserName"} />
+            <Inputs
+              name={"email"}
+              formik={formik}
+              type="email"
+              label={"Mail Address"}
+            />
           </div>
           {/* country coode */}
-          <CountrySelect onChnage={changeHandler} value={selectCountryId} />
+          <CountrySelect
+            formik={formik}
+            onChnage={changeHandler}
+            value={selectCountryId}
+          />
           {/* password */}
           <div className="flex flex-col gap-y-1">
             <div className="w-full flex flex-col lg:flex-row lg:items-center gap-4">
-              <Password label={"Password"} />
-              <Password label={"Confrim Password"} />
+              <Password name={"password"} formik={formik} label={"Password"} />
+              <Password
+                name={"confirmPassword"}
+                formik={formik}
+                label={"Confrim Password"}
+              />
               {/* text */}
             </div>
             <span className="text-xs px-2 text-gray-400">
@@ -56,17 +102,7 @@ const Signin = () => {
           </div>
           <div className="flex flex-col ite gap-y-6 pt-14">
             <div className="flex items-center ">
-              <Checkbox />
-              <span className="text-xs lg:text-sm ">
-                I aggre Square s <b className="text-blue-600">Cookie</b> and{" "}
-                <b
-                  onClick={() => setOpenPrivacyPopup(true)}
-                  className="text-blue-600 cursor-pointer"
-                >
-                  Privacy Policy
-                </b>
-                .
-              </span>
+              <CheckBoxes name={"AcceptSquare"} formik={formik} />
             </div>
             <Buttons type="submit">Register</Buttons>
             <div className="flex items-center text-center w-full justify-center text-sm gap-x-1">

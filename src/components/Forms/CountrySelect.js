@@ -5,9 +5,9 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { countryCode } from "@/utils/CountryCode";
 import Inputs from "./Inputs";
+import { FormHelperText } from "@mui/material";
 
-const CountrySelect = ({ onChnage, value }) => {
-  console.log(value);
+const CountrySelect = ({ onChnage, value, formik }) => {
   return (
     <div className="flex flex-col lg:flex-row w-full gap-4">
       <FormControl className="flex-1">
@@ -19,8 +19,12 @@ const CountrySelect = ({ onChnage, value }) => {
           id="demo-simple-select-autowidth"
           label={" Your Country"}
           style={{ borderRadius: "10px", fontWeight: "600" }}
-          value={value}
-          onChange={onChnage}
+          name="countryCode"
+          value={formik.values.countryCode}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.countryCode && Boolean(formik.errors.countryCode)
+          }
         >
           {countryCode.map((code, index) => {
             return (
@@ -29,22 +33,28 @@ const CountrySelect = ({ onChnage, value }) => {
                 key={index}
                 value={`${code.dial_code}`}
               >
-                {/* <span>{code.dial_code}</span> */}
                 <span className="flex-1">{code.name}</span>
               </MenuItem>
             );
           })}
         </Select>
+        <FormHelperText className="text-red-600">
+          {formik.touched.countryCode ? formik.errors.countryCode : ""}
+        </FormHelperText>
       </FormControl>
       <div className="flex items-center gap-x-2 flex-1">
         <span
           className={`w-12 h-[54px] py-2 px-2  rounded-lg ring-1 flex items-center justify-center  ${
-            value.length !== 0 ? "ring-blue-500 ring-2" : "ring-gray-300  "
+            formik.values.countryCode.length !== 0
+              ? "ring-blue-500 ring-2"
+              : "ring-gray-300  "
           } text-sm transition-all ease-in-out duration-150`}
         >
-          {value.length !== 0 ? value : '+'}
+          {formik.values.countryCode.length !== 0
+            ? formik.values.countryCode
+            : "+"}
         </span>
-        <Inputs label={"phone Number"} />
+        <Inputs formik={formik} name={"phone"} label={"phone Number"} />
       </div>
     </div>
   );

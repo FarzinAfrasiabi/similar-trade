@@ -5,8 +5,8 @@ const BrandIcon = () => {
         data-name="Group 3316"
         fill="none"
         stroke="#0073ff"
-        stroke-miterlimit="10"
-        stroke-width="4"
+        strokeMiterlimit="10"
+        strokeWidth="4"
       >
         <g>
           <rect width="28" height="28" rx="10" stroke="none" />
