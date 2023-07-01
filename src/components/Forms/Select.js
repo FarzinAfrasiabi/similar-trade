@@ -9,9 +9,10 @@ const Selected = ({ label, seleceted }) => {
       <InputLabel id="demo-simple-select-label">{label}</InputLabel>
       <Select
         labelId="demo-simple-select-label"
-        id="demo-simple-select"
+        // id="demo-simple-select"
         label={label}
         style={{ borderRadius: "10px", fontWeight: "600" }}
+        value={""}
       >
         {seleceted.map((item, index) => {
           return (

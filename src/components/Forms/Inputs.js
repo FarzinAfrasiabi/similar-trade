@@ -1,10 +1,10 @@
 import TextField from "@mui/material/TextField";
-const Inputs = ({ label , type = "text" }) => {
+const Inputs = ({ label, type = "text" }) => {
   return (
     <TextField
       size="medium"
-          fullWidth
-          type={ type}
+      // fullWidth
+      type={type}
       InputLabelProps={{
         sx: {
           fontSize: "16px",
@@ -15,9 +15,9 @@ const Inputs = ({ label , type = "text" }) => {
           borderRadius: "10px",
         },
       }}
-      id="outlined-basic"
       label={label}
       variant="outlined"
+      
     />
   );
 };

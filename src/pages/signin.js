@@ -1,13 +1,20 @@
+import CountrySelect from "@/components/Forms/CountrySelect";
 import Inputs from "@/components/Forms/Inputs";
 import Links from "@/components/Forms/Links";
 import Selected from "@/components/Forms/Select";
 import Buttons from "@/components/Forms/button";
+import Password from "@/components/Forms/password";
 import RegisterLayout from "@/container/Register/RegisterLayout";
+import { countryCode } from "@/utils/CountryCode";
 import { Checkbox } from "@mui/material";
+import { useState } from "react";
 
 const RegisterAsSelected = ["Signaler", "Signal Reciver"];
-const CountryAsSelected = ["Usa", "Uk ", "Germany"];
 const Signin = () => {
+  const [selectCountryId, setSelectCountryId] = useState("");
+  const changeHandler = (event) => {
+    setSelectCountryId(event.target.value);
+  };
   return (
     <RegisterLayout>
       <div className="p-4 md:max-w-sm lg:max-w-lg w-full flex flex-col gap-y-4">
@@ -17,26 +24,26 @@ const Signin = () => {
           <div className="w-full">
             <Selected label={"Register as"} seleceted={RegisterAsSelected} />
           </div>
+          {/* name and last name */}
           <div className="w-full flex items-center gap-x-4">
             <Inputs label={"First Name"} />
             <Inputs label={"Last Name"} />
           </div>
+          {/* userName and email */}
           <div className="w-full flex items-center gap-x-4">
             <Inputs label={"UserName"} />
-            <Inputs label={"Mail Address"} />
+            <Inputs type="email" label={"Mail Address"} />
           </div>
+          {/* country coode */}
           <div className="w-full flex items-center gap-x-4">
-            <Selected label={"Your Country"} seleceted={CountryAsSelected} />
-            <Inputs label={"phone Number"} />
+            <CountrySelect onChnage={changeHandler} value={selectCountryId} />
+            {/* <Inputs label={"phone Number"} /> */}
           </div>
+          {/* password */}
           <div className="flex flex-col gap-y-1">
             <div className="w-full flex items-center gap-x-4">
-              <Inputs
-                type="password"
-                label={"Password"}
-                seleceted={CountryAsSelected}
-              />
-              <Inputs type="password" label={"Confrim Password"} />
+              <Password  label={"Password"} />
+              <Password  label={"Confrim Password"} />
               {/* text */}
             </div>
             <span className="text-xs px-2 text-gray-400">
