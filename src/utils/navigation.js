@@ -1,10 +1,23 @@
+import GetSignalIcon from "@/components/icons/navigation/GetSignalIcon";
+import TradeIcon from "@/components/icons/navigation/TradeIcon";
+import DashboaradIcon from "@/components/icons/navigation/dashboardIcon";
+import ProfileIcon from "@/components/icons/navigation/profileIcon";
+import ServerIcon from "@/components/icons/navigation/serverIcon";
+import SubScriptionIcon from "@/components/icons/navigation/subscrptionIcon";
+import TransActionIcon from "@/components/icons/navigation/transActionIcon";
+import ChatIcon from "@/components/icons/public/chatIcon";
+
 export const navigation = [
-  { name: "Dashboard", path: "/dashboard" },
-  { name: "Get Signal", path: "/" },
-  { name: "Trades", path: "/trades" },
-  { name: "Subscriptions", path: "/subscriptions" },
-  { name: "Servers", path: "/servers" },
-  { name: "TransActions", path: "/transaction" },
-  { name: "Profile", path: "/Profile" },
-  { name: "Tickets", path: "/tickets" },
+  { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
+  { name: "Get Signal", path: "/getsignal", icon: () => GetSignalIcon() },
+  { name: "Trades", path: "/trades", icon: () => TradeIcon() },
+  {
+    name: "Subscriptions",
+    path: "/subscriptions",
+    icon: () => SubScriptionIcon(),
+  },
+  { name: "Servers", path: "/servers", icon: () => ServerIcon() },
+  { name: "TransActions", path: "/transaction", icon: () => TransActionIcon() },
+  { name: "Profile", path: "/Profile", icon: () => ProfileIcon() },
+  { name: "Tickets", path: "/tickets", icon: () => ChatIcon() },
 ];
