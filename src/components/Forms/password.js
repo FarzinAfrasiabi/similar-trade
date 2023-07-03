@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import { Eye, EyeSlash } from "iconsax-react";
+// import { Eye, EyeSlash } from "iconsax-react";
 import { useState } from "react";
 const Password = ({ label, name, formik }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,9 +34,9 @@ const Password = ({ label, name, formik }) => {
         className={`absolute right-2 ${formik.touched[name] ? "top-5" : ""} `}
       >
         {showPassword ? (
-          <EyeSlash size={16} className="text-gray-500" />
+          {/* <EyeSlash size={16} className="text-gray-500" /> */}
         ) : (
-          <Eye size={16} className="text-gray-500" />
+          {/* <Eye size={16} className="text-gray-500" /> */}
         )}
       </button>
     </div>

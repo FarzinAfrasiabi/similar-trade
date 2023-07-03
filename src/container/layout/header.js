@@ -2,7 +2,6 @@ import HedaerAction from "@/components/hedaerAction";
 import ChatIcon from "@/components/icons/public/chatIcon";
 import AlertIcon from "@/components/icons/public/notficationIcon";
 import SearchIcon from "@/components/icons/public/searchIcon";
-import { User } from "iconsax-react";
 
 const Header = () => {
   return (
@@ -28,7 +27,7 @@ const Header = () => {
           </HedaerAction>
           {/* avatar profile */}
           <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-500">
-            <User size={16} color="#fff" />
+            {/* <User size={16} color="#fff" /> */}
           </div>
         </div>
       </div>
