@@ -1,3 +1,4 @@
+import StickChart from "@/components/chart/StickBar";
 import EarningIcon from "@/components/icons/public/EarningIcon";
 import ProfitIcon from "@/components/icons/public/ProfitIcon";
 import DollarIcon from "@/components/icons/public/dollarIcon";
@@ -52,6 +53,8 @@ const Dashboard = () => {
         {simpleStatusApi.map((status, index) => {
           return <OrderStatus key={index} status={status} />;
         })}
+        {/* chart */}
+        <StickChart />
       </div>
     </Layout>
   );
