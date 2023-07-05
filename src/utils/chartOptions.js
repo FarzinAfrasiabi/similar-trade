@@ -101,12 +101,12 @@ export const StackedBarChartoptions = (screenSize) => {
           borderRadius:
             screenSize.width < 390
               ? 5
-              : screenSize.width > 390 && screenSize.width < 1000
+              : screenSize.width > 390 && screenSize.width < 768
               ? 10
-              : screenSize.width > 1000 && screenSize.width < 1450
-              ? 15
+              : screenSize.width > 768 && screenSize.width < 1450
+              ? 10
               : screenSize.width > 1450 && screenSize.width < 1930
-              ? 20
+              ? 23
               : 35,
           borderRadiusWhenStacked: "last",
           borderRadiusApplication: "end",

@@ -1,73 +1,82 @@
 import {
-  Popover,
-  PopoverHandler,
-  PopoverContent,
-  Button,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
   Avatar,
   Typography,
 } from "@material-tailwind/react";
-const AvatarInf = () => {
+import {
+  Cog6ToothIcon,
+  PowerIcon,
+  InboxArrowDownIcon,
+  UserCircleIcon,
+  LifebuoyIcon,
+} from "@heroicons/react/24/outline";
+import React from "react";
+
+const profileMenuItems = [
+  {
+    label: "My Profile",
+    icon: UserCircleIcon,
+  },
+  {
+    label: "Edit Profile",
+    icon: Cog6ToothIcon,
+  },
+  {
+    label: "Inbox",
+    icon: InboxArrowDownIcon,
+  },
+  {
+    label: "Help",
+    icon: LifebuoyIcon,
+  },
+  {
+    label: "Sign Out",
+    icon: PowerIcon,
+  },
+];
+export default function AvatarInf() {
   return (
-    <Popover>
-      <PopoverHandler>
-        <Button variant="text" className="p-0">
-          <Avatar size="sm" alt="profile" src="/images/avatar/face-2.jpg" />
-        </Button>
-      </PopoverHandler>
-      <PopoverContent className="max-w-[18rem] lg:max-w-[20rem]">
-        <div className="mb-2 px-8 flex items-center justify-between gap-4">
-          <Avatar
-            size="xs"
-            variant="circular"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-            alt="candice wu"
-          />
-          <Button
-            variant="gradient"
-            color="blue"
-            size="sm"
-            className="font-medium capitalize"
-          >
-            Follow
-          </Button>
-        </div>
-        <Typography
-          variant="h6"
-          color="blue-gray"
-          className="mb-2 flex items-center gap-2 font-medium"
-        >
-          <span>Candice Wu</span> •{" "}
-          <a href="#" className="text-sm text-blue-gray-700">
-            @canwu
-          </a>
-        </Typography>
-        <Typography variant="small" color="gray" className="font-normal">
-          Frontend Developer • Major interest in Web Development: motivated to
-          achieve measurable results, to deepen my knowledge and improve my
-          skills.
-        </Typography>
-        <div className="mt-6 flex items-center gap-8 border-t border-blue-gray-50 pt-4">
-          <Typography
-            variant="small"
-            color="gray"
-            className="flex items-center gap-1 text-xs font-normal"
-          >
-            United Kingdom
-          </Typography>
-          <Typography
-            as="a"
-            href="#"
-            variant="small"
-            color="gray"
-            className="flex items-center gap-1 text-xs font-normal"
-          >
-            Material Tailwind
-          </Typography>
-        </div>
-      </PopoverContent>
-
-    </Popover>
+    <Menu>
+      <MenuHandler>
+        <Avatar
+          variant="circular"
+          alt="candice wu"
+          className="cursor-pointer"
+          src="/images/avatar/face-2.jpg"
+          size="sm"
+        />
+      </MenuHandler>
+      <MenuList className="p-1">
+        {profileMenuItems.map(({ label, icon }, key) => {
+          const isLastItem = key === profileMenuItems.length - 1;
+          return (
+            <MenuItem
+              key={label}
+              className={`flex items-center gap-2 rounded ${
+                isLastItem
+                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                  : ""
+              }`}
+            >
+              {React.createElement(icon, {
+                className: `h-4 w-4 ${isLastItem ? "text-red-400" : ""}`,
+                strokeWidth: 2,
+              })}
+              <Typography
+                as="span"
+                variant="small"
+                className="font-normal"
+                color={isLastItem ? "red" : "inherit"}
+              >
+                {label}
+              </Typography>
+            </MenuItem>
+          );
+        })}
+      </MenuList>
+    </Menu>
   );
-};
-
-export default AvatarInf;
+}

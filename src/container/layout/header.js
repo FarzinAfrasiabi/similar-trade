@@ -1,14 +1,12 @@
-import HedaerAction from "@/components/hedaerAction";
-import ChatIcon from "@/components/icons/public/chatIcon";
-import AlertIcon from "@/components/icons/public/notficationIcon";
 import SearchIcon from "@/components/icons/public/searchIcon";
 import { useRouter } from "next/router";
-import { Avatar } from "@material-tailwind/react";
 import AvatarInf from "@/components/avatar";
+import AlertNotfication from "@/components/notfication/AlertNotfication";
+import MessageNotfication from "@/components/notfication/MessageNotfication";
 const Header = () => {
   const router = useRouter();
   return (
-    <header className="z-10 py-3 bg-white w-full shadow">
+    <header className="z-10 py-3 bg-white w-full shadow sticky top-0 backdrop-blur-xl blur-0 opacity-100 ">
       <div className="hidden lg:flex items-center justify-between h-full px-6 mx-auto w-full container ">
         {/* searchbar */}
         <div className="flex items-center justify-between max-w-lg w-full bg-gray-100 rounded-lg shadow-md px-6 text-slate-700">
@@ -21,30 +19,24 @@ const Header = () => {
             <SearchIcon />
           </span>
         </div>
-        <div className="flex flex-1 items-center justify-end px-4  gap-x-4">
-          <HedaerAction isNotfication={true}>
-            <ChatIcon />
-          </HedaerAction>
-          <HedaerAction isNotfication={true}>
-            <AlertIcon />
-          </HedaerAction>
-          {/* avatar profile */}
+        <div className="flex flex-1 items-center justify-end gap-x-2 px-4">
+          <MessageNotfication />
+          <AlertNotfication />
           <AvatarInf />
         </div>
       </div>
       {/* mobile and tablet header */}
-      <div className="flex items-center justify-between px-3 lg:hidden">
+      <div className="flex items-center justify-between px-3 lg:hidden relative">
         {/* mobile not icon */}
-        <div className="flex items-center">
-          <HedaerAction isNotfication={true}>
-            <ChatIcon />
-          </HedaerAction>
-          <HedaerAction isNotfication={true}>
-            <AlertIcon   />
-          </HedaerAction>
+        <div className="flex items-center gap-1">
+          <MessageNotfication />
+          <AlertNotfication />
         </div>
+
         {/* router  */}
-        <span className="text-gray-900 font-semibold">{router.asPath.split("/")[1]}</span>
+        <div className="text-gray-900 font-semibold text-center flex-1 absolute w-full flex items-center justify-center ">
+          {router.asPath.split("/")[1]}
+        </div>
         {/* avatar */}
         <AvatarInf />
       </div>

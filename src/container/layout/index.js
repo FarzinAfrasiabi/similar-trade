@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
               {/* header */}
               <Header />
               <BottomNavigation />
-              <main className="h-full flex flex-col gap-y-4 overflow-y-auto px-6 py-4 mb-10">
+              <main className="h-full flex flex-col gap-y-4 overflow-y-auto px-6 py-4 mb-10 lg:mb-0">
                   { children}
               </main>
           </div>
