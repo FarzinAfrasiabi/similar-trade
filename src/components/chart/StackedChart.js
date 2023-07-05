@@ -1,5 +1,5 @@
 import { StackedBarChartoptions } from "@/utils/chartOptions";
-import React, { Component, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const StackedChart = () => {
@@ -21,7 +21,6 @@ const StackedChart = () => {
       window.removeEventListener("resize", updateDimension);
     };
   }, [screenSize]);
-  console.log(screenSize);
   const state = StackedBarChartoptions(screenSize);
   return (
     <>

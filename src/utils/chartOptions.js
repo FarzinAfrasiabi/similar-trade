@@ -29,7 +29,6 @@ export const StackedBarChartoptions = (screenSize) => {
         style: {
           fontSize: "14px",
           fontWeight: "500",
-          fontFamily: undefined,
           color: "#263238",
         },
       },
@@ -51,11 +50,6 @@ export const StackedBarChartoptions = (screenSize) => {
       },
       tooltip: {
         theme: "dark",
-      },
-      plotOptions: {
-        bar: {
-          horizontal: false,
-        },
       },
       xaxis: {
         categories: [
@@ -87,7 +81,14 @@ export const StackedBarChartoptions = (screenSize) => {
       legend: {
         position: "top",
         horizontalAlign: "left",
-        show: false,
+        show: true,
+        markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: "#fff",
+          radius: 12,
+        },
       },
       dataLabels: {
         enabled: false,

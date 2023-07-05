@@ -8,7 +8,7 @@ export const StatusApi = [
     title: "Current Balance",
     value: "63250.02",
     icon: () => (
-      <DollarIcon className="fill-violet-400 group-hover:fill-violet-700" />
+      <DollarIcon className="fill-deep-purple-300 group-hover:fill-deep-purple-500" />
     ),
     isOrder: false,
   },
@@ -24,7 +24,7 @@ export const StatusApi = [
     title: "Total Earnings",
     value: "63250.02",
     icon: () => (
-      <EarningIcon className="fill-green-400 group-hover:fill-emerald-600" />
+      <EarningIcon className="fill-light-green-400 group-hover:fill-light-green-700" />
     ),
     isOrder: false,
   },
