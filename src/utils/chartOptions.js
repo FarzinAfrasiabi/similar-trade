@@ -18,6 +18,7 @@ export const StackedBarChartoptions = (screenSize) => {
         ],
       },
     ],
+    
     options: {
       title: {
         text: "Earnings Summary",
@@ -78,6 +79,7 @@ export const StackedBarChartoptions = (screenSize) => {
           },
         },
       },
+
       legend: {
         position: "top",
         horizontalAlign: "left",

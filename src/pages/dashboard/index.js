@@ -36,20 +36,20 @@ const DashboardPage = () => {
         })}
       </div>
       {/* chart */}
-      <div className=" grid grid-cols-12 bg-white rounded-2xl shadow-lg  gap-8">
-        <div className="col-span-12 lg:col-span-8 h-[500px] order-last lg:order-1">
+      <div className=" grid grid-cols-12 bg-white rounded-2xl shadow-lg">
+        <div className="col-span-12 lg:col-span-7  xl:col-span-8 h-[500px] order-last lg:order-1">
           <StackedChart />
         </div>
-        <div className="col-span-12 lg:col-span-4 py-4 lg:order-2 flex flex-col justify-between">
+        <div className="col-span-12 lg:col-span-5 xl:col-span-4 py-4 lg:order-2 flex flex-col justify-between">
           <CustomTabs />
-          {/* wallet Status */}
-          <div className="flex items-center gap-x-4 container px-4 xl:px-8 w-full">
+          <div className="flex items-center gap-4 container px-2 xl:px-8 w-full flex-wrap">
             {walletStatus.map((item) => (
               <WalletStatus key={item.id} {...item} />
-            ))}
+              ))}
           </div>
         </div>
       </div>
+              {/* wallet Status */}
     </Layout>
   );
 };

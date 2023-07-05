@@ -89,7 +89,7 @@ const PieChart = ({series = []}) => {
     },
   };
   return (
-    <div className="py-4 lg:py-6 h-[300px] md:h-[200px] xl:h-[340px]">
+    <div className="py-4 lg:py-6 h-[280px] 2xl:h-[320px] ">
       <Chart
         options={state.options}
         series={state.series}
