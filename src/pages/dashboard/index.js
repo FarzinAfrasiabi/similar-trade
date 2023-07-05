@@ -4,13 +4,25 @@ import ProductOverview from "@/components/overview/productOverview";
 import OrderStatus from "@/components/status/orderStatus";
 import Layout from "@/container/layout";
 import CustomTabs from "@/components/Tabs";
-
+import WalletStatus from "@/components/status/walletstatus";
 
 //Trun Off SSR
 const StackedChart = dynamic(
   () => import("./../../components/chart/StackedChart"),
   { ssr: false }
 );
+
+//temporary
+const walletStatus = [
+  {
+    id: 1,
+    header: "Total Trade",
+    color: "border-deep-purple-500",
+    number: 241,
+  },
+  { id: 2, header: "Profit", color: "border-blue-800", number: 61 },
+  { id: 3, header: "Total Trade", color: "border-red-600", number: 94 },
+];
 
 const DashboardPage = () => {
   return (
@@ -30,21 +42,11 @@ const DashboardPage = () => {
         </div>
         <div className="col-span-12 lg:col-span-4 py-4 lg:order-2 flex flex-col justify-between">
           <CustomTabs />
+          {/* wallet Status */}
           <div className="flex items-center gap-x-4 container px-4 xl:px-8 w-full">
-            <div className="flex flex-col gap-y-1 bg-white shadow-md rounded-xl px-2 py-4 flex-1">
-              <span className="text-gray-700 text-sm font-semibold">Total Trade</span>
-              <div className="block w-full border-l-4 border-deep-purple-400 font-semibold rounded text-gray-800 px-4 text-2xl">201</div>
-            </div>
-           <div className="flex flex-col gap-y-1 bg-white shadow-md rounded-xl px-2 py-4 flex-1">
-              <span className="text-gray-700 text-sm font-semibold">Total Trade</span>
-              <div className="block w-full border-l-4 border-deep-purple-400 font-semibold rounded text-gray-800 px-4 text-2xl">201</div>
-            </div>
-           
-           <div className="flex flex-col gap-y-1 bg-white shadow-md rounded-xl px-2 py-4 flex-1">
-              <span className="text-gray-700 text-sm font-semibold">Total Trade</span>
-              <div className="block w-full border-l-4 border-deep-purple-400 font-semibold rounded text-gray-800 px-4 text-2xl">201</div>
-            </div>
-           
+            {walletStatus.map((item) => (
+              <WalletStatus key={item.id} {...item} />
+            ))}
           </div>
         </div>
       </div>

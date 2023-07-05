@@ -17,14 +17,20 @@ export default function CustomTabs() {
   ];
   return (
     <Tabs className="w-full px-4" value="daily">
-      <TabsHeader>
+      <TabsHeader className="text-sm font-semibold">
         {label.map(({ label, value }) => (
-          <Tab key={value} value={value}>
+          <Tab className="rounded-full" key={value} value={value}>
             {label}
           </Tab>
         ))}
       </TabsHeader>
-      <TabsBody>
+      <TabsBody
+        animate={{
+          initial: { y: 250 },
+          mount: { y: 0 },
+          unmount: { y: 250 },
+        }}
+      >
         {label.map(({ value, series }) => (
           <TabPanel key={value} value={value}>
             <PieChart series={series} />
