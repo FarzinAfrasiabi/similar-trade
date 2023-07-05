@@ -1,4 +1,4 @@
-import { ChatBubbleBottomCenterTextIcon  } from "@heroicons/react/24/outline";
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import {
   Menu,
   MenuHandler,
@@ -23,38 +23,33 @@ const MessageNotfication = () => {
               horizontal: "right",
             }}
           >
-            <ChatBubbleBottomCenterTextIcon 
+            <ChatBubbleBottomCenterTextIcon
               className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600"
               strokeWidth={2}
             />
           </Badge>
         </IconButton>
       </MenuHandler>
-      <MenuList className="space-y-2">
+      <MenuList className="space-y-2 p-2 max-w-xs w-full flex flex-col gap-y-2">
+        <div className="px-2 py-3 text-gray-800 font-semibold border-b-2 border-gray-400">
+          Recenet Notfication
+        </div>
         {[1, 2, 3].map((_, index) => {
           return (
-            <MenuItem key={index} className="flex items-center gap-x-2">
-              <Avatar
-                variant="circular"
-                alt="candice wu"
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-              />
-              <div className="flex flex-col gap-1">
-                <Typography
-                  variant="small"
-                  color="gray"
-                  className="font-normal"
-                >
-                  <span className="font-medium text-blue-gray-900">Wu</span>{" "}
-                  send you a message
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="flex items-center gap-1 text-xs text-gray-600"
-                >
-                  {/* <ClockIcon className="h-3 w-3" /> */}
-                  13 minutes ago
-                </Typography>
+            <MenuItem
+              key={index}
+              className="flex items-center gap-x-2 border-l-4 border-[#FFCE73] px-6 py-4 ring-1 ring-gray-400"
+            >
+              <div className="flex flex-col gap-y pr-2 border-r-2 ">
+                <span className="text-gray-800">09:00 Am</span>
+                <span className="text-xs text-gray-500">45 min ago</span>
+              </div>
+              <div className="flex-1 flex-col gap-y-2">
+                <span className="text-gray-800">Glenn Greer</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-700 text-xs">Commented on</span>
+                  <span className="text-gray-700 text-xs">Commented on</span>
+                </div>
               </div>
             </MenuItem>
           );
