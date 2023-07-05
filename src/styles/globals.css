@@ -5,3 +5,7 @@
 /* * {
   font-family: "Public Sans";
 } */
+.apexcharts-tooltip {
+  background: #222121;
+  color: orange;
+}

@@ -32,15 +32,19 @@ const Password = ({ label, name, formik }) => {
         onClick={() => setShowPassword(!showPassword)}
         type="button"
         className={`absolute right-2 ${formik.touched[name] ? "top-5" : ""} `}
-      >
-        {showPassword ? (
-          {/* <EyeSlash size={16} className="text-gray-500" /> */}
-        ) : (
-          {/* <Eye size={16} className="text-gray-500" /> */}
-        )}
-      </button>
+      ></button>
     </div>
   );
 };
 
 export default Password;
+/**
+ * 
+ * {showPassword ? (
+          <EyeSlash size={16} className="text-gray-500" /> 
+      //     ) : (
+      //     <Eye size={16} className="text-gray-500" /> 
+      //  )}
+ *  
+ * 
+ * */
