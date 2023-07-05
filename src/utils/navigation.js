@@ -21,3 +21,15 @@ export const navigation = [
   { name: "Profile", path: "/Profile", icon: () => ProfileIcon() },
   { name: "Tickets", path: "/tickets", icon: () => ChatIcon() },
 ];
+
+export const mobileNavigation = [
+  { name: "Get Signal", path: "/getsignal", icon: () => GetSignalIcon() },
+  { name: "Trades", path: "/trades", icon: () => TradeIcon() },
+  { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
+  {
+    name: "Subscriptions",
+    path: "/subscriptions",
+    icon: () => SubScriptionIcon(),
+  },
+  { name: "TransActions", path: "/transaction", icon: () => TransActionIcon() },
+];

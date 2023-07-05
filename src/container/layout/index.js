@@ -1,4 +1,5 @@
 import Aside from "./aside";
+import BottomNavigation from "./bottom";
 import Header from "./header";
 
 const Layout = ({ children }) => {
@@ -9,7 +10,8 @@ const Layout = ({ children }) => {
           <div className="flex flex-1 flex-col w-full">
               {/* header */}
               <Header />
-              <main className="h-full flex flex-col gap-y-4 overflow-y-auto px-6 py-4">
+              <BottomNavigation />
+              <main className="h-full flex flex-col gap-y-4 overflow-y-auto px-6 py-4 mb-10">
                   { children}
               </main>
           </div>

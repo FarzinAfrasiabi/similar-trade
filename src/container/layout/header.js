@@ -8,7 +8,7 @@ const Header = () => {
     <header className="z-10 py-3 bg-white w-full shadow">
       <div className="flex items-center justify-between h-full px-6 mx-auto w-full container ">
         {/* searchbar */}
-        {/* <div className="flex items-center justify-between max-w-lg w-full bg-gray-100 rounded-lg shadow-md px-6 text-slate-700">
+        <div className="flex items-center justify-between max-w-lg w-full bg-gray-100 rounded-lg shadow-md px-6 text-slate-700">
           <input
             type="text"
             placeholder="search"
@@ -17,7 +17,7 @@ const Header = () => {
           <span className="fill-[#92929D]">
             <SearchIcon />
           </span>
-        </div> */}
+        </div>
         <div className="flex flex-1 items-center justify-end px-4  gap-x-4">
           <HedaerAction isNotfication={true}>
             <ChatIcon />
