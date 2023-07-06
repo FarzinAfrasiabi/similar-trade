@@ -3,7 +3,7 @@ import Buttons from "../public/button";
 
 const ProductOverview = () => {
   return (
-    <div className="w-full rounded-lg bg-[#F5B544] p-3 lg:p-6 bg-opacity-20">
+    <div className="w-full rounded-lg bg-[#F5B544] p-3 lg:p-6 bg-opacity-20 hidden lg:block">
       <div className="w-full flex items-center justify-between">
         <div className="flex flex-col gap-y-6 max-w-md">
           <h1 className="text-slate-700 text-lg font-semibold">

@@ -99,9 +99,9 @@ export const StackedBarChartoptions = (screenSize) => {
         bar: {
           horizontal: false,
           borderRadius:
-            screenSize.width < 390
+            screenSize.width < 400
               ? 5
-              : screenSize.width > 390 && screenSize.width < 768
+              : screenSize.width > 400 && screenSize.width < 768
               ? 10
               : screenSize.width > 768 && screenSize.width < 1450
               ? 10

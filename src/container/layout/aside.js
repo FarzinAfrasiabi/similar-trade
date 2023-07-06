@@ -56,7 +56,7 @@ const Aside = () => {
             <div className="w-10 cursor-pointer h-10 flex items-center justify-center bg-gray-800 rounded-full"></div>
             <div className="flex flex-col">
               {/* profile name  */}
-              <span className="text-gray-800 overflow-auto text-ellipsis text-xs xl:text-sm">Farzin Afrasiabi</span>
+              <span className="text-gray-800 overflow-auto text-ellipsis text-xs xl:text-sm ">Farzin Afrasiabi</span>
               <span className="text-gray-500 text-xs">@farzinafrasiabi</span>
             </div>
           </div>

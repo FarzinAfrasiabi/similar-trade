@@ -5,6 +5,7 @@ import OrderStatus from "@/components/status/orderStatus";
 import Layout from "@/container/layout";
 import CustomTabs from "@/components/Tabs";
 import WalletStatus from "@/components/status/walletstatus";
+import MobileProducts from "@/components/overview/mobileProductsOverView";
 
 //Trun Off SSR
 const StackedChart = dynamic(
@@ -27,8 +28,13 @@ const walletStatus = [
 const DashboardPage = () => {
   return (
     <Layout>
+      {/* mobile Products OverView */}
+      <div className="block min-h-[200px] lg:hidden">
+        <MobileProducts />
+      </div>
       {/* product Over View */}
       <ProductOverview />
+
       {/* status Bar */}
       <div className="grid grid-cols-12 gap-4">
         {StatusApi.map((status, index) => {
@@ -45,11 +51,11 @@ const DashboardPage = () => {
           <div className="flex items-center gap-4 container px-2 xl:px-8 w-full flex-wrap">
             {walletStatus.map((item) => (
               <WalletStatus key={item.id} {...item} />
-              ))}
+            ))}
           </div>
         </div>
       </div>
-              {/* wallet Status */}
+      {/* wallet Status */}
     </Layout>
   );
 };
