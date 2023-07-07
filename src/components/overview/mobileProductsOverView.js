@@ -3,7 +3,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 const MobileProducts = () => {
   return (
-    <Carousel className="rounded-x bg-[#F5B544] p-3 lg:p-6 bg-opacity-20 l">
+    <Carousel className="rounded-x bg-[#F5B544] p-3 lg:p-6 bg-opacity-20 lg:hidden">
       <div className="w-full rounded-lg ">
         <div className="w-full flex items-center justify-between">
           <div className="flex flex-col gap-y-6 max-w-md">
