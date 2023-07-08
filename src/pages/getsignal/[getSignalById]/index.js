@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import { Avatar } from "@material-tailwind/react";
 import HistoryProfile from "@/components/history/historyProfile";
 import SignalerPlans from "@/components/plans/signalerPlans";
+import Link from "next/link";
+import { useState } from "react";
+import HistoryTable from "@/components/history/historyTable";
 const history = [
   { title: "Subscribers", desc: "10,925" },
   { title: "Weekly profit", desc: "10% - 15%" },
@@ -57,6 +60,7 @@ const plans = [
   },
 ];
 const GetSignalById = () => {
+  const [showHistory, setShowHistory] = useState(false);
   return (
     <Layout>
       <div className="grid grid-cols-12 gap-4">
@@ -77,10 +81,13 @@ const GetSignalById = () => {
             </div>
             {/* btn group */}
             <div className=" items-center gap-x-4 flex-1 justify-end hidden lg:flex">
-              <button className=" px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
-                Signaler history
+              <button
+                onClick={() => setShowHistory(!showHistory)}
+                className=" px-4 py-2 w-[150px] text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg"
+              >
+                {showHistory ? "Buy PLan" : "Show history"}
               </button>
-              <button className="px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
+              <button className="px-4 py-2  text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
                 Share signaler profile
               </button>
             </div>
@@ -88,26 +95,40 @@ const GetSignalById = () => {
           {/* history data */}
           <div className="max-w-screen-xl container mx-auto mt-16 md:mt-14 xl:mt-0 p-2 px-4  ">
             <div className="w-full flex overflow-auto  items-center justify-between">
-              {history.map((history , i) => (
+              {history.map((history, i) => (
                 <HistoryProfile key={i} {...history} />
               ))}
             </div>
           </div>
-          <hr />
-          <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2">
-            {`plan's`}
-          </h1>
-          <div className="mx-auto grid grid-cols-12 pt-4 mb-4 gap-3 px-4">
-            {/* plans */}
-            {plans.map((plan , i) => (
-              <div
-                key={i}
-                className="col-span-12 md:col-span-6 xl:col-span-3"
-              >
-                <SignalerPlans {...plan} />
-              </div>
-            ))}
+          <div className=" gap-y-2 flex-1  flex flex-col lg:hidden px-4">
+            <button className=" px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
+              Signaler history
+            </button>
+            <button className="px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
+              Share signaler profile
+            </button>
           </div>
+          <hr />
+          {showHistory ? (
+            <HistoryTable />
+          ) : (
+            <div>
+              <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2">
+                {`plan's`}
+              </h1>
+              <div className="mx-auto grid grid-cols-12 pt-4 mb-4 gap-3 px-4">
+                {/* plans */}
+                {plans.map((plan, i) => (
+                  <div
+                    key={i}
+                    className="col-span-12 md:col-span-6 xl:col-span-3"
+                  >
+                    <SignalerPlans {...plan} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </Layout>
