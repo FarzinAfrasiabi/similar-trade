@@ -76,7 +76,7 @@ const GetSignalById = () => {
               <span className="text-white ">@matin</span>
             </div>
             {/* btn group */}
-            <div className="flex items-center gap-x-4 flex-1 justify-end ">
+            <div className=" items-center gap-x-4 flex-1 justify-end hidden lg:flex">
               <button className=" px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
                 Signaler history
               </button>
@@ -86,20 +86,23 @@ const GetSignalById = () => {
             </div>
           </div>
           {/* history data */}
-          <div className="max-w-screen-xl container mx-auto p-2 px-4  ">
-            <div className="w-full flex items-center justify-between">
-              {history.map((history) => (
-                <HistoryProfile key={history.title} {...history} />
+          <div className="max-w-screen-xl container mx-auto mt-16 md:mt-14 xl:mt-0 p-2 px-4  ">
+            <div className="w-full flex overflow-auto  items-center justify-between">
+              {history.map((history , i) => (
+                <HistoryProfile key={i} {...history} />
               ))}
             </div>
           </div>
           <hr />
+          <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2">
+            {`plan's`}
+          </h1>
           <div className="mx-auto grid grid-cols-12 pt-4 mb-4 gap-3 px-4">
             {/* plans */}
-            {plans.map((plan) => (
+            {plans.map((plan , i) => (
               <div
-                key={plan.title}
-                className="col-span-12 md:col-span-6 lg:col-span-3"
+                key={i}
+                className="col-span-12 md:col-span-6 xl:col-span-3"
               >
                 <SignalerPlans {...plan} />
               </div>

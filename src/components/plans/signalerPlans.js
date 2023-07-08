@@ -39,8 +39,8 @@ export default function SignalerPlans({ title, price, desc }) {
       </CardHeader>
       <CardBody className="p-0">
         <ul className="flex flex-col gap-4">
-          {desc.map((desc) => (
-            <li key={desc.value} className="flex items-center gap-4">
+          {desc.map((desc , i) => (
+            <li key={i} className="flex items-center gap-4">
               <span className="rounded-full border border-white/20 bg-gray-100 p-1">
                 <CheckIcon strokeWidth={2} className="h-3 w-3" />
               </span>
