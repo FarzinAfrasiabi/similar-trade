@@ -11,6 +11,9 @@ module.exports = withMT({
         xl: "1280px",
         "2xl": "1536px",
       },
+      backgroundImage: {
+        'hero-pattern': "url('/images/header/Group 3094.png')",
+      }
     },
   },
   plugins: [],

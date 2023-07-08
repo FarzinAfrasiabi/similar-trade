@@ -1,7 +1,7 @@
 import Buttons from "@/components/Forms/button";
 import SearchTrading from "@/components/search/searchTrader";
 import Layout from "@/container/layout";
-import { Input, Button } from "@material-tailwind/react";
+
 const GetsignalPage = () => {
   return (
     <Layout>
