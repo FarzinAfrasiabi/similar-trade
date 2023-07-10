@@ -7,8 +7,9 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
-export default function SignalerPlans({ title, price, desc }) {
+export default function SignalerPlans({ title, price, desc, id }) {
   return (
     <Card color="white" variant="filled" className="w-full  p-8 shadow-2xl">
       <CardHeader
@@ -39,7 +40,7 @@ export default function SignalerPlans({ title, price, desc }) {
       </CardHeader>
       <CardBody className="p-0">
         <ul className="flex flex-col gap-4">
-          {desc.map((desc , i) => (
+          {desc.map((desc, i) => (
             <li key={i} className="flex items-center gap-4">
               <span className="rounded-full border border-white/20 bg-gray-100 p-1">
                 <CheckIcon strokeWidth={2} className="h-3 w-3" />
@@ -50,23 +51,13 @@ export default function SignalerPlans({ title, price, desc }) {
         </ul>
       </CardBody>
       <CardFooter className="mt-12 p-0">
-        <Button
-          size="lg"
-          className="text-white bg-[#0062ff] hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
-          ripple={false}
-          fullWidth={true}
+        <Link
+          href={`/buyPlan?signalerId=${id}`}
+          className="text-white text-center bg-[#0062ff] w-full block rounded-xl py-2 hover:scale-[1.02] focus:scale-[1.02] active:scale-100 transition-all ease-in-out duration-100"
         >
           Buy Now
-        </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
 }
-/**
- * <li className="flex items-center gap-4">
-            <span className="rounded-full border border-white/20 bg-white/20 p-1">
-              <CheckIcon strokeWidth={2} className="h-3 w-3" />
-            </span>
-            <Typography className="font-normal">5 team members</Typography>
-          </li>
- */

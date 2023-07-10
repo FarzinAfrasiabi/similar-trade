@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { Avatar } from "@material-tailwind/react";
 import HistoryProfile from "@/components/history/historyProfile";
 import SignalerPlans from "@/components/plans/signalerPlans";
-import Link from "next/link";
 import { useState } from "react";
 import HistoryTable from "@/components/history/historyTable";
 const history = [
@@ -61,6 +60,7 @@ const plans = [
 ];
 const GetSignalById = () => {
   const [showHistory, setShowHistory] = useState(false);
+  const router = useRouter();
   return (
     <Layout>
       <div className="grid grid-cols-12 gap-4">
@@ -123,7 +123,7 @@ const GetSignalById = () => {
                     key={i}
                     className="col-span-12 md:col-span-6 xl:col-span-3"
                   >
-                    <SignalerPlans {...plan} />
+                    <SignalerPlans id={router.query.getSignalById} {...plan} />
                   </div>
                 ))}
               </div>
