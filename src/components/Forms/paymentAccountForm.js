@@ -11,9 +11,9 @@ const formsAccountsInputs = [
 ];
 
 const formsAccountsCheckbox = [
-  { label: "I agree to Similartrade’s Cookie and Privacy Policy." },
-  { label: "I agree not to open manual trades in my account." },
-  { label: "I agree not to open manual trades in my account." },
+  { label: "I agree to Similartrade’s Cookie and Privacy Policy.", id: 1 },
+  { label: "I agree not to open manual trades in my account.", id: 2 },
+  { label: "I agree not to open manual trades in my account.", id: 3 },
 ];
 const PaymentAccountForm = () => {
   return (
@@ -26,9 +26,10 @@ const PaymentAccountForm = () => {
         })}
       </div>
       <div className="flex flex-col pt-2">
-        {formsAccountsCheckbox.map(({ label }, index) => (
+        {formsAccountsCheckbox.map(({ label, id }) => (
           <Checkbox
-            key={index}
+            id={id}
+            key={id}
             label={<Typography className="text-xs">{label}</Typography>}
             className="w-4 h-4"
           />

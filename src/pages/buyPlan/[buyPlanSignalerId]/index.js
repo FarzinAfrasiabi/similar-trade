@@ -7,13 +7,19 @@ import { useRouter } from "next/router";
 
 const BuyPlanById = () => {
   const router = useRouter();
+  const { query } = useRouter();
   return (
     <Layout>
       <div className="w-full flex flex-col gap-y-8">
         {/* invoice data */}
-        <div className="w-full container flex  justify-between">
-          <div className="">
-            <h1 className="font-semibold">Hello , user Data</h1>
+        <div className="w-full container flex flex-col gap-2 md:flex-row justify-between">
+          <div className="flex-col gap-y-4">
+            <h1 className="font-semibold">Hello , {query.name}</h1>
+            <p className="text-sm text-gray-600 max-w-3xl">
+              Please find below a cost-breakdown for the recent work completed.
+              Please make payment at your earliest convenience, and do not
+              hesitate to contact me with any questions.
+            </p>
           </div>
           {/* invoice Data */}
           <div className="flex flex-col gap-y-2 w-full max-w-xs text-gray-800">
@@ -39,12 +45,13 @@ const BuyPlanById = () => {
             </div>
           </div>
         </div>
-        <div className="w-full bg-white rounded-2xl shadow-md px-10 py-8">
+        <div className="w-full bg-white rounded-2xl shadow-md px-2 md:px-10 py-8">
           <div className="grid grid-cols-12 lg:gap-x-10 gap-y-6">
+            {/* invoice */}
             <div className="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between min-h-[50vh]  ">
               <div className="flex flex-col ">
                 {/* header */}
-                <div className="w-full p-4 text-sm bg-[#E7E7E7] flex items-center justify-between rounded-lg">
+                <div className="w-full p-4 text-xs md:text-sm bg-[#E7E7E7] flex items-center justify-between rounded-lg">
                   <div className="flex items-center gap-x-6">
                     <span>#</span>
                     <span>Product</span>
@@ -85,7 +92,7 @@ const BuyPlanById = () => {
               </div>
             </div>
             {/* payment method */}
-            <div className="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between  lg:px-8 lg:border-l-2 border-gray-300 ">
+            <div className="col-span-12 lg:col-span-12 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between  lg:px-8 xl:border-l-2 border-gray-300 ">
               <div className="flex flex-col ">
                 {/* header */}
                 <div className="w-full text-lg   text-center flex items-center justify-between rounded-lg">

@@ -31,7 +31,7 @@ const SearchTrading = ({ title, onSubmit }) => {
           Enter signaler ID (eg : A1b2c3d)
         </span>
         <form onSubmit={submitHandler}>
-          <div className="flex flex-col md:flex-row  md:items-center gap-x-2">
+          <div className="flex items-center gap-x-2">
             {/* <span className="text-gray-800 font-semibold text-xs xl:text-sm">ID : </span> */}
             <div className="flex-1">
               <Input
