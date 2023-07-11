@@ -10,7 +10,7 @@ import ChatIcon from "@/components/icons/public/chatIcon";
 export const navigation = [
   { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
   { name: "Get Signal", path: "/getsignal", icon: () => GetSignalIcon() },
-  { name: "Trades", path: "/trades", icon: () => TradeIcon() },
+  { name: "Order", path: "/order", icon: () => TradeIcon() },
   {
     name: "Subscriptions",
     path: "/subscriptions",
@@ -24,7 +24,7 @@ export const navigation = [
 
 export const mobileNavigation = [
   { name: "Get Signal", path: "/getsignal", icon: () => GetSignalIcon() },
-  { name: "Trades", path: "/trades", icon: () => TradeIcon() },
+  { name: "Order", path: "/order", icon: () => TradeIcon() },
   { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
   {
     name: "Subscriptions",

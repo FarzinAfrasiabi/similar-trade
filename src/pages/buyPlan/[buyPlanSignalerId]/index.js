@@ -15,7 +15,7 @@ const BuyPlanById = () => {
         <div className="w-full container flex flex-col gap-2 md:flex-row justify-between">
           <div className="flex-col gap-y-4">
             <h1 className="font-semibold">Hello , {query.name}</h1>
-            <p className="text-sm text-gray-600 max-w-3xl">
+            <p className="text-sm text-gray-500 max-w-3xl px-2">
               Please find below a cost-breakdown for the recent work completed.
               Please make payment at your earliest convenience, and do not
               hesitate to contact me with any questions.

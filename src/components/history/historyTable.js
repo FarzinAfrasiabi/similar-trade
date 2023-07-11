@@ -1,36 +1,4 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { PencilIcon, UserPlusIcon } from "@heroicons/react/24/solid";
-import {
-  Card,
-  CardHeader,
-  Input,
-  Typography,
-  Button,
-  CardBody,
-  Chip,
-  CardFooter,
-  Tabs,
-  TabsHeader,
-  Tab,
-  Avatar,
-  IconButton,
-  Tooltip,
-} from "@material-tailwind/react";
-
-const TABS = [
-  {
-    label: "All",
-    value: "all",
-  },
-  {
-    label: "Monitored",
-    value: "monitored",
-  },
-  {
-    label: "Unmonitored",
-    value: "unmonitored",
-  },
-];
+import { Card, Typography, CardBody } from "@material-tailwind/react";
 
 const TABLE_HEAD = [
   "Order",
@@ -64,9 +32,9 @@ const TABLE_ROWS = [
   {
     order: { id: "#123455778", signal: "Black Signal" },
     time: {
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
-      },
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
     type: "Buy",
     size: "9999.99",
     symbol: "GBPUSD",
@@ -78,9 +46,9 @@ const TABLE_ROWS = [
   {
     order: { id: "#123455778", signal: "Black Signal" },
     time: {
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
-      },
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
     type: "Sell",
     size: "9999.99",
     symbol: "GBPUSD",
@@ -92,9 +60,9 @@ const TABLE_ROWS = [
   {
     order: { id: "#123455778", signal: "Black Signal" },
     time: {
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
-      },
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
     type: "Sell",
     size: "9999.99",
     symbol: "GBPUSD",
@@ -105,10 +73,10 @@ const TABLE_ROWS = [
   },
   {
     order: { id: "#123455778", signal: "Black Signal" },
-    time:  {
-        date: new Date().toLocaleDateString(),
-        time: new Date().toLocaleTimeString(),
-      },
+    time: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
     type: "Sell",
     size: "9999.99",
     symbol: "GBPUSD",
@@ -126,7 +94,7 @@ export default function HistoryTable() {
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>
-              {TABLE_HEAD.map((head , index) => (
+              {TABLE_HEAD.map((head, index) => (
                 <th
                   key={index}
                   className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
@@ -154,8 +122,12 @@ export default function HistoryTable() {
                   : "p-4 border-b border-blue-gray-50";
 
                 return (
-                    <tr key={index} className={` border-l-8 ${type === "Sell" ? 'border-red-700' : 'border-blue-900'} rounded-md` } >
-                        
+                  <tr
+                    key={index}
+                    className={` border-l-8 ${
+                      type === "Sell" ? "border-red-700" : "border-blue-900"
+                    } rounded-md`}
+                  >
                     {/* order */}
                     <td className={classes}>
                       <div className="flex flex-col">
