@@ -1,4 +1,8 @@
+import PaymentAccountForm from "@/components/Forms/paymentAccountForm";
+import InvoiceITem from "@/components/invoice/invoiceITem";
+import InvoiceTotal from "@/components/invoice/invoiceTotal";
 import Layout from "@/container/layout";
+import { Button, Checkbox, Input, Typography } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 
 const BuyPlanById = () => {
@@ -36,44 +40,71 @@ const BuyPlanById = () => {
           </div>
         </div>
         <div className="w-full bg-white rounded-2xl shadow-md px-10 py-8">
-          <div className="grid grid-cols-12 gap-x-4">
-            <div className="col-span-12 lg:col-span-4 flex flex-col gap-y-2">
-              {/* header */}
-              <div className="w-full p-4 text-sm bg-[#E7E7E7] flex items-center justify-between rounded-lg">
-                <div className="flex items-center gap-x-6">
-                  <span>#</span>
-                  <span>Product</span>
-                </div>
-                <span className="pr-4">price</span>
-              </div>
-              {/* invoice item */}
-              <div className="w-full flex flex-col gap-y-4 ">
-                {[1, 2, 3].map((item, index) => (
-                  <div
-                    key={index}
-                    className="w-full ring-2 ring-gray-300 flex items-center justify-between relative rounded-xl text-sm text-gray-800"
-                  >
-                    <div className="flex items-center gap-x-3 px-4 py-4 border-l-4 border-gray-300 rounded-t-lg rounded-b-lg">
-                      <span>#{item}</span>
-                      <span>Signaler subscription</span>
-                    </div>
-                    <div className="flex flex-col pr-4">
-                      {item === 2 ? (
-                        <div className="flex flex-col font-normal gap-y-1 items-center gap-x-4">
-                          <span className="text-gray-700 text-sm">IRR 900</span>
-                          <span className="text-xs line-through  text-gray-400">
-                            IRR 999.999
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-x-2">
-                          <span className="capitalize">IRR</span>
-                          <span>999.9999</span>
-                        </div>
-                      )}
-                    </div>
+          <div className="grid grid-cols-12 lg:gap-x-10 gap-y-6">
+            <div className="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between min-h-[50vh]  ">
+              <div className="flex flex-col ">
+                {/* header */}
+                <div className="w-full p-4 text-sm bg-[#E7E7E7] flex items-center justify-between rounded-lg">
+                  <div className="flex items-center gap-x-6">
+                    <span>#</span>
+                    <span>Product</span>
                   </div>
-                ))}
+                  <span className="pr-4">price</span>
+                </div>
+                {/* invoice item */}
+                <div className="w-full flex flex-col gap-y-4 py-2">
+                  {[1, 2, 3].map((item, index) => (
+                    <InvoiceITem key={index} item={item} />
+                  ))}
+                </div>
+                {/* invoice totla */}
+                <InvoiceTotal />
+              </div>
+              {/* submit btn */}
+              <div className="w-full ">
+                <Button className="w-full bg-blue-700">
+                  Enter account informations
+                </Button>
+              </div>
+            </div>
+            {/* account information form  */}
+            <div className="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between  lg:px-8 lg:border-l-2 border-gray-300 ">
+              <div className="flex flex-col ">
+                {/* header */}
+                <div className="w-full text-lg   text-center flex items-center justify-between rounded-lg">
+                  Account informations
+                </div>
+                {/* account information form */}
+                <PaymentAccountForm />
+              </div>
+              {/* submit btn */}
+              <div className="w-full ">
+                <Button className="w-full bg-blue-700">
+                  Choose payment method
+                </Button>
+              </div>
+            </div>
+            {/* payment method */}
+            <div className="col-span-12 lg:col-span-6 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between  lg:px-8 lg:border-l-2 border-gray-300 ">
+              <div className="flex flex-col ">
+                {/* header */}
+                <div className="w-full text-lg   text-center flex items-center justify-between rounded-lg">
+                  Payment Method
+                </div>
+                <div className="flex flex-col gap-y-4 pt-2">
+                  {[1, 2, 3, 4, 5].map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="w-full py-10 bg-white shadow-md ring-1 ring-gray-300 rounded-xl "
+                      ></div>
+                    );
+                  })}
+                </div>
+              </div>
+              {/* submit btn */}
+              <div className="w-full ">
+                <Button className="w-full bg-blue-700">Checkout</Button>
               </div>
             </div>
           </div>
