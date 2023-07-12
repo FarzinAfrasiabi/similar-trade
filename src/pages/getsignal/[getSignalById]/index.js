@@ -58,6 +58,78 @@ const plans = [
     price: 60,
   },
 ];
+const TABLE_ROWS = [
+  {
+    order: { id: "#123455778", signal: "Black Signal" },
+    time: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
+    type: "Sell",
+    size: "9999.99",
+    symbol: "GBPUSD",
+    price: "1.2656",
+    sl: "1.2",
+    tp: "1.2 ",
+    profit: { up: "9999.999", down: "999" },
+  },
+  {
+    order: { id: "#123455778", signal: "Black Signal" },
+    time: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
+    type: "Buy",
+    size: "9999.99",
+    symbol: "GBPUSD",
+    price: "1.2656",
+    sl: "1.2",
+    tp: "1.2 ",
+    profit: { up: "9999.999", down: "999" },
+  },
+  {
+    order: { id: "#123455778", signal: "Black Signal" },
+    time: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
+    type: "Sell",
+    size: "9999.99",
+    symbol: "GBPUSD",
+    price: "1.2656",
+    sl: "1.2",
+    tp: "1.2 ",
+    profit: { up: "9999.999", down: "999" },
+  },
+  {
+    order: { id: "#123455778", signal: "Black Signal" },
+    time: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
+    type: "Sell",
+    size: "9999.99",
+    symbol: "GBPUSD",
+    price: "1.2656",
+    sl: "1.2",
+    tp: "1.2 ",
+    profit: { up: "9999.999", down: "999" },
+  },
+  {
+    order: { id: "#123455778", signal: "Black Signal" },
+    time: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
+    type: "Sell",
+    size: "9999.99",
+    symbol: "GBPUSD",
+    price: "1.2656",
+    sl: "1.2",
+    tp: "1.2 ",
+    profit: { up: "999.999", down: "999" },
+  },
+];
 const GetSignalById = () => {
   const [showHistory, setShowHistory] = useState(false);
   const router = useRouter();
@@ -110,7 +182,7 @@ const GetSignalById = () => {
           </div>
           <hr />
           {showHistory ? (
-            <HistoryTable />
+            <HistoryTable TABLE_ROWS={TABLE_ROWS} isScroll={true} />
           ) : (
             <div>
               <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2">

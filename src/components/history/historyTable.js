@@ -14,83 +14,14 @@ const TABLE_HEAD = [
   "profit",
 ];
 
-const TABLE_ROWS = [
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    },
-    type: "Sell",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
-    profit: { up: "9999.999", down: "999" },
-  },
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    },
-    type: "Buy",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
-    profit: { up: "9999.999", down: "999" },
-  },
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    },
-    type: "Sell",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
-    profit: { up: "9999.999", down: "999" },
-  },
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    },
-    type: "Sell",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
-    profit: { up: "9999.999", down: "999" },
-  },
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    },
-    type: "Sell",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
-    profit: { up: "999.999", down: "999" },
-  },
-];
-
-export default function HistoryTable() {
+export default function HistoryTable({ TABLE_ROWS, isScroll = false }) {
   return (
     <Card className="w-full">
-      <CardBody className=" h-full max-h-[550px] overflow-y-auto px-0">
+      <CardBody
+        className={`h-full ${
+          isScroll ? "max-h-[500px]" : "max-h-[82vh]"
+        }  overflow-y-auto px-0`}
+      >
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>
