@@ -28,7 +28,7 @@ export default function HistoryTable({ TABLE_ROWS, isScroll = false }) {
               {TABLE_HEAD.map((head, index) => (
                 <th
                   key={index}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4"
+                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 lg:p-2 xl:p-4"
                 >
                   <Typography
                     variant="small"
@@ -49,8 +49,8 @@ export default function HistoryTable({ TABLE_ROWS, isScroll = false }) {
               ) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
-                  ? "p-4"
-                  : "p-4 border-b border-blue-gray-50";
+                  ? "p-4 lg:p-2 xl:p-4"
+                  : "p-4 lg:p-2 xl:p-4 border-b border-blue-gray-50";
 
                 return (
                   <tr
