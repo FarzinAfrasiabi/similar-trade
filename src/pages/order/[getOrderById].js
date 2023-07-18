@@ -302,13 +302,27 @@ const ClOSED_TABLE_ROWS = [
   },
 ];
 const ALL_TABALE_ROWS = [...ACTIVE_TABLE_ROWS, ...ClOSED_TABLE_ROWS];
+const data = [
+  {
+    label: "Active Order",
+    value: "activeOrder",
+  },
+  {
+    label: "Closed Order",
+    value: "closeOrder",
+  },
+  {
+    label: "All Orders",
+    value: "allOrder",
+  },
+];
 const GetOrderIdPage = () => {
   return (
     <Layout>
       {/* tabs on Hedaer */}
       <div className="w-full h-full xl:px-6 ">
         {/* tabs */}
-        <OrderTab>
+        <OrderTab data = {data}>
           <TabPanel value={"activeOrder"}>
             <HistoryTable TABLE_ROWS={ACTIVE_TABLE_ROWS} />
           </TabPanel>

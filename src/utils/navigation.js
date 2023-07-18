@@ -13,7 +13,7 @@ export const navigation = [
   { name: "Order", path: "/order/123", icon: () => TradeIcon() },
   {
     name: "Subscriptions",
-    path: "/subscriptions",
+    path: "/subscriptions/admin",
     icon: () => SubScriptionIcon(),
   },
   { name: "Servers", path: "/servers", icon: () => ServerIcon() },
@@ -28,7 +28,7 @@ export const mobileNavigation = [
   { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
   {
     name: "Subscriptions",
-    path: "/subscriptions",
+    path: "/subscriptions/admin",
     icon: () => SubScriptionIcon(),
   },
   { name: "TransActions", path: "/transaction", icon: () => TransActionIcon() },
