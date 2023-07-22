@@ -1,5 +1,10 @@
 @import url("/fonts/fonts.css");
 @tailwind base;
+@layer base {
+  div[tabindex="-1"] {
+    @apply max-w-xs min-w-[320px] md:min-w-[450px];
+  }
+}
 @tailwind components;
 @tailwind utilities;
 /* * {

@@ -1,12 +1,16 @@
+import CustomModal from "@/common/modal";
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
+  Button,
+  Input,
 } from "@material-tailwind/react";
+
 import { useState } from "react";
 import { BiLogoTelegram } from "react-icons/bi";
 import { HiOutlineStar, HiPlay } from "react-icons/hi";
-import { HiOutlineChatBubbleBottomCenterText } from "react-icons/hi2";
+import { HiOutlineChatBubbleBottomCenterText, HiXMark } from "react-icons/hi2";
 function Icon({ id, open }) {
   return (
     <svg
@@ -27,9 +31,11 @@ function Icon({ id, open }) {
     </svg>
   );
 }
-const SubScribeRows = ({ data, label }) => {
+const SubScribeRows = ({ data, label, openModal, setOpenModal }) => {
   const [open, setOpen] = useState(0);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+  const [value, setValue] = useState("");
   return (
     <div className="w-full flex flex-col gap-y-2 px-2">
       <div className="w-full hidden lg:flex items-center justify-between py-2 bg-gray-300 rounded-md text-sm px-6">
@@ -37,8 +43,41 @@ const SubScribeRows = ({ data, label }) => {
         <div className="flex-1">bot Mode </div>
         <div className="flex-1 pr-5">start time</div>
         <div className="flex-1 pr-5">End time</div>
-        {/* <div className="flex-1"></div> */}
       </div>
+      <CustomModal
+        open={openModal}
+        handleOpen={() => setOpenModal(false)}
+      >
+        <form className="flex flex-col gap-y-2 h-full justify-between px-4">
+          <div className="flex-1 max-h-[500px] overflow-auto px-2 py-2">
+            <div className="flex-1 flex flex-col gap-y-3 ">
+              {[1, 2, 3].map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="w-full ring-2 ring-gray-400 rounded-xl flex items-center justify-between p-3"
+                  >
+                    <span>@user</span>
+                    <button type="button" className="text-xl">
+                      <HiXMark />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="flex items-center gap-x-2 pb-3 py-2 bg-white">
+            <Input
+              onChange={(e) => setValue(e.target.value)}
+              className="font-normal"
+              value={value}
+              type="text"
+              label="@telegramId"
+            />
+            <Button type="submit">Add</Button>
+          </div>
+        </form>
+      </CustomModal>
       {data.map((item, index) => {
         return (
           <Accordion
@@ -125,7 +164,9 @@ const SubScribeRows = ({ data, label }) => {
                   </div>
                 </div>
                 <div className="w-full flex items-center justify-center py-2">
-                  <SubScribeAction />
+                  <SubScribeAction
+                    telegramModalHandler={() => setOpenModal(true)}
+                  />
                 </div>
               </div>
             </AccordionBody>

@@ -2,6 +2,7 @@ import OrderTab from "@/components/Tabs/OrderTab";
 import SubScribeRows from "@/components/subscribe/subscribeRows";
 import Layout from "@/container/layout";
 import { TabPanel } from "@material-tailwind/react";
+import { useState } from "react";
 
 const ACTIVE_TABLE_ROWS = [
   {
@@ -210,15 +211,24 @@ const data = [
   },
 ];
 
-const SubscribePage = ({isAdmin = false}) => {
+const SubscribePage = ({ isAdmin = false }) => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <Layout>
-      <OrderTab data={data}>
+      <OrderTab
+        data={data}
+        btnHeader={"telegram"}
+        onClick={() => setOpenModal(true)}
+        text={"telegram user"}
+        
+      >
         <TabPanel value={"Active"}>
-          <SubScribeRows data={ACTIVE_TABLE_ROWS} label={"Active"} />
+          <SubScribeRows data={ACTIVE_TABLE_ROWS} label={"Active"} openModal={openModal}
+        setOpenModal={setOpenModal}/>
         </TabPanel>
         <TabPanel value={"Expired"}>
-          <SubScribeRows data={ClOSED_TABLE_ROWS} label={"Expired"} />
+          <SubScribeRows data={ClOSED_TABLE_ROWS} label={"Expired"}  openModal={openModal}
+        setOpenModal={setOpenModal}/>
         </TabPanel>
       </OrderTab>
     </Layout>

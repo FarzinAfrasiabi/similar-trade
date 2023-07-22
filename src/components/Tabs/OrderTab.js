@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const OrderTab = ({ children, data }) => {
+const OrderTab = ({ children, data, btnHeader = "copied", onClick, text }) => {
   const [copied, setCopoied] = useState(false);
   const router = useRouter();
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`;
@@ -26,14 +26,23 @@ const OrderTab = ({ children, data }) => {
           </TabsHeader>
           {/* share btn */}
           <CopyToClipboard text={url} onCopy={coppyHandler}>
-            <button
-              type="button"
-              className={`px-6 py-2 ${
-                copied ? "text-green-400" : "text-[#2772F0]"
-              } bg-white rounded-xl text-sm shadow-md transition-all ease-out duration-150`}
-            >
-              {copied ? "coppy to clipBoard" : "Share trade history "}
-            </button>
+            {btnHeader === "copied" ? (
+              <button
+                type="button"
+                className={`px-6 py-2 ${
+                  copied ? "text-green-400" : "text-[#2772F0]"
+                } bg-white rounded-xl text-sm shadow-md transition-all ease-out duration-150`}
+              >
+                {copied ? "coppy to clipBoard" : "Share trade history "}
+              </button>
+            ) : (
+              <button
+                className="py-2 bg-white rounded-xl px-4 text-[#2772f0]"
+                onClick={onClick}
+              >
+                {text}
+              </button>
+            )}
           </CopyToClipboard>
         </div>
       </div>
