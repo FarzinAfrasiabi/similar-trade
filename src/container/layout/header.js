@@ -6,7 +6,7 @@ import MessageNotfication from "@/components/notfication/MessageNotfication";
 const Header = () => {
   const router = useRouter();
   return (
-    <header className="z-10 py-3 bg-white w-full shadow  ">
+    <header className="z-10 py-3 bg-white w-full shadow px-4 ">
       <div className="hidden lg:flex items-center justify-between h-full px-6 mx-auto w-full container ">
         {/* searchbar */}
         <div className="flex items-center justify-between max-w-lg w-full bg-gray-100 rounded-lg shadow-md px-6 text-slate-700">
@@ -26,7 +26,7 @@ const Header = () => {
         </div>
       </div>
       {/* mobile and tablet header */}
-      <div className="flex items-center justify-between px-3 lg:hidden relative">
+      <div className="flex items-center justify-between  lg:hidden relative">
         {/* mobile not icon */}
         <div className="flex items-center gap-1 z-20">
           <MessageNotfication />
