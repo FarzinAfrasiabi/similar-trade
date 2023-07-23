@@ -11,6 +11,11 @@ module.exports = withMT({
         xl: "1280px",
         "2xl": "1536px",
       },
+      colors: {
+        blue: {
+          500 : "#0062FF"
+        }
+      },
       backgroundImage: {
         'hero-pattern': "url('/images/header/Group 3094.png')",
       }

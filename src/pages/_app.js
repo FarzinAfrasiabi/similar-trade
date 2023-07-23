@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import Head from "next/head";
-
+import  { Toaster } from 'react-hot-toast';
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }) {
         <title>Similar Trade App</title>
       </Head>
       <Component {...pageProps} />
+      <Toaster />
     </>
   );
 }
