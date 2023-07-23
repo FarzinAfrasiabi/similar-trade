@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 const Aside = () => {
   const router = useRouter();
-
   return (
     <aside className="z-20 hidden lg:w-52 xl:w-64  bg-white shadow-xl  lg:block flex-shrink-0 ">
       <div className="flex flex-col py-4 h-full justify-between">
@@ -31,7 +30,7 @@ const Aside = () => {
                 ></span>
                 <Link
                   className={`flex items-center gap-x-5  ${
-                    router.asPath === nav.path
+                    router.asPath.startsWith(nav.path)
                       ? "text-[#0062FF]"
                       : "text-[#92929D]"
                   }`}

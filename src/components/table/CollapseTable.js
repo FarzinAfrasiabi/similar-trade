@@ -51,12 +51,12 @@ function Row(props) {
           <span>{row.signaler.user}</span>
           <span className="text-gray-500">{row.signaler.userId}</span>
         </TableCell>
-        <TableCell align="right" className="space-x-4">
+        <TableCell align="right" className="space-x-4 space-y-2">
           {showPassword ? (
             <CopyToClipboard
               text={"A12154ar234wef"}
               onCopy={() => {
-                toast.success("Coppied to clipBoard");
+                toast.success("Copied to clipBoard");
                 setTimeout(() => {
                   setShowPassword(false);
                 }, 2000);
@@ -119,23 +119,7 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
+
 
 
 
@@ -157,8 +141,8 @@ export default function CollapsibleTable({rows}) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <Row key={row.name} row={row} />
+            {rows.map((row , index) => (
+              <Row key={index} row={row} />
             ))}
           </TableBody>
         </Table>

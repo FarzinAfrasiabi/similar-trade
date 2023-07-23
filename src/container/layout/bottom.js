@@ -19,20 +19,20 @@ const BottomNavigation = () => {
             ></span>
             <Link
               className={`flex flex-col gap-y-1 items-center gap-x-5  ${
-                router.asPath === nav.path ? "text-[#0062FF]" : "text-slate-600"
+                router.asPath.startsWith(nav.path) ? "text-[#0062FF]" : "text-slate-600"
               }`}
               href={nav.path}
             >
               <span
                 className={`${
-                  router.asPath === nav.path
+                  router.asPath.startsWith(nav.path)
                     ? "fill-[#0062FF]"
                     : "fill-gray-400"
                 }`}
               >
                 {nav.icon()}
               </span>
-              {router.asPath === nav.path && (
+              {router.asPath.startsWith(nav.path) && (
                 <span className="text-xs flex-auto">{nav.name}</span>
               )}
             </Link>
