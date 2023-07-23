@@ -3,19 +3,22 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const BottomNavigation = () => {
-    const router = useRouter();
+  const router = useRouter();
   return (
-    <nav className="fixed bottom-0 w-full lg:hidden bg-[#E7E7E7] rounded-t-2xl  z-50">
-      <ul className="w-full flex items-center  justify-between">
+    <nav className="fixed bottom-0 w-full lg:hidden z-50 pb-2 px-4">
+      <ul className="w-full  bg-[#E7E7E7]  rounded-2xl  flex items-center  justify-between py-1">
         {mobileNavigation.map((nav, index) => (
-          <li key={index} className="relative py-3 px-4">
+          <li
+            key={index}
+            className="relative flex flex-col items-center py-2 px-4"
+          >
             <span
-              className={`absolute h-[3px] left-2 bottom-0 w-10 bg-[#0062FF] rounded-tr-full rounded-full ${
+              className={`absolute h-[3px]  bottom-0 w-10 bg-[#0062FF] rounded-tr-full rounded-full ${
                 router.asPath === nav.path ? "block" : "hidden"
               }`}
             ></span>
             <Link
-              className={`flex items-center gap-x-5  ${
+              className={`flex flex-col gap-y-1 items-center gap-x-5  ${
                 router.asPath === nav.path ? "text-[#0062FF]" : "text-slate-600"
               }`}
               href={nav.path}
@@ -29,6 +32,9 @@ const BottomNavigation = () => {
               >
                 {nav.icon()}
               </span>
+              {router.asPath === nav.path && (
+                <span className="text-xs flex-auto">{nav.name}</span>
+              )}
             </Link>
           </li>
         ))}
