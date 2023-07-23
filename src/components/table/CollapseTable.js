@@ -20,23 +20,7 @@ import { useState } from "react";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
-function createData(
-  serverId,
-  IpAddress,
-  userName,
-  signaler,
-  startTime,
-  expireTime
-) {
-  return {
-    serverId,
-    IpAddress,
-    userName,
-    signaler,
-    expireTime,
-    startTime,
-  };
-}
+
 
 function Row(props) {
   const { row } = props;
@@ -72,7 +56,7 @@ function Row(props) {
             <CopyToClipboard
               text={"A12154ar234wef"}
               onCopy={() => {
-                toast.success("Copied to clipBoard");
+                toast.success("Coppied to clipBoard");
                 setTimeout(() => {
                   setShowPassword(false);
                 }, 2000);
@@ -153,131 +137,9 @@ Row.propTypes = {
   }).isRequired,
 };
 
-const rows = [
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      userId: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-];
 
-export default function CollapsibleTable() {
+
+export default function CollapsibleTable({rows}) {
   return (
     <div className="w-full overflow-hidden">
       <TableContainer component={Paper} sx={{ maxHeight: "90vh" }}>
