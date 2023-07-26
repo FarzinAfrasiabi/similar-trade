@@ -1,4 +1,5 @@
 import Layout from "@/container/layout";
+import { FingerPrintIcon } from "@heroicons/react/24/outline";
 import {
   Badge,
   Box,
@@ -30,17 +31,17 @@ const ChatPage = () => {
                   {/* users */}
                   <div className="h-[calc(100% - 4.0625rem)]">
                     <div className="relative h-full overflow-hidden ">
-                      <div className="p-2">
+                      <div className="p-2 flex flex-col gap-y-6">
                         <h5>Chats</h5>
-                        <ul className="flex flex-col gap-y-2">
+                        <ul className="flex flex-col gap-y-4">
                           {[1, 2, 2, 2, 2, 2, 2, 2].map((_, i) => {
                             return (
                               <li
                                 key={i}
-                                className="p-2 w-full border-b-2 border-gray-300 flex items-center"
+                                className="p-2 w-full border-b-2 border-gray-300 flex gap-x-2 items-center"
                               >
                                 <div className="w-7 h-7 rounded-full bg-gray-600"></div>
-                                slaam
+                                {`user__${i + 1}`}
                               </li>
                             );
                           })}
@@ -56,52 +57,31 @@ const ChatPage = () => {
               {/* chat user header */}
               <div className="p-3  border-b-2 border-gray-800 w-full flex ">
                 <div className="w-7 h-7 rounded-full bg-gray-600"></div>
-                salam
+                userOnline
               </div>
               {/* chat content */}
-              <div className="h-[calc(100% - 8.75rem)]">
+              <div className="h-[calc(100%-6.25rem)]">
                 <div className="p-6 h-full overflow-y-auto overflow-x-hidden">
                   {/* chat list */}
                   {/* user chat  */}
-                  <div className="flex flex-row mb-4 gap-x-4">
-                    <div>
-                      <div className="relative flex items-center overflow-hidden w-7 h-7 rounded-full bg-green-500 "></div>
-                    </div>
-                    {/* chat body */}
-                    <div className="max-w-[calc(100% - 5.75rem)] md:max-w-[75%] lg:max-w-[60%] ">
-                      <div className="bg-gray-200 shadow-md text-gray-900 rounded-lg rounded-tl-none mb-2">
-                        <p className="p-2 max-w-fit ">salam mn raeen hasam</p>
-                      </div>
-                      <div className="   ">
-                        <p className="p-2 max-w-fit shadow-md bg-gray-200 text-gray-900 rounded-lg rounded-tl-none">khobi ?</p>
-                      </div>
-                    </div>
-                  </div>
-                  {/* user2 chat */}
-                  <div className="flex flex-row-reverse items-start gap-x-4 mb-4">
-                    <div>
-                      <div className="relative flex items-center overflow-hidden w-7 h-7 rounded-full bg-purple-500 "></div>
-                    </div>
-                    {/* chat body */}
-                    <div className="bg-orange-500 text-white rounded-lg rounded-tr-none">
-                      <p className="p-2 max-w-fit ">salam mn matin hasam</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-row mb-4 gap-x-4">
-                    <div>
-                      <div className="relative flex items-center overflow-hidden w-7 h-7 rounded-full bg-green-500 "></div>
-                    </div>
-                    {/* chat body */}
-                    <div className="max-w-[calc(100% - 5.75rem)] md:max-w-[75%] lg:max-w-[60%] ">
-                      <div className=" shadow-md text-gray-900 rounded-lg rounded-tl-none mb-2">
-                        <p className="py- max-w-fit2 px-2 bg-gray-200">mrc mamnon</p>
-                      </div>
-                      <div className=" shadow-md text-gray-900 rounded-lg rounded-tl-none ">
-                        <p className="py- max-w-fit2 px-2 bg-gray-200">che khabara ?</p>
-                      </div>
-                    </div>
-                  </div>
+                  {/* my chat */}
+                  {[1, 2, 3, 4, 5, 6,7,7,7,7,7,7,8,8,8,8].map((item) => {
+                    return (
+                      <UserChat
+                        key={item}
+                        isReverse={item % 2 === 0 ? true : false}
+                        content={"hello my name is  matin-sangabi"}
+                      />
+                    );
+                  })}
                 </div>
+                <form className="w-full py-3 px-6 bg-[#FAFAFB] shadow-2xl border-t">
+                  <div className="w-full gap-x-10 flex items-center justify-between">
+                    <p>avatar</p>
+                    <p className="flex-1">input type</p>
+                    <p className="">actions button</p>
+                  </div>
+                </form>
               </div>
               {/* form */}
             </div>
@@ -113,3 +93,37 @@ const ChatPage = () => {
 };
 
 export default ChatPage;
+
+function UserChat({ content, isReverse = false }) {
+  return (
+    <div
+      className={`flex ${
+        isReverse ? "flex-row-reverse" : "flex-row"
+      }  mb-4 gap-x-4 `}
+    >
+      <div>
+        <div className="relative flex items-center overflow-hidden w-7 h-7 rounded-full bg-green-500 "></div>
+      </div>
+      {/* chat body */}
+      <div className="max-w-[calc(100% - 5.75rem)] md:max-w-[75%] lg:max-w-[60%] ">
+        <ContentData isReverse={isReverse} content={content} />
+      </div>
+    </div>
+  );
+}
+
+function ContentData({ isReverse, content }) {
+  return (
+    <div className="mb-4">
+      <p
+        className={`py-3 mt-0 mb-0 ml-auto mr-0 px-4 w-fit ${
+          isReverse
+            ? "bg-[#F1F1F5] rounded-tr-none "
+            : "bg-white rounded-tl-none"
+        } text-[#44444F] text-sm ring-1  rounded-2xl  ring-[#E2E2EA]`}
+      >
+        {content}
+      </p>
+    </div>
+  );
+}
