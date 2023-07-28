@@ -7,6 +7,7 @@ import {
   TabsBody,
   TabsHeader,
 } from "@material-tailwind/react";
+import { TableCell, TableHead, TableRow } from "@mui/material";
 
 //* for create Data
 function createData(
@@ -226,10 +227,34 @@ const userId = () => {
           </TabsHeader>
           <TabsBody>
             <TabPanel value={"Active"}>
-              <CollapsibleTable rows={ACTIVE_ROWS} />
+              <CollapsibleTable pendingServer={true} rows={ACTIVE_ROWS}>
+                <TableHead>
+                  <TableRow className="bg-gray-300">
+                    <TableCell />
+                    <TableCell />
+                    <TableCell>Server ID</TableCell>
+                    <TableCell align="right">IP Address</TableCell>
+                    <TableCell align="right">Username</TableCell>
+                    <TableCell align="right">Signaler</TableCell>
+                    <TableCell align="right"></TableCell>
+                  </TableRow>
+                </TableHead>
+              </CollapsibleTable>
             </TabPanel>
             <TabPanel value={"Expired"}>
-              <CollapsibleTable rows={EXPIRED_ROWS} />
+              <CollapsibleTable pendingServer={true} rows={EXPIRED_ROWS}>
+                <TableHead>
+                  <TableRow className="bg-gray-300">
+                    <TableCell />
+                    <TableCell />
+                    <TableCell>Server ID</TableCell>
+                    <TableCell align="right">IP Address</TableCell>
+                    <TableCell align="right">Username</TableCell>
+                    <TableCell align="right">Signaler</TableCell>
+                    <TableCell align="right"></TableCell>
+                  </TableRow>
+                </TableHead>
+              </CollapsibleTable>
             </TabPanel>
           </TabsBody>
         </Tabs>
