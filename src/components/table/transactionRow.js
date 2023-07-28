@@ -1,4 +1,5 @@
-const { IconButton } = require("@material-tailwind/react");
+import { HiEye, HiFolderArrowDown, HiPrinter } from "react-icons/hi2";
+import Modal from "@mui/material/Modal";
 const {
   TableRow,
   TableCell,
@@ -15,8 +16,20 @@ const { HiChevronUp, HiChevronDown } = require("react-icons/hi");
 function TransaxtionRow(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenMOdal] = useState(false);
+  const clickHandler = () => {
+    setOpenMOdal(false);
+  };
   return (
     <Fragment>
+      <Modal
+        open={openModal}
+        onClose={() => setOpenMOdal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <span>this is modal</span>
+      </Modal>
       <TableRow
         className="relative transition-all ease-in-out duration-150"
         sx={{ "& > *": { borderBottom: "unset" } }}
@@ -44,14 +57,14 @@ function TransaxtionRow(props) {
         <TableCell component="th" scope="row">
           {row.paymentId}
         </TableCell>
-        <TableCell className="text-red-600  text-sm" align="right">
+        <TableCell className="text-red-600  text-sm" align="center">
           {row.type}
         </TableCell>
-        <TableCell align="right">{row.ammount}</TableCell>
-        <TableCell align="right" className="text-red-600  text-sm">
+        <TableCell align="center">{row.ammount}</TableCell>
+        <TableCell align="center" className="text-red-600  text-sm">
           {row.method}
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="center">
           <button
             type="button"
             className={`p-2 w-24 rounded-md font-semibold ${
@@ -66,32 +79,24 @@ function TransaxtionRow(props) {
           >
             {row.status}
           </button>
-          {/* {showPassword ? (
-              <CopyToClipboard
-                text={"A12154ar234wef"}
-                onCopy={() => {
-                  toast.success("Copied to clipBoard");
-                  setTimeout(() => {
-                    setShowPassword(false);
-                  }, 2000);
-                }}
-              >
-                <button className="p-2 px-6 rounded-lg shadow-md text-sm bg-gray-300 ">
-                  <span className="flex items-center gap-x-2 ">
-                    A12154ar234wef{" "}
-                    <HiOutlineClipboardDocument className="text-2xl text-gray-700" />
-                  </span>
-                </button>
-              </CopyToClipboard>
-            ) : (
-              <button
-                type="button"
-                className="p-2 px-6 rounded-lg shadow-md text-sm bg-gray-300 "
-                onClick={() => setShowPassword(true)}
-              >
-                Password
+        </TableCell>
+        <TableCell>
+          <div className="flex items-center gap-x-3 justify-end">
+            {row.status === "unpaid" && (
+              <button className="p-2 rounded-2xl text-sm ring-1 ring-gray-300">
+                <span>Pay Invoice</span>
               </button>
-            )} */}
+            )}
+            <ButtonACtions onClick={clickHandler}>
+              <HiEye className="text-xl" />
+            </ButtonACtions>
+            <ButtonACtions>
+              <HiPrinter className="text-xl" />
+            </ButtonACtions>
+            <ButtonACtions>
+              <HiFolderArrowDown className="text-xl" />
+            </ButtonACtions>
+          </div>
         </TableCell>
       </TableRow>
       <TableRow className="relative">
@@ -136,3 +141,15 @@ function TransaxtionRow(props) {
   );
 }
 export default TransaxtionRow;
+
+function ButtonACtions({ children, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      type="button"
+      className="w-8 h-8 rounded-full ring-1  ring-gray-400 flex items-center justify-center hover:bg-gray-600 hover:text-gray-100 transition-all ease-in-out duration-150"
+    >
+      {children}
+    </button>
+  );
+}

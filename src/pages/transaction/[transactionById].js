@@ -169,11 +169,11 @@ const TableHeaders = () => {
         <TableCell />
         <TableCell />
         <TableCell>Payment Id</TableCell>
-        <TableCell align="right">Type</TableCell>
-        <TableCell align="right">Status</TableCell>
-        <TableCell align="right">Ammount</TableCell>
-        <TableCell align="right">Method</TableCell>
-        <TableCell align="right">Recipe</TableCell>
+        <TableCell align="center">Type</TableCell>
+        <TableCell align="center">Status</TableCell>
+        <TableCell align="center">Ammount</TableCell>
+        <TableCell align="center">Method</TableCell>
+        <TableCell align="center">Recipe</TableCell>
       </TableRow>
     </TableHead>
   );
