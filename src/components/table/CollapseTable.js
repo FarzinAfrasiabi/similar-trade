@@ -19,11 +19,10 @@ import { useState } from "react";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
-import TransaxtionRow from "./transactionRow";
-
+import TransActionsRows from "./transactionRow";
 
 function Row(props) {
-  const { row , pendingServer = false } = props;
+  const { row, pendingServer = false } = props;
   const [open, setOpen] = React.useState(false);
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -32,7 +31,11 @@ function Row(props) {
         className="relative transition-all ease-in-out duration-150"
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
-        <th className = {`absolute left-0 w-2 h-full ${pendingServer ? 'bg-blue-800' : 'bg-yellow-500'}`}></th>
+        <th
+          className={`absolute left-0 w-2 h-full ${
+            pendingServer ? "bg-blue-800" : "bg-yellow-500"
+          }`}
+        ></th>
         <TableCell>
           <IconButton
             aria-label="expand row"
@@ -119,22 +122,24 @@ function Row(props) {
   );
 }
 
-
-
-
-
-export default function CollapsibleTable({rows , children , pendingServer = false}) {
+export default function CollapsibleTable({
+  rows,
+  children,
+  pendingServer = false,
+}) {
   return (
     <div className="w-full overflow-hidden">
       <TableContainer component={Paper} sx={{ maxHeight: "90vh" }}>
         <Table aria-label="collapsible table">
           {children}
           <TableBody>
-            {rows.map((row , index) => {
-              if(pendingServer){
-                return <Row pendingServer={pendingServer} key={index} row={row} />
+            {rows.map((row, index) => {
+              if (pendingServer) {
+                return (
+                  <Row pendingServer={pendingServer} key={index} row={row} />
+                );
               }
-              return <TransaxtionRow key={index} row={row} />
+              return <TransActionsRows key={index} row={row} />;
             })}
           </TableBody>
         </Table>

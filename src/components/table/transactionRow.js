@@ -1,5 +1,13 @@
-import { HiEye, HiFolderArrowDown, HiPrinter } from "react-icons/hi2";
-import Modal from "@mui/material/Modal";
+import {
+  HiBarsArrowDown,
+  HiEye,
+  HiFolderArrowDown,
+  HiOutlineArrowTrendingDown,
+  HiPrinter,
+} from "react-icons/hi2";
+import CustomModals from "../custom/customModal";
+import TransActionsModalContent from "../Transactions/transactionModalContent";
+import { FaDatabase, IconName } from "react-icons/fa6";
 const {
   TableRow,
   TableCell,
@@ -13,23 +21,53 @@ const {
 const { Fragment, useState } = require("react");
 const { HiChevronUp, HiChevronDown } = require("react-icons/hi");
 
-function TransaxtionRow(props) {
+function TransActionsRows(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
   const [openModal, setOpenMOdal] = useState(false);
-  const clickHandler = () => {
-    setOpenMOdal(false);
+  const clickHandler = (row) => {
+    setOpenMOdal(true);
   };
   return (
     <Fragment>
-      <Modal
-        open={openModal}
-        onClose={() => setOpenMOdal(false)}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+      <CustomModals
+        openModal={openModal}
+        title={"Bank transfer Receipt"}
+        handleClose={() => setOpenMOdal(false)}
       >
-        <span>this is modal</span>
-      </Modal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 ">
+          <TransActionsModalContent
+            isStatus={true}
+            type={"Status"}
+            row={row.status}
+          />
+          <TransActionsModalContent
+            type={"Amount"}
+            row={row.ammount}
+            icon={<FaDatabase className="text-xl" />}
+          />
+          <TransActionsModalContent
+            icon={<HiBarsArrowDown />}
+            type={"type"}
+            row={"1224Zh5554sasdg"}
+          />
+          <TransActionsModalContent
+            icon={<HiBarsArrowDown />}
+            type={"Date & time"}
+            row={row.expireTime}
+          />
+          <TransActionsModalContent
+            type={"Sender address"}
+            row={"JHAEIF6374NXY3484748949"}
+            icon={<HiBarsArrowDown />}
+          />
+          <TransActionsModalContent
+            type={"Sender address"}
+            row={"JHAEIF6374NXY3484748949"}
+            icon={<HiOutlineArrowTrendingDown />}
+          />
+        </div>
+      </CustomModals>
       <TableRow
         className="relative transition-all ease-in-out duration-150"
         sx={{ "& > *": { borderBottom: "unset" } }}
@@ -87,7 +125,7 @@ function TransaxtionRow(props) {
                 <span>Pay Invoice</span>
               </button>
             )}
-            <ButtonACtions onClick={clickHandler}>
+            <ButtonACtions onClick={() => clickHandler(row)}>
               <HiEye className="text-xl" />
             </ButtonACtions>
             <ButtonACtions>
@@ -140,7 +178,7 @@ function TransaxtionRow(props) {
     </Fragment>
   );
 }
-export default TransaxtionRow;
+export default TransActionsRows;
 
 function ButtonACtions({ children, onClick }) {
   return (

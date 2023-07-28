@@ -32,16 +32,20 @@ function createData(
 //* tabs data
 const data = [
   {
-    label: "Active",
-    value: "Active",
+    label: "All Payment",
+    value: "all",
   },
   {
-    label: "Expired",
-    value: "Expired",
+    label: "Paid",
+    value: "paid",
+  },
+  {
+    label: "Unpaid",
+    value: "unpaid",
   },
 ];
-//*Active_Tabs_data
-const ACTIVE_ROWS = [
+//*paid data
+const PAID_DATA = [
   createData(
     "#134156454",
     "Signal Subscriptions",
@@ -79,58 +83,46 @@ const ACTIVE_ROWS = [
     new Date().toLocaleDateString()
   ),
 ];
-//*Expired TabsData
-const EXPIRED_ROWS = [
+//*unPaid TabsData
+const UNPAID_DATA = [
   createData(
     "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      TransActionById: "@farzinafrasiabi",
-    },
+    "Signal Subscriptions",
+    "10200$",
+    "Rank",
+    "unpaid",
     new Date().toLocaleDateString(),
     new Date().toLocaleDateString()
   ),
   createData(
     "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      TransActionById: "@farzinafrasiabi",
-    },
+    "Signal Subscriptions",
+    "10200$",
+    "Rank",
+    "unpaid",
     new Date().toLocaleDateString(),
     new Date().toLocaleDateString()
   ),
   createData(
     "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      TransActionById: "@farzinafrasiabi",
-    },
-    new Date().toLocaleDateString(),
-    new Date().toLocaleDateString()
-  ),
-  createData(
-    "#134156454",
-    "192.168.2.2",
-    "Farzin 110101",
-    {
-      user: "Farzin Afrasiabi",
-      TransActionById: "@farzinafrasiabi",
-    },
+    "Signal Subscriptions",
+    "10200$",
+    "Rank",
+    "unpaid",
     new Date().toLocaleDateString(),
     new Date().toLocaleDateString()
   ),
 ];
+
+// * all paid data
+
+const ALL_PAYMENT = [...PAID_DATA, ...UNPAID_DATA];
+
 const TransActionById = () => {
   return (
     <Layout>
       <div className="w-full px-2 ">
-        <Tabs value="Active">
+        <Tabs value="all">
           <TabsHeader className="max-w-md ">
             {data.map(({ label, value }) => (
               <Tab
@@ -143,16 +135,21 @@ const TransActionById = () => {
             ))}
           </TabsHeader>
           <TabsBody>
-            <TabPanel value={"Active"}>
-              <CollapsibleTable rows={ACTIVE_ROWS}>
+            <TabPanel value={"all"}>
+              <CollapsibleTable rows={ALL_PAYMENT}>
                 <TableHeaders />
               </CollapsibleTable>
             </TabPanel>
-            {/* <TabPanel value={"Expired"}>
-              <CollapsibleTable rows={EXPIRED_ROWS}>
+            <TabPanel value={"paid"}>
+              <CollapsibleTable rows={PAID_DATA}>
                 <TableHeaders />
               </CollapsibleTable>
-            </TabPanel> */}
+            </TabPanel>
+            <TabPanel value={"unpaid"}>
+              <CollapsibleTable rows={UNPAID_DATA}>
+                <TableHeaders />
+              </CollapsibleTable>
+            </TabPanel>
           </TabsBody>
         </Tabs>
       </div>
