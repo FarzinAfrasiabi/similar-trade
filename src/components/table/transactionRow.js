@@ -105,7 +105,7 @@ function TransActionsRows(props) {
         <TableCell align="center">
           <button
             type="button"
-            className={`p-2 w-24 rounded-md font-semibold ${
+            className={`p-1 text-sm w-24 rounded-md font-semibold ${
               row.status === "unpaid"
                 ? "bg-orange-100 text-orange-700"
                 : row.status === "progressing"
@@ -121,7 +121,7 @@ function TransActionsRows(props) {
         <TableCell>
           <div className="flex items-center gap-x-3 justify-end">
             {row.status === "unpaid" && (
-              <button className="p-2 rounded-2xl text-sm ring-1 ring-gray-300">
+              <button className="p-2 rounded-xl text-sm ring-1 ring-gray-300">
                 <span>Pay Invoice</span>
               </button>
             )}
