@@ -1,8 +1,22 @@
 import EditProfile from "@/components/profile/editProfile";
 import Layout from "@/container/layout";
-import { Button } from "@material-tailwind/react";
+import { Button, Input } from "@material-tailwind/react";
 
 import { TextField } from "@mui/material";
+
+
+const initialValues = {
+  RegisterAs: "",
+  name: "",
+  lastName: "",
+  userName: "",
+  email: "",
+  countryCode: "",
+  phone: "",
+  password: "",
+  confirmPassword: "",
+  AcceptSquare: false,
+};
 
 const ProfileUserById = () => {
   return (
@@ -23,17 +37,13 @@ const ProfileUserById = () => {
                 <span className="text-sm w-full max-w-[150px]">
                   New Email address
                 </span>
-                <TextField label="new email" size="small" sx={{ flex: "1 " }} />
+                <Input label="new email" size="small" sx={{ flex: "1 " }} />
               </div>
               <div className="w-full flex items-center gap-x-5 ">
                 <span className="text-sm w-full max-w-[150px]">
                   New Mobile number
                 </span>
-                <TextField
-                  label="new mobile"
-                  size="small"
-                  sx={{ flex: "1 " }}
-                />
+                <Input label="new mobile" size="small" sx={{ flex: "1 " }} />
               </div>
               <div className="flex items-center justify-end">
                 <Button className="font-normal">Save Change</Button>
@@ -51,7 +61,7 @@ const ProfileUserById = () => {
                 <span className="text-sm w-full max-w-[150px]">
                   Change password
                 </span>
-                <TextField
+                <Input
                   label="current password"
                   type="password"
                   size="small"
@@ -62,7 +72,7 @@ const ProfileUserById = () => {
                 <span className="text-sm w-full max-w-[150px]">
                   New password
                 </span>
-                <TextField
+                <Input
                   label="new password"
                   type="password"
                   size="small"
@@ -73,7 +83,7 @@ const ProfileUserById = () => {
                 <span className="text-sm w-full max-w-[150px]">
                   Confirm new password
                 </span>
-                <TextField
+                <Input
                   label="confirm new password"
                   type="password"
                   size="small"

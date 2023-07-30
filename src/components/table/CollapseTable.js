@@ -33,7 +33,7 @@ function Row(props) {
       >
         <th
           className={`absolute left-0 w-2 h-full ${
-            pendingServer ? "bg-blue-800" : "bg-yellow-500"
+            pendingServer ? "bg-yellow-600" : "bg-yellow-500"
           }`}
         ></th>
         <TableCell>
@@ -129,7 +129,7 @@ export default function CollapsibleTable({
 }) {
   return (
     <div className="w-full overflow-hidden">
-      <TableContainer component={Paper} sx={{ maxHeight: "90vh" }}>
+      <TableContainer component={Paper} sx={{ maxHeight: "100vh" }}>
         <Table aria-label="collapsible table">
           {children}
           <TableBody>

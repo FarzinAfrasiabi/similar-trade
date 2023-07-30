@@ -1,4 +1,4 @@
-@import url("/fonts/fonts.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 @tailwind base;
 @layer base {
   div[tabindex="-1"] {
@@ -15,14 +15,11 @@
   color: orange;
 }
 
-body {
-  font-family: "Archivo", sans-serif;
+* {
+  font-family: 'Roboto' !important;
   /* overflow: hidden; */
 }
-body {
-  font-family: "Archivo", sans-serif;
-  /* overflow: hidden; */
-}
+
 
 ::-webkit-scrollbar {
   width: 5px;

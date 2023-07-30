@@ -35,7 +35,7 @@ function TransActionsRows(props) {
         title={"Bank transfer Receipt"}
         handleClose={() => setOpenMOdal(false)}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <TransActionsModalContent
             isStatus={true}
             type={"Status"}
@@ -69,7 +69,7 @@ function TransActionsRows(props) {
         </div>
       </CustomModals>
       <TableRow
-        className="relative transition-all ease-in-out duration-150"
+        className="relative  transition-all ease-in-out duration-150"
         sx={{ "& > *": { borderBottom: "unset" } }}
       >
         <th
@@ -138,19 +138,20 @@ function TransActionsRows(props) {
         </TableCell>
       </TableRow>
       <TableRow className="relative">
-        <th
-          className={`absolute left-0 w-2 h-full ${
-            row.status === "unpaid"
-              ? "bg-orange-500"
-              : row.status === "progressing"
-              ? "bg-blue-500"
-              : row.status === "Decliend"
-              ? "bg-red-500"
-              : "bg-green-500"
-          }`}
-        ></th>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
+            <span
+              // sx={{position : 'absolute' , width :'2px'}}
+              className={`absolute  w-2 flex h-full left-0 ${
+                row.status === "unpaid"
+                  ? "bg-orange-500"
+                  : row.status === "progressing"
+                  ? "bg-blue-500"
+                  : row.status === "Decliend"
+                  ? "bg-red-500"
+                  : "bg-green-500"
+              }`}
+            ></span>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
                 History

@@ -20,7 +20,7 @@ const TransActionsModalContent = ({ row, isStatus = false, type, icon }) => {
         {isStatus ? (
           <button
             type="button"
-            className={`px-2 py-1  text-sm  rounded-md font-semibold ${
+            className={`px-2 py-1  text-sm  rounded-md  ${
               row === "unpaid"
                 ? "bg-orange-100 text-orange-700"
                 : row === "progressing"
