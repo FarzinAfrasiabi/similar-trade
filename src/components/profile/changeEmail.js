@@ -12,13 +12,13 @@ const ChangeEmail = () => {
           {/* content */}
           <form className="flex flex-col gap-y-4 px-4">
             <div className="w-full flex items-center gap-x-5 ">
-              <span className="text-md w-full max-w-[150px]">
+              <span className="text-sm w-full max-w-[150px]">
                 New Email address
               </span>
               <Input label="new email" size="md" sx={{ flex: "1 " }} />
             </div>
             <div className="w-full flex items-center gap-x-5 ">
-              <span className="text-md w-full max-w-[150px]">
+              <span className="text-sm w-full max-w-[150px]">
                 New Mobile number
               </span>
               <Input label="new mobile" size="md" sx={{ flex: "1 " }} />
@@ -36,7 +36,7 @@ const ChangeEmail = () => {
           {/* content */}
           <form className="flex flex-col gap-y-4 px-4">
             <div className="w-full flex items-center gap-x-5 ">
-              <span className="text-md w-full max-w-[150px]">
+              <span className="text-sm w-full max-w-[150px]">
                 Change password
               </span>
               <Input
@@ -48,7 +48,7 @@ const ChangeEmail = () => {
               />{" "}
             </div>
             <div className="w-full flex items-center gap-x-5 ">
-              <span className="text-md w-full max-w-[150px]">New password</span>
+              <span className="text-sm w-full max-w-[150px]">New password</span>
               <Input
                 label="new password"
                 type="password"
@@ -58,7 +58,7 @@ const ChangeEmail = () => {
               />
             </div>
             <div className="w-full flex items-center gap-x-5 ">
-              <span className="text-md w-full max-w-[150px]">
+              <span className="text-sm w-full max-w-[150px]">
                 Confirm new password
               </span>
               <Input
