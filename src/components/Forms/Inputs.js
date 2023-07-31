@@ -1,8 +1,8 @@
 import TextField from "@mui/material/TextField";
-const Inputs = ({ label, type = "text", name, formik  , isSmall = false}) => {
+const Inputs = ({ label, type = "text", name, formik, isSmall = false }) => {
   return (
     <TextField
-      size={isSmall ? 'small' : 'medium'}
+      size={isSmall ? "small" : "medium"}
       fullWidth
       type={type}
       InputLabelProps={{
@@ -18,7 +18,6 @@ const Inputs = ({ label, type = "text", name, formik  , isSmall = false}) => {
       label={label}
       variant="outlined"
       name={name}
-      
       value={formik.values[name]}
       onChange={formik.handleChange}
       error={formik.touched[name] && Boolean(formik.errors[name])}

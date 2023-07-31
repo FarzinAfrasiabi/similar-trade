@@ -53,7 +53,7 @@ const EditProfile = () => {
       </div>
       {/* content  */}
       <form className="w-full flex flex-col gap-y-6 px-4  pt-4 h-full justify-between">
-        <div className="flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-6 h-full ">
           <div className="flex flex-col w-[60%] gap-y-4">
             <Input
               size="lg"
@@ -84,10 +84,10 @@ const EditProfile = () => {
           <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 items-center w-full ">
             {/* user select country components */}
             <Input size="lg" label="telegram Id" />
-            <Input size="lg" label="Change Password" type="password" />
+            <Input size="lg" label="Change Password" type="password"  autoComplete="on"/>
           </div>
         </div>
-        <div className="flex items-center justify-end pt-6 flex-1">
+        <div className="flex items-center justify-end pb-3 flex-1">
           <Button className="font-normal" type="button">
             Edit Profile
           </Button>

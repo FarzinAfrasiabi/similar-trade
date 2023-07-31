@@ -15,11 +15,11 @@ const CountrySelect = ({ onChnage, value, formik, isSmall = false }) => {
           Your Country
         </InputLabel>
         <Select
-          size={isSmall ? 'small' : 'medium'}
+          size={isSmall ? "small" : "medium"}
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
           label={" Your Country"}
-          style={{ borderRadius: "10px", fontWeight: "600" }}
+          style={{ borderRadius: "10px", fontWeight: "400" }}
           name="countryCode"
           value={formik.values.countryCode}
           onChange={formik.handleChange}
@@ -55,7 +55,12 @@ const CountrySelect = ({ onChnage, value, formik, isSmall = false }) => {
             ? formik.values.countryCode
             : "+"}
         </span>
-        <Inputs isSmall={isSmall} formik={formik} name={"phone"} label={"phone Number"} />
+        <Inputs
+          isSmall={isSmall}
+          formik={formik}
+          name={"phone"}
+          label={"phone Number"}
+        />
       </div>
     </div>
   );
