@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { HiEye } from "react-icons/hi2";
+import Paper from "@mui/material/Paper";
 
 /**tickeId,
   startin,
@@ -18,27 +19,31 @@ import { HiEye } from "react-icons/hi2";
   status,
   action */
 
-const TicketTable = ({ rows  , isAction = false}) => {
+const TicketTable = ({ rows, isAction = false }) => {
   return (
-    <TableContainer sx={{ minWidth: 650, overflow: "scroll" }}>
-      <Table>
-        {isAction ? <></> : <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell align="center">Ticket id </TableCell>
-            <TableCell align="center">start in</TableCell>
-            <TableCell align="center">Department </TableCell>
-            <TableCell align="center">Subjec </TableCell>
-            <TableCell align="center">Related Service </TableCell>
-            <TableCell align="center">Last Reply</TableCell>
-            <TableCell align="center">Status</TableCell>
-            <TableCell align="center">Action</TableCell>
-          </TableRow>
-        </TableHead>}
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        {isAction ? (
+          <></>
+        ) : (
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell align="center">Ticket id </TableCell>
+              <TableCell align="center">start in</TableCell>
+              <TableCell align="center">Department </TableCell>
+              <TableCell align="center">Subjec </TableCell>
+              <TableCell align="center">Related Service </TableCell>
+              <TableCell align="center">Last Reply</TableCell>
+              <TableCell align="center">Status</TableCell>
+              <TableCell align="center">Action</TableCell>
+            </TableRow>
+          </TableHead>
+        )}
         <TableBody>
           {rows.map((row, index) => {
             return (
-              <TableRow key={index} className="relative hover:bg-blue-gray-50" >
+              <TableRow key={index} className="relative hover:bg-blue-gray-50">
                 <td
                   className={`absolute h-full w-2 ${
                     row.status === "Progressing"
@@ -57,8 +62,8 @@ const TicketTable = ({ rows  , isAction = false}) => {
                 <TableCell align="center" className="text-red-600">
                   {row.department}
                 </TableCell>
-                <TableCell align="center" scope="col" className="text-red-600">
-                  {row.subject}
+                <TableCell align="center" scope="col" className="text-red-600 ">
+                  <p className="w-[250px] lg:w-full">{row.subject}</p>
                 </TableCell>
                 <TableCell align="center">{row.RelatedService}</TableCell>
                 <TableCell align="center">
@@ -67,7 +72,7 @@ const TicketTable = ({ rows  , isAction = false}) => {
                 </TableCell>
                 <TableCell align="center">
                   <button
-                    className={`py-1 w-[100px] rounded-md ${
+                    className={`py-1 w-[100px] lg:w-full  rounded-md ${
                       row.status === "Progressing"
                         ? "bg-orange-500 bg-opacity-30 text-orange-700 hover:bg-opacity-100 hover:text-white transition-all ease-in-out duration-150"
                         : row.status === "Open"
@@ -80,25 +85,29 @@ const TicketTable = ({ rows  , isAction = false}) => {
                     {row.status}
                   </button>
                 </TableCell>
-                {isAction ? <></> : <TableCell align="center">
-                  <div className="flex items-center gap-x-2">
-                    <Link
-                      href={`/chats/${index+1}`}
-                      className="w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center"
-                    >
-                      <HiEye />
-                    </Link>
-                    {row.status === "Closed" ? (
-                      <button className="p-1 bg-white shadow rounded-md px-2 text-sm">
-                        Open Ticket
-                      </button>
-                    ) : (
-                      <button className="p-1 bg-white shadow rounded-md px-2 text-sm">
-                        Close ticket
-                      </button>
-                    )}
-                  </div>
-                </TableCell>}
+                {isAction ? (
+                  <></>
+                ) : (
+                  <TableCell align="center">
+                    <div className="flex items-center gap-x-2">
+                      <Link
+                        href={`/chats/${index + 1}`}
+                        className="w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center"
+                      >
+                        <HiEye />
+                      </Link>
+                      {row.status === "Closed" ? (
+                        <button className="p-1 bg-white shadow rounded-md px-2 text-sm w-[100px] lg:w-full">
+                          Open Ticket
+                        </button>
+                      ) : (
+                        <button className="p-1 bg-white shadow rounded-md px-2 text-sm w-[100px] lg:w-full">
+                          Close ticket
+                        </button>
+                      )}
+                    </div>
+                  </TableCell>
+                )}
               </TableRow>
             );
           })}

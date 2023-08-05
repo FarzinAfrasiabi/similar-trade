@@ -1,4 +1,5 @@
 import CustomModals from "@/components/custom/customModal";
+import GiftTable from "@/components/table/giftTable";
 import TicketTable from "@/components/table/ticketTable";
 import Layout from "@/container/layout";
 import {
@@ -13,63 +14,69 @@ import { useState } from "react";
 import { BiSolidCloudUpload } from "react-icons/bi";
 
 function createData(
-  tickeId,
-  startin,
-  department,
-  subject,
-  RelatedService,
-  LastReply,
-  status,
-  action
+  DiscountCode,
+  startIn,
+  expireIn,
+  Subscription,
+  Commission,
+  used,
+  remain,
+  Disposables,
+  Subscribers,
+  Status,
+  Description
 ) {
   return {
-    tickeId,
-    startin,
-    department,
-    subject,
-    RelatedService,
-    LastReply,
-    status,
-    action,
+    DiscountCode,
+    startIn,
+    expireIn,
+    Subscription,
+    Commission,
+    used,
+    remain,
+    Disposables,
+    Subscribers,
+    Status,
+    Description,
   };
 }
 
-const TICKET_DATA = [
+const GIFT_DATA = [
   createData(
-    "#1234578fad",
+    "#ST-A5S66F1SAS",
     new Date().toISOString(),
-    "Site Support",
-    "Check your product statistics daily",
-    "server #242548",
-    "2023-08-03T22:39:10.900Z",
-    "Progressing"
+    new Date().toISOString(),
+    "10",
+    "10",
+    "999999999",
+    "999999999",
+    "Yes",
+    "All",
+    "active"
   ),
   createData(
-    "#1234578fad",
+    "#ST-A5S66F1SAS",
     new Date().toISOString(),
-    "Signaler",
-    "Check your product statistics daily",
-    "server #242548",
-    "2023-08-03T22:39:10.900Z",
-    "Open"
+    new Date().toISOString(),
+    "10",
+    "10",
+    "999999999",
+    "999999999",
+    "No",
+    "All",
+    "De active"
   ),
   createData(
-    "#1234578fad",
+    "#ST-A5S66F1SAS",
     new Date().toISOString(),
-    "user",
-    "Check your product statistics daily",
-    "server #242548",
-    "2023-08-03T22:39:10.900Z",
-    "Closed"
-  ),
-  createData(
-    "#1234578fad",
     new Date().toISOString(),
-    "Site Support",
-    "Check your product statistics daily",
-    "server #242548",
-    "2023-08-03T22:39:10.900Z",
-    "Replied"
+    "10",
+    "10",
+    "999999999",
+    "999999999",
+    "Yes",
+    "All",
+    "De active"
   ),
 ];
 
@@ -80,7 +87,7 @@ const initialValues = {
   department: "",
 };
 
-const TicketPage = () => {
+const GiftPage = () => {
   const [newTicket, setNewTicket] = useState(false);
   const onSubmit = (values) => {
     console.log(values);
@@ -161,13 +168,13 @@ const TicketPage = () => {
             onClick={() => setNewTicket(true)}
             className="py-2 px-6 w-full block text-center bg-white shadow-md rounded-lg text-blue-gray-600 hover:text-blue-500 transition-all ease-in-out duration-200"
           >
-            New Tickets
+            New Discount Code
           </button>
         </div>
-        <TicketTable rows={TICKET_DATA} />
+        <GiftTable rows={GIFT_DATA} />
       </div>
     </Layout>
   );
 };
 
-export default TicketPage;
+export default GiftPage;

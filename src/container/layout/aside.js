@@ -25,7 +25,7 @@ const Aside = () => {
               >
                 <span
                   className={`absolute inset-y-0 left-0 w-[5px] bg-[#0062FF] rounded-tr-full rounded-br-full ${
-                    router.asPath === nav.path ? "block" : "hidden"
+                    router.asPath.startsWith(nav.path) ? "block" : "hidden"
                   }`}
                 ></span>
                 <Link

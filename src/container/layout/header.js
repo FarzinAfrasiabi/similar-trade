@@ -34,11 +34,13 @@ const Header = () => {
         </div>
 
         {/* router  */}
-        <div className="text-gray-900 font-semibold text-center flex-1 absolute w-full flex items-center justify-center ">
-          {router.asPath.split("/")[1]}
-        </div>
+        {/* <p className="text-gray-900 font-semibold text-center flex-1 absolute w-full flex items-center justify-center ">
+          {router.pathname !== "/404" && router.pathname.split("/")[1]}
+        </p> */}
         {/* avatar */}
-        <AvatarInf />
+        <div>
+          <AvatarInf />
+        </div>
       </div>
     </header>
   );
