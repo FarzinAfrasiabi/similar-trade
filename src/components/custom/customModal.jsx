@@ -14,7 +14,7 @@ const CustomModals = ({ children, title, openModal, handleClose }) => {
           <div className="w-full flex items-end justify-end absolute -top-1 left-2">
             <button
               onClick={handleClose}
-              className="bg-white rounded-md shadow-lg p-1 hover:-translate-y-2 hover:translate-x-2 transition-all ease-in-out duration-100"
+              className="bg-white rounded-md shadow-lg p-1 hover:scale-125 hover:rotate-180 transition-all ease-in-out duration-150"
             >
               <HiXMark />
             </button>
