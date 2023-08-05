@@ -5,10 +5,12 @@ import Layout from "@/container/layout";
 import {
   Button,
   Input,
+  MenuItem,
   Option,
   Select,
   Textarea,
 } from "@material-tailwind/react";
+import { TextField, TextareaAutosize } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { BiSolidCloudUpload } from "react-icons/bi";
@@ -81,10 +83,14 @@ const GIFT_DATA = [
 ];
 
 const initialValues = {
-  subject: "",
-  relatedService: "",
+  discount: "",
+  start: "",
+  expire: "",
+  disSub: "",
+  disCom: "",
+  numOfUse: "",
+  disposables: "",
   desc: "",
-  department: "",
 };
 
 const GiftPage = () => {
@@ -107,57 +113,82 @@ const GiftPage = () => {
           className="flex flex-col gap-y-2 gap-x-4 lg:flex-row  mt-6 h-full"
           onSubmit={formik.handleSubmit}
         >
-          <div className="flex-auto flex flex-col h-full gap-y-6">
-            <Input
-              type="text"
-              label="Subject"
-              name="subject"
-              onChange={formik.handleChange}
-            />
-            <Select
-              name="relatedService"
-              onChange={(as) => formik.setFieldValue("relatedService", as)}
-              label="Related Service"
-            >
-              <Option value="1">Service 1</Option>
-              <Option value="2">Service 2</Option>
-              <Option value="3">Service 3</Option>
-            </Select>
-            <Textarea
+          <div className="flex flex-col gap-y-4">
+            <div className="flex flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
+              <TextField
+                label="Discount"
+                size="small"
+                sx={{ borderRadius: "20px" }}
+                name="discount"
+                onChange={formik.handleChange}
+                value={formik.values.discount}
+              />
+              <TextField
+                label="Start in"
+                size="small"
+                sx={{ borderRadius: "20px" }}
+                name="start"
+                onChange={formik.handleChange}
+                value={formik.values.start}
+              />
+              <TextField
+                label="Expire in"
+                size="small"
+                sx={{ borderRadius: "20px" }}
+                name="expire"
+                onChange={formik.handleChange}
+                value={formik.values.expire}
+              />
+            </div>
+            <div className="flex flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
+              <TextField
+                label="Discount for subscription "
+                size="small"
+                sx={{ borderRadius: "20px" }}
+                name="disSub"
+                onChange={formik.handleChange}
+                value={formik.values.disSub}
+              />
+              <TextField
+                label="Discount for Commission "
+                size="small"
+                sx={{ borderRadius: "20px" }}
+                name="disCom"
+                onChange={formik.handleChange}
+                value={formik.values.disCom}
+              />
+              <TextField
+                label="Number of uses"
+                size="small"
+                sx={{ borderRadius: "20px" }}
+                name="numOfUse"
+                onChange={formik.handleChange}
+                value={formik.values.numOfUse}
+              />
+            </div>
+            <div className="flex flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
+              <TextField
+                label="Disposables"
+                size="small"
+                select
+                fullWidth
+                sx={{ borderRadius: "20px" }}
+                name="disposables"
+                onChange={formik.handleChange}
+                value={formik.values.disposables}
+              >
+                <MenuItem value={"yes"}>Yes</MenuItem>
+                <MenuItem value={"No"}>No</MenuItem>
+              </TextField>
+            </div>
+            <TextField
+              label="Description"
               name="desc"
               onChange={formik.handleChange}
-              label="Description"
-              className="h-52"
+              value={formik.values.desc}
             />
-          </div>
-          <div className="flex flex-col gap-y-4 justify-between h-full">
-            <Select
-              name="department"
-              onChange={(e) => formik.setFieldValue("department", e.target)}
-              label="Department"
-            >
-              <Option value="1">Department 1</Option>
-              <Option value="2">Departmnet 2</Option>
-              <Option value="3">Department 3</Option>
-            </Select>
-            <div className="flex pt-4 flex-col gap-y-4 items-center text-blue-gray-600">
-              <h2>Upload new Image</h2>
-              <BiSolidCloudUpload className="text-3xl" />
-              <h4 className="text-sm">upload file or drag and drop </h4>
-              <h5 className="text-xs text-blue-gray-400">
-                Png , jpeg up to 10MB
-              </h5>
-              <div className="flex items-center gap-x-4">
-                {[1, 2, 3].map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-14 h-14 rounded-md ring-1 ring-blue-gray-500"
-                  ></div>
-                ))}
-              </div>
-              <Button className="font-normal tracking-wider" type="submit">
-                Submit ticket
-              </Button>
+            <div className="flex items-center justify-end">
+              <Button className="font-normal">Save Changes</Button>
             </div>
           </div>
         </form>

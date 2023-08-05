@@ -38,7 +38,7 @@ const EditProfile = () => {
       {/* header */}
       <div className="w-full h-16 flex items-center justify-between px-6 bg-hero-pattern bg-center bg-no-repeat bg-cover relative  rounded-t-xl">
         <h2 className="text-gray-100 text-xl">Profile</h2>
-        <div className="absolute right-2 top-4 w-28 h-28  md:w-44 md:h-44 rounded-full bg-gray-300 flex items-center justify-center ">
+        <div className="absolute right-2 top-4 w-28 h-28   md:w-44 md:h-44 xl:w-24 xl:h-24 2xl:w-44 2xl:h-44 rounded-full bg-gray-300 flex items-center justify-center ">
           <Image
             src={"/images/avatar/PP1.png"}
             alt="profile"
@@ -68,11 +68,11 @@ const EditProfile = () => {
               labelProps={{ className: "w-[90%] md:w-[100%]" }}
             />
           </div>
-          <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 items-center w-full ">
+          <div className="flex flex-col 2xl:flex-row gap-y-4 gap-x-4 items-center w-full ">
             <Input size="lg" label="user name" />
             <Input size="lg" label="email" />
           </div>
-          <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 items-center w-full ">
+          <div className="flex flex-col 2xl:flex-row gap-y-4 gap-x-4 items-center w-full ">
             {/* user select country components */}
             <CountrySelect
               formik={formik}
@@ -81,7 +81,7 @@ const EditProfile = () => {
               isSmall={true}
             />
           </div>
-          <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 items-center w-full ">
+          <div className="flex flex-col 2xl:flex-row gap-y-4 gap-x-4 items-center w-full ">
             {/* user select country components */}
             <Input size="lg" label="telegram Id" />
             <Input size="lg" label="Change Password" type="password"  autoComplete="on"/>
