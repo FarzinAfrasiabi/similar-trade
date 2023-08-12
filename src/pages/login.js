@@ -6,6 +6,7 @@ import RegisterLayout from "@/container/Register/RegisterLayout";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import loginValidationSchema from "@/validation/loginValidation";
+import Image from "next/image";
 const initialValues = {
   email: "",
   password: "",
@@ -22,6 +23,15 @@ const Login = () => {
   return (
     <RegisterLayout>
       <div className="p-4 md:max-w-sm lg:max-w-lg w-full flex flex-col gap-y-4">
+      <div className="lg:hidden  w-full flex items-center justify-center">
+          <Image
+            src={"/images/forms/login.svg"}
+            width={350}
+            height={350}
+            alt="verify_pic"
+            className="max-w-sm object-contain"
+          />
+        </div>
         <h1 className="text-2xl lg:text-4xl text-slate-900 text-center lg:text-start">
           Login
         </h1>

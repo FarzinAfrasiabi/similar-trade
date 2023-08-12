@@ -1,14 +1,17 @@
 import PublicLogo from "@/components/icons/logo/PublicLogo";
 import BrandIcon from "@/components/icons/logo/brandLogo";
+import Link from "next/link";
 
 const RegisterLayout = ({ children }) => {
   return (
     <div className="w-full  h-screen flex flex-col bg-[#FAFAFB] lg:overflow-hidden">
-      <div className=" py-3 sticky top-0 z-50 backdrop-blur-xl blur-0 opacity-100 lg:hidden bg-white shadow-2xl border-b-2 border-gray-500">
+      <div className=" py-3 sticky top-0 z-50 backdrop-blur-xl blur-0 opacity-100 lg:hidden bg-white shadow-lg border-b border-gray-300">
         <div className="w-full flex items-center justify-center gap-x-3">
           {/* Brand */}
-          <BrandIcon />
+          <Link className="flex items-center gap-x-2" href={"/"}>
+            <BrandIcon />
           <span className="text-slate-900">Similar Trade</span>
+          </Link>
         </div>
       </div>
       <div className="grid grid-cols-12 flex-1  ">

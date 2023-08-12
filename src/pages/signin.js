@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import signInValidationSchema from "@/validation/formValidation";
 import CheckBoxes from "@/components/Forms/checkbox";
+import Image from "next/image";
 
 const initialValues = {
   RegisterAs: "",
@@ -38,12 +39,21 @@ const Signin = () => {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema : signInValidationSchema,
+    validationSchema: signInValidationSchema,
   });
 
   return (
     <RegisterLayout>
       <div className="p-4 md:max-w-xl lg:max-w-lg w-full flex flex-col gap-y-4">
+        <div className="lg:hidden  w-full flex items-center justify-center">
+          <Image
+            src={"/images/forms/register.svg"}
+            width={350}
+            height={350}
+            alt="verify_pic"
+            className="max-w-sm object-contain"
+          />
+        </div>
         <h1 className="text-2xl lg:text-4xl text-slate-900">Register</h1>
         <p className="text-sm block lg:hidden text-gray-500 text-center">
           Let’s Sign up first for enter into SimilarTrade Website

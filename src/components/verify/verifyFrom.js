@@ -108,6 +108,7 @@ export default function VerifyCodeForm() {
                 id="field-code"
                 autoFocus={index === 0}
                 placeholder="-"
+                className="rounded-xl"
                 onChange={(event) =>
                   handleChangeWithNextField(event, field.onChange)
                 }
@@ -116,8 +117,9 @@ export default function VerifyCodeForm() {
                   sx: {
                     p: 0,
                     textAlign: "center",
-                    width: { xs: 36, sm: 56 },
-                    height: { xs: 36, sm: 56 },
+                    width: { xs: 30, sm: 50 },
+                    height: { xs: 30, sm: 50 },
+                    
                   },
                 }}
               />
