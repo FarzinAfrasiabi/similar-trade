@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 // @mui
 import { OutlinedInput, Stack } from "@mui/material";
 import { Button } from "@material-tailwind/react";
+import Buttons from "../Forms/button";
 
 // routes
 // import { PATH_DASHBOARD } from "../../../routes/paths";
@@ -125,9 +126,9 @@ export default function VerifyCodeForm() {
         ))}
       </Stack>
 
-      <Button fullWidth type="submit" disabled={!isValid} className="mt-4">
+      <Buttons disabled={!isValid} type="submit">
         Verify
-      </Button>
+      </Buttons>
     </form>
   );
 }
