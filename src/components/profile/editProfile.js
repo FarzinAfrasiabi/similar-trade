@@ -38,7 +38,7 @@ const EditProfile = () => {
       {/* header */}
       <div className="w-full h-16 flex items-center justify-between px-6 bg-hero-pattern bg-center bg-no-repeat bg-cover relative  rounded-t-xl">
         <h2 className="text-gray-100 text-xl">Profile</h2>
-        <div className="absolute right-2 top-4 w-28 h-28   md:w-44 md:h-44 xl:w-24 xl:h-24 2xl:w-44 2xl:h-44 rounded-full  flex items-center justify-center ">
+        <div className={`absolute right-2 top-4  rounded-full  flex items-center justify-center ${userLogin ? 'w-28 h-28   md:w-44 md:h-44 lg:w-32 lg:h-32 xl:w-24 xl:h-24 2xl:w-44 2xl:h-44' : ''} `}>
           {userLogin ? (
             <Image
               src={"/images/avatar/PP1.png"}

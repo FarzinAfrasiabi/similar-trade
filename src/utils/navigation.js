@@ -33,3 +33,16 @@ export const mobileNavigation = [
   },
   { name: "TransActions", path: "/transaction", icon: () => TransActionIcon() },
 ];
+
+export const quickAccessNavigation = [
+  { name: "Get Signal", path: "/getsignal", icon: () => GetSignalIcon() },
+  { name: "Order", path: "/order/4235", icon: () => TradeIcon() },
+  { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
+  {
+    name: "Subscriptions",
+    path: "/subscriptions/admin",
+    icon: () => SubScriptionIcon(),
+  },
+  { name: "TransActions", path: "/transaction", icon: () => TransActionIcon() },
+  { name: "Profile", path: "/Profile", icon: () => ProfileIcon() },
+];
