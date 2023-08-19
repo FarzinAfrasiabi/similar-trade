@@ -164,7 +164,9 @@ const TicketPage = () => {
             New Tickets
           </button>
         </div>
-        <TicketTable rows={TICKET_DATA} />
+        <div className="w-full max-w-screen-2xl container">
+          <TicketTable rows={TICKET_DATA} />
+        </div>
       </div>
     </Layout>
   );

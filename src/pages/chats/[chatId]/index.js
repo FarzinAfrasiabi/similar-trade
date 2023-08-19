@@ -38,10 +38,10 @@ const TICKET_DATA = [
 const ChatId = () => {
   return (
     <Layout>
-      <div className="p-10">
+      <div className="p-10 flex flex-col gap-y-2">
         {/* table */}
         <TicketTable rows={TICKET_DATA} isAction ={true} />
-        <div className="w-full p-2 bg-white shadow-md rounded-xl h-full">
+        <div className="w-full p-2 bg-white shadow-md rounded-xl h-full max-h-[76vh]">
           <div className="w-full h-full flex relative overflow-hidden">
             <div className="flex-grow-1 w-full h-full ">
               {/* chat user header */}

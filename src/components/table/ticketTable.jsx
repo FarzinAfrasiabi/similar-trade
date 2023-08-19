@@ -21,8 +21,8 @@ import Paper from "@mui/material/Paper";
 
 const TicketTable = ({ rows, isAction = false }) => {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer component={Paper} className="max-w-full lg:max-w-2xl mini:max-w-full">
+      <Table sx={{ minWidth: 200 }} aria-label="simple table">
         {isAction ? (
           <></>
         ) : (
@@ -62,7 +62,7 @@ const TicketTable = ({ rows, isAction = false }) => {
                 <TableCell align="center" className="text-red-600">
                   {row.department}
                 </TableCell>
-                <TableCell align="center" scope="col" className="text-red-600 ">
+                <TableCell align="center" className="text-red-600 ">
                   <p className="w-[250px] lg:w-full">{row.subject}</p>
                 </TableCell>
                 <TableCell align="center">{row.RelatedService}</TableCell>
@@ -88,8 +88,8 @@ const TicketTable = ({ rows, isAction = false }) => {
                 {isAction ? (
                   <></>
                 ) : (
-                  <TableCell align="center">
-                    <div className="flex items-center gap-x-2">
+                  <TableCell align="center" className="">
+                    <div className="">
                       <Link
                         href={`/chats/${index + 1}`}
                         className="w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center"
@@ -97,11 +97,11 @@ const TicketTable = ({ rows, isAction = false }) => {
                         <HiEye />
                       </Link>
                       {row.status === "Closed" ? (
-                        <button className="p-1 bg-white shadow rounded-md px-2 text-sm w-[100px] lg:w-full">
+                        <button className="p-1 bg-white shadow hidden xl:block rounded-md px-2 text-sm w-[100px] lg:w-full">
                           Open Ticket
                         </button>
                       ) : (
-                        <button className="p-1 bg-white shadow rounded-md px-2 text-sm w-[100px] lg:w-full">
+                        <button className="p-1 bg-white shadow rounded-md px-2 text-sm w-[100px] lg:w-full hidden xl:block">
                           Close ticket
                         </button>
                       )}

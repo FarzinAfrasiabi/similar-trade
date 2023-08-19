@@ -2,6 +2,7 @@ import PaymentAccountForm from "@/components/Forms/paymentAccountForm";
 import InvoiceITem from "@/components/invoice/invoiceITem";
 import InvoiceTotal from "@/components/invoice/invoiceTotal";
 import Layout from "@/container/layout";
+import { calcDate } from "@/utils/Date";
 import { Button, Checkbox, Input, Typography } from "@material-tailwind/react";
 import { useRouter } from "next/router";
 
@@ -27,12 +28,14 @@ const BuyPlanById = () => {
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Date */}
               <span className="text-sm ">Payment Date : </span>
-              <span className="text-sm">{new Date().toLocaleDateString()}</span>
+              <span className="text-sm text-gray-600">
+                {calcDate(new Date().toISOString())}
+              </span>
             </div>
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Id */}
               <span className="text-sm ">Payment Id : </span>
-              <span className="text-sm">#245611445674</span>
+              <span className="text-sm text-gray-600">#245611445674</span>
             </div>
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Id */}
@@ -85,11 +88,6 @@ const BuyPlanById = () => {
                 <PaymentAccountForm />
               </div>
               {/* submit btn */}
-              <div className="w-full ">
-                <Button className="w-full bg-blue-700">
-                  Choose payment method
-                </Button>
-              </div>
             </div>
             {/* payment method */}
             <div className="col-span-12 lg:col-span-12 xl:col-span-4 flex flex-col gap-y-2 h-full justify-between  lg:px-8 xl:border-l-2 border-gray-300 ">

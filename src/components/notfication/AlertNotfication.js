@@ -10,8 +10,10 @@ import {
 } from "@material-tailwind/react";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { Badge } from "@mui/material";
+import DefaultAvatar from "../avatar/defaultavatar";
 
 const AlertNotfication = () => {
+  const userLogin = false;
   return (
     <Menu>
       <MenuHandler>
@@ -24,7 +26,10 @@ const AlertNotfication = () => {
               horizontal: "right",
             }}
           >
-            <BellIcon className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600" strokeWidth={2} />
+            <BellIcon
+              className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600"
+              strokeWidth={2}
+            />
           </Badge>
         </IconButton>
       </MenuHandler>
@@ -32,11 +37,15 @@ const AlertNotfication = () => {
         {[1, 2, 3].map((_, index) => {
           return (
             <MenuItem key={index} className="flex items-center gap-x-2">
-              <Avatar
-                variant="circular"
-                alt="candice wu"
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-              />
+              {userLogin ? (
+                <Avatar
+                  variant="circular"
+                  alt="candice wu"
+                  src="/images/avatar/face-2.jpg"
+                />
+              ) : (
+                <DefaultAvatar />
+              )}
               <div className="flex flex-col gap-1">
                 <Typography
                   variant="small"

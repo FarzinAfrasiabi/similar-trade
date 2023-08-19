@@ -9,28 +9,23 @@ import {
 import {
   Cog6ToothIcon,
   PowerIcon,
-  InboxArrowDownIcon,
-  UserCircleIcon,
   LifebuoyIcon,
 } from "@heroicons/react/24/outline";
 import React from "react";
+import { useRouter } from "next/router";
+
+import { BiUser } from "react-icons/bi";
 
 const profileMenuItems = [
   {
-    label: "My Profile",
-    icon: UserCircleIcon,
-  },
-  {
     label: "Edit Profile",
     icon: Cog6ToothIcon,
-  },
-  {
-    label: "Inbox",
-    icon: InboxArrowDownIcon,
+    path: "/Profile/admin/123",
   },
   {
     label: "Help",
     icon: LifebuoyIcon,
+    path: "/help",
   },
   {
     label: "Sign Out",
@@ -38,19 +33,27 @@ const profileMenuItems = [
   },
 ];
 export default function AvatarInf() {
+  const router = useRouter();
+  const isUserLogin = false;
   return (
     <Menu>
       <MenuHandler>
-        <Avatar
-          variant="circular"
-          alt="candice wu"
-          className="cursor-pointer"
-          src="/images/avatar/face-2.jpg"
-          size="sm"
-        />
+        {isUserLogin ? (
+          <Avatar
+            variant="circular"
+            alt="candice wu"
+            className="cursor-pointer"
+            src="/images/avatar/face-2.jpg"
+            size="sm"
+          />
+        ) : (
+          <div className="w-10 h-10 rounded-full bg-gray-400 flex items-center justify-center cursor-pointer">
+            <BiUser className="text-2xl text-gray-700" />
+          </div>
+        )}
       </MenuHandler>
       <MenuList className="p-1">
-        {profileMenuItems.map(({ label, icon }, key) => {
+        {profileMenuItems.map(({ label, icon, path }, key) => {
           const isLastItem = key === profileMenuItems.length - 1;
           return (
             <MenuItem
@@ -66,7 +69,8 @@ export default function AvatarInf() {
                 strokeWidth: 2,
               })}
               <Typography
-                as="span"
+                as="div"
+                onClick={() => router.push(path ? path : "/")}
                 variant="small"
                 className="font-normal"
                 color={isLastItem ? "red" : "inherit"}

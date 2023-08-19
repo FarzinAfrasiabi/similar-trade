@@ -1,13 +1,21 @@
 import React from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import toast from "react-hot-toast";
+import {
+  HiOutlineClipboard,
+  HiOutlineClipboardDocument,
+} from "react-icons/hi2";
 
 const TransActionsModalContent = ({ row, isStatus = false, type, icon }) => {
   return (
-    <div className="py-4 px-2 border-b even:border-l odd:border-r border-gray-300 flex items-center gap-x-6">
+    <div className="py-4 px-2 border-b lg:even:border-l lg:odd:border-r border-gray-300 flex items-center gap-x-6">
       {/* icon */}
       <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 cursor-pointer">
         {isStatus ? (
           <div className="w-5 h-5 rounded-full bg-gray-800"></div>
-        ) : icon}
+        ) : (
+          icon
+        )}
       </div>
 
       {/* title */}
@@ -16,7 +24,7 @@ const TransActionsModalContent = ({ row, isStatus = false, type, icon }) => {
           isStatus ? "flex-row items-center gap-x-4" : "flex-col gap-y-1"
         } `}
       >
-        <span className="text-xs text-gray-800">{type}</span>
+        <span className="text-sm text-gray-800">{type}</span>
         {isStatus ? (
           <button
             type="button"
@@ -32,8 +40,20 @@ const TransActionsModalContent = ({ row, isStatus = false, type, icon }) => {
           >
             {row}
           </button>
+        ) : type === "Transaction link" ? (
+          <CopyToClipboard
+            text={row}
+            onCopy={() => toast.success("copy to clipboard")}
+          >
+            <button className="flex items-center gap-x-2 text-gray-600 text-xs">
+              <span>{row}</span>
+              <span>
+                <HiOutlineClipboardDocument className="text-xl" />
+              </span>
+            </button>
+          </CopyToClipboard>
         ) : (
-          <span className="text-gray-800 text-sm">{row}</span>
+          <span className="text-gray-600 text-xs">{row} </span>
         )}
       </div>
       {/* type */}

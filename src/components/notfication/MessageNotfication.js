@@ -5,14 +5,12 @@ import {
   MenuList,
   MenuItem,
   IconButton,
-  Avatar,
-  Typography,
 } from "@material-tailwind/react";
 import { Badge } from "@mui/material";
 
 const MessageNotfication = () => {
   return (
-    <Menu>
+    <Menu className="min-w-fit max-w-xs ">
       <MenuHandler>
         <IconButton variant="text" className="p-0 bg-transparent w-8 lg:w-10">
           <Badge
@@ -30,9 +28,9 @@ const MessageNotfication = () => {
           </Badge>
         </IconButton>
       </MenuHandler>
-      <MenuList className="space-y-2 p-2 max-w-xs w-full flex flex-col gap-y-2">
+      <MenuList className="space-y-2 p-2 max-w-xs w-full flex flex-col gap-y-2 overflow-hidden ">
         <div className="px-2 py-3 text-gray-800 font-semibold border-b-2 border-gray-400">
-          Recenet Notfication
+          Recent notification
         </div>
         {[1, 2, 3].map((_, index) => {
           return (

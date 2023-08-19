@@ -52,7 +52,7 @@ export default function SignalerPlans({ title, price, desc, id }) {
       </CardBody>
       <CardFooter className="mt-12 p-0">
         <Link
-          href={`/buyPlan/${id}?name=matin`}
+          href={`/buyPlan/${id}?name=matin&planId=planId`}
           className="text-white text-center bg-[#0062ff] w-full block rounded-xl py-2 hover:scale-[1.02] focus:scale-[1.02] active:scale-100 transition-all ease-in-out duration-100"
         >
           Buy Now

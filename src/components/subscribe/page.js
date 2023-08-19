@@ -215,6 +215,7 @@ const SubscribePage = ({ isAdmin = false }) => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <Layout>
+      <div className="w-full h-full p-2 pb-10">
       <OrderTab
         data={data}
         btnHeader={"telegram"}
@@ -231,6 +232,7 @@ const SubscribePage = ({ isAdmin = false }) => {
         setOpenModal={setOpenModal}/>
         </TabPanel>
       </OrderTab>
+      </div>
     </Layout>
   );
 };

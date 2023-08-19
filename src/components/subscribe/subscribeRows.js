@@ -1,4 +1,3 @@
-import CustomModal from "@/common/modal";
 import {
   Accordion,
   AccordionBody,
@@ -8,9 +7,11 @@ import {
 } from "@material-tailwind/react";
 
 import { useState } from "react";
-import { BiLogoTelegram } from "react-icons/bi";
+import { BiLogoTelegram, BiPlus } from "react-icons/bi";
 import { HiOutlineStar, HiPlay } from "react-icons/hi";
 import { HiOutlineChatBubbleBottomCenterText, HiXMark } from "react-icons/hi2";
+import CustomModals from "../custom/customModal";
+import { calcDate } from "@/utils/Date";
 function Icon({ id, open }) {
   return (
     <svg
@@ -33,37 +34,61 @@ function Icon({ id, open }) {
 }
 const SubScribeRows = ({ data, label, openModal, setOpenModal }) => {
   const [open, setOpen] = useState(0);
+  const [value, setValue] = useState("");
+  const [telegramUser, setTelegramUser] = useState([]);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-  const [value, setValue] = useState("");
+  const submitHandle = (e) => {
+    e.preventDefault();
+    const formData = { username: value };
+    setTelegramUser([...telegramUser, formData]);
+    setValue("");
+  };
+
+  const removeTelegramUser = () => {
+    const data = [...telegramUser];
+    data.pop();
+    setTelegramUser(data);
+  };
+
   return (
-    <div className="w-full flex flex-col gap-y-2 px-2">
+    <div className="w-full flex flex-col gap-y-2 px-2 pb-10">
       <div className="w-full hidden lg:flex items-center justify-between py-2 bg-gray-300 rounded-md text-sm px-6">
         <div className="flex-1">Signaler</div>
         <div className="flex-1">bot Mode </div>
         <div className="flex-1 pr-5">start time</div>
         <div className="flex-1 pr-5">End time</div>
       </div>
-      <CustomModal
-        open={openModal}
-        handleOpen={() => setOpenModal(false)}
+      <CustomModals
+        openModal={openModal}
+        handleClose={() => setOpenModal(false)}
+        title={"telegram users"}
       >
-        <form className="flex flex-col gap-y-2 h-full justify-between px-4">
+        <form
+          onSubmit={submitHandle}
+          className="flex flex-col gap-y-2 h-full justify-between px-4 w-full max-w-md"
+        >
           <div className="flex-1 max-h-[500px] overflow-auto px-2 py-2">
             <div className="flex-1 flex flex-col gap-y-3 ">
-              {[1, 2, 3].map((item, index) => {
-                return (
-                  <div
-                    key={index}
-                    className="w-full ring-2 ring-gray-400 rounded-xl flex items-center justify-between p-3"
-                  >
-                    <span>@user</span>
-                    <button type="button" className="text-xl">
-                      <HiXMark />
-                    </button>
-                  </div>
-                );
-              })}
+              {telegramUser.length !== 0
+                ? telegramUser.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="w-full ring-1 ring-gray-400 rounded-xl flex items-center justify-between py-2 px-4 text-gray-500"
+                      >
+                        <span>@{item.username}</span>
+                        <button
+                          onClick={removeTelegramUser}
+                          type="button"
+                          className="w-5 h-5 flex items-center justify-center rounded-full ring-1 ring-gray-600"
+                        >
+                          <BiPlus className="text-2xl text-gray-600 rotate-45" />
+                        </button>
+                      </div>
+                    );
+                  })
+                : "no telegram user please add "}
             </div>
           </div>
           <div className="flex items-center gap-x-2 pb-3 py-2 bg-white">
@@ -77,7 +102,7 @@ const SubScribeRows = ({ data, label, openModal, setOpenModal }) => {
             <Button type="submit">Add</Button>
           </div>
         </form>
-      </CustomModal>
+      </CustomModals>
       {data.map((item, index) => {
         return (
           <Accordion
@@ -108,16 +133,16 @@ const SubScribeRows = ({ data, label, openModal, setOpenModal }) => {
               <div className="hidden lg:block flex-1">
                 <TableItems
                   isCol={true}
-                  mainData={item.startTime.date}
-                  otherData={item.startTime.time}
+                  mainData={calcDate(item.startTime.date)}
+                  otherData={calcDate(item.startTime.time)}
                 />
               </div>
 
               <div className="hidden lg:block flex-1">
                 <TableItems
                   isCol={true}
-                  mainData={item.endTime.date}
-                  otherData={item.endTime.time}
+                  mainData={calcDate(item.endTime.date)}
+                  otherData={calcDate(item.endTime.time)}
                 />
               </div>
               <div className="block lg:hidden">
@@ -164,9 +189,7 @@ const SubScribeRows = ({ data, label, openModal, setOpenModal }) => {
                   </div>
                 </div>
                 <div className="w-full flex items-center justify-center py-2">
-                  <SubScribeAction
-                    telegramModalHandler={() => setOpenModal(true)}
-                  />
+                  <SubScribeAction onClick={() => setOpenModal(true)} />
                 </div>
               </div>
             </AccordionBody>
@@ -194,7 +217,7 @@ function TableItems({
   );
 }
 
-function SubScribeAction() {
+function SubScribeAction({ onClick }) {
   return (
     <div className="flex items-center gap-x-4">
       <button className="w-7 h-7 ring-2 ring-gray-300 rounded-full flex items-center justify-center bg-white shadow-md hover:text-yellow-500">
@@ -207,7 +230,7 @@ function SubScribeAction() {
         <HiOutlineChatBubbleBottomCenterText />
       </button>
       <button className="w-7 h-7 ring-2 ring-gray-300 rounded-full flex items-center justify-center bg-white shadow-md text-blue-700">
-        <BiLogoTelegram />
+        <BiLogoTelegram onClick={onClick} />
       </button>
     </div>
   );

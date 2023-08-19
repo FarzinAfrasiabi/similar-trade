@@ -13,13 +13,17 @@ import Paper from "@mui/material/Paper";
 import {
   HiChevronDown,
   HiChevronUp,
+  HiOutlineCalendar,
   HiOutlineClipboardDocument,
+  HiOutlineClock,
 } from "react-icons/hi2";
 import { useState } from "react";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import toast from "react-hot-toast";
 import TransActionsRows from "./transactionRow";
+import { calcDate } from "@/utils/Date";
+import TransActionPrintPage from "../print/transactionprint";
 
 function Row(props) {
   const { row, pendingServer = false } = props;
@@ -45,55 +49,19 @@ function Row(props) {
             {open ? <HiChevronUp /> : <HiChevronDown />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {row.serverId}
-        </TableCell>
+        <TableCell>{row.serverId}</TableCell>
         <TableCell align="right">{row.IpAddress}</TableCell>
         <TableCell align="right">{row.userName}</TableCell>
-        <TableCell align="right" className="flex flex-col gap-y-2 text-sm">
+        <TableCell align="right" className="">
           <span>{row.signaler.user}</span>
+          <br />
           <span className="text-gray-500">{row.signaler.userId}</span>
-        </TableCell>
-        <TableCell align="right" className="space-x-4 space-y-2">
-          {showPassword ? (
-            <CopyToClipboard
-              text={"A12154ar234wef"}
-              onCopy={() => {
-                toast.success("Copied to clipBoard");
-                setTimeout(() => {
-                  setShowPassword(false);
-                }, 2000);
-              }}
-            >
-              <button className="p-2 px-6 rounded-lg shadow-md text-sm bg-gray-300 ">
-                <span className="flex items-center gap-x-2 ">
-                  A12154ar234wef{" "}
-                  <HiOutlineClipboardDocument className="text-2xl text-gray-700" />
-                </span>
-              </button>
-            </CopyToClipboard>
-          ) : (
-            <button
-              type="button"
-              className="p-2 px-6 rounded-lg shadow-md text-sm bg-gray-300 "
-              onClick={() => setShowPassword(true)}
-            >
-              Password
-            </button>
-          )}
-
-          <button
-            type="button"
-            className="p-2 px-6 rounded-lg shadow-md text-sm bg-gray-300"
-          >
-            VNS
-          </button>
         </TableCell>
       </TableRow>
       <TableRow className="relative">
-        <th className="absolute left-0 w-2 h-full bg-yellow-400"></th>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
+            <span className="absolute left-0 w-2 h-full bg-yellow-400"></span>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
                 History
@@ -103,14 +71,67 @@ function Row(props) {
                   <TableRow>
                     <TableCell>start</TableCell>
                     <TableCell>expiredTime</TableCell>
+                    <TableCell align="center">Actions</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   <TableRow>
-                    <TableCell component="th" scope="row">
-                      {row.startTime}
+                    <TableCell>
+                      <div className="flex items-center gap-x-1">
+                        <span className="text-2xl text-gray-600">
+                          <HiOutlineCalendar />
+                        </span>
+                        <span>{calcDate(row.startTime)}</span>
+                      </div>
                     </TableCell>
-                    <TableCell>{row.expireTime}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-x-2">
+                        <span>
+                          <HiOutlineClock className="text-2xl text-gray-600" />
+                        </span>
+                        <span>{calcDate(row.expireTime)}</span>
+                      </div>
+                    </TableCell>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      align="center"
+                      className="space-x-4 space-y-2 "
+                    >
+                      {showPassword ? (
+                        <CopyToClipboard
+                          text={"A12154ar234wef"}
+                          onCopy={() => {
+                            toast.success("Copied to clipBoard");
+                            setTimeout(() => {
+                              setShowPassword(false);
+                            }, 2000);
+                          }}
+                        >
+                          <button className="p-2 px-6 rounded-lg shadow-md text-xs bg-gray-300   text-center ">
+                            <span className="flex items-center gap-x-2 ">
+                              A12154ar234wef{" "}
+                              <HiOutlineClipboardDocument className="text-xl text-gray-700" />
+                            </span>
+                          </button>
+                        </CopyToClipboard>
+                      ) : (
+                        <button
+                          type="button"
+                          className="p-2  px-6 rounded-lg shadow-md text-sm bg-gray-300  text-center "
+                          onClick={() => setShowPassword(true)}
+                        >
+                          Password
+                        </button>
+                      )}
+
+                      <button
+                        type="button"
+                        className="p-2 px-6 rounded-lg shadow-md text-sm bg-gray-300"
+                      >
+                        VNS
+                      </button>
+                    </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -128,9 +149,9 @@ export default function CollapsibleTable({
   pendingServer = false,
 }) {
   return (
-    <div className="w-full overflow-hidden">
-      <TableContainer component={Paper} sx={{ maxHeight: "100vh" }}>
-        <Table aria-label="collapsible table">
+    <>
+      <TableContainer component={Paper} className="w-full max-w-full  overflow-auto">
+        <Table sx={{minWidth : 650}} aria-label="collapsible table">
           {children}
           <TableBody>
             {rows.map((row, index) => {
@@ -144,6 +165,6 @@ export default function CollapsibleTable({
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </>
   );
 }

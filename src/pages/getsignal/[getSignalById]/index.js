@@ -6,6 +6,11 @@ import HistoryProfile from "@/components/history/historyProfile";
 import SignalerPlans from "@/components/plans/signalerPlans";
 import { useState } from "react";
 import HistoryTable from "@/components/history/historyTable";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Processor } from "postcss";
+import toast from "react-hot-toast";
+import DefaultAvatar from "@/components/avatar/defaultavatar";
+
 const history = [
   { title: "Subscribers", desc: "10,925" },
   { title: "Weekly profit", desc: "10% - 15%" },
@@ -133,6 +138,7 @@ const TABLE_ROWS = [
 const GetSignalById = () => {
   const [showHistory, setShowHistory] = useState(false);
   const router = useRouter();
+  const userLogin = false;
   return (
     <Layout>
       <div className="grid grid-cols-12 gap-4">
@@ -144,7 +150,7 @@ const GetSignalById = () => {
           <div className="w-full px-4 py-4 bg-cover bg-no-repeat bg-center bg-hero-pattern rounded-t-2xl flex items-center justify-evenly relative">
             {/* avatar */}
             <div className="absolute left-4 top-8">
-              <Avatar src="/images/avatar/face-2.jpg" size="xxl" />
+              {userLogin ? <Avatar src="/images/avatar/face-2.jpg" size="xxl" /> : <DefaultAvatar size="lg"  />}
             </div>
             {/* user and Id */}
             <div className="flex flex-col flex-1 items-center justify-center gap-y-2 text-sm">
@@ -159,9 +165,14 @@ const GetSignalById = () => {
               >
                 {showHistory ? "Buy PLan" : "Show history"}
               </button>
-              <button className="px-4 py-2  text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
-                Share signaler profile
-              </button>
+              <CopyToClipboard
+                text={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
+                onCopy={() => toast.success("Profile copied to clipboard ")}
+              >
+                <button className="px-4 py-2  text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
+                  Share signaler profile
+                </button>
+              </CopyToClipboard>
             </div>
           </div>
           {/* history data */}
@@ -211,7 +222,7 @@ export default GetSignalById;
 
 export async function getServerSideProps(ctx) {
   const { query } = ctx;
-  console.log(query);
+
   return {
     props: {
       signalProfile: "",
