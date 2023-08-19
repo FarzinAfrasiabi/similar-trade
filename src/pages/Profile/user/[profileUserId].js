@@ -1,5 +1,6 @@
 import ChangeEmail from "@/components/profile/changeEmail";
 import EditProfile from "@/components/profile/editProfile";
+import NotificationSetting from "@/components/profile/notficationSetting";
 import Layout from "@/container/layout";
 
 const ProfileUserId = () => {
@@ -9,7 +10,10 @@ const ProfileUserId = () => {
         {/* edit */}
         <EditProfile />
         {/* email and pass */}
-        <ChangeEmail />
+        <div className="flex flex-col gap-y-4">
+          <ChangeEmail />
+        </div>
+        <NotificationSetting />
       </div>
     </Layout>
   );

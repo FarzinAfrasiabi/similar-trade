@@ -89,7 +89,7 @@ const TicketTable = ({ rows, isAction = false }) => {
                   <></>
                 ) : (
                   <TableCell align="center" className="">
-                    <div className="">
+                    <div className="flex flex-col lg:flex-row gap-y-1 gap-x-2">
                       <Link
                         href={`/chats/${index + 1}`}
                         className="w-7 h-7 rounded-full bg-white shadow-md flex items-center justify-center"

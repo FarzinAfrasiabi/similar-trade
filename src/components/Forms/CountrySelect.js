@@ -7,7 +7,7 @@ import { countryCode } from "@/utils/CountryCode";
 import Inputs from "./Inputs";
 import { FormHelperText } from "@mui/material";
 
-const CountrySelect = ({ onChnage, value, formik, isSmall = false }) => {
+const CountrySelect = ({ formik, isSmall = false }) => {
   return (
     <div className="flex flex-col lg:flex-row w-full gap-4">
       <FormControl className="flex-1">
@@ -45,7 +45,7 @@ const CountrySelect = ({ onChnage, value, formik, isSmall = false }) => {
       </FormControl>
       <div className="flex items-center gap-x-2 flex-1">
         <span
-          className={`w-12 h-[50px] py-2 px-2  rounded-lg ring-1 flex items-center justify-center  ${
+          className={`w-12 ${isSmall ? 'h-[36px]' :'h-[50px]'} py-2 px-2  rounded-lg ring-1 flex items-center justify-center  ${
             formik.values.countryCode.length !== 0
               ? "ring-blue-500 ring-2"
               : "ring-gray-300  "

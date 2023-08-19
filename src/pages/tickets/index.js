@@ -9,6 +9,7 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { BiSolidCloudUpload } from "react-icons/bi";
 
@@ -81,6 +82,7 @@ const initialValues = {
 };
 
 const TicketPage = () => {
+  const router = useRouter();
   const [newTicket, setNewTicket] = useState(false);
   const onSubmit = (values) => {
     console.log(values);
@@ -89,15 +91,17 @@ const TicketPage = () => {
     initialValues,
     onSubmit,
   });
+
   return (
     <Layout>
       <CustomModals
         title={"new Discount Code"}
         openModal={newTicket}
         handleClose={() => setNewTicket(false)}
+        size="lg"
       >
         <form
-          className="flex flex-col gap-y-2 gap-x-4 lg:flex-row  mt-6 h-full"
+          className="flex flex-col gap-y-2 gap-x-4 lg:flex-row  mt-6 h-full max-w-2xl w-full"
           onSubmit={formik.handleSubmit}
         >
           <div className="flex-auto flex flex-col h-full gap-y-6">
@@ -148,7 +152,11 @@ const TicketPage = () => {
                   ></div>
                 ))}
               </div>
-              <Button className="font-normal tracking-wider" type="submit">
+              <Button
+                onClick={() => router.push("/chats")}
+                className="font-normal tracking-wider"
+                type="submit"
+              >
                 Submit ticket
               </Button>
             </div>
