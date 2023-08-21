@@ -6,7 +6,7 @@ import ServerIcon from "@/components/icons/navigation/serverIcon";
 import SubScriptionIcon from "@/components/icons/navigation/subscrptionIcon";
 import TransActionIcon from "@/components/icons/navigation/transActionIcon";
 import ChatIcon from "@/components/icons/public/chatIcon";
-const regex = /\/(.*)/;
+
 export const navigation = [
   { name: "Dashboard", path: "/dashboard", icon: () => DashboaradIcon() },
   { name: "Get Signal", path: "/getsignal", icon: () => GetSignalIcon() },

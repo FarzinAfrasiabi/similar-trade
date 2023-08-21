@@ -18,11 +18,11 @@ const walletStatus = [
   {
     id: 1,
     header: "Total Trade",
-    color: "border-deep-purple-500",
+    color: "bg-deep-purple-500",
     number: 241,
   },
-  { id: 2, header: "Profit", color: "border-blue-800", number: 61 },
-  { id: 3, header: "Total Trade", color: "border-red-600", number: 94 },
+  { id: 2, header: "Profit", color: "bg-blue-800", number: 61 },
+  { id: 3, header: "Total Trade", color: "bg-red-600", number: 94 },
 ];
 
 const DashboardPage = () => {

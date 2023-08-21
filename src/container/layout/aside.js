@@ -10,9 +10,9 @@ const Aside = () => {
     <aside className="z-20 hidden lg:w-52 xl:w-64  bg-white shadow-xl  lg:block flex-shrink-0 ">
       <div className="flex flex-col py-4 h-full justify-between">
         {/* brand */}
-        <div className="flex items-center px-6 gap-x-6 border-b  border-r-gray-300 pb-5">
+        <div className="flex items-end  px-6 gap-x-2 border-b  border-r-gray-300 pb-5">
           <BrandIcon />
-          <span className="xl:text-lg text-slate-700 font-semibold">
+          <span className="text-sm align-baseline text-blue-gray-800 text-slate-700 font-semibold">
             similar Trade
           </span>
         </div>
