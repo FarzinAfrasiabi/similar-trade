@@ -54,8 +54,8 @@ const Header = () => {
                     : "h-0 opacity-0 blur-0 duration-100"
                 } transition-all ease-in-out `}
               >
-                <div className="flex flex-col gap-y-3 bg-white rounded-xl ring-2 ring-gray-300 p-4">
-                  <h4 className="text-blue-500 text-sm px-4 font-medium pb-3">
+                <div className={`flex flex-col gap-y-3 bg-white rounded-xl ring-2 ring-gray-300 p-4 ${searchValue.length === 0 ? 'h-0' : 'h-fit'}`}>
+                  <h4 className={`text-blue-500 text-sm px-4 font-medium pb-3  ${searchValue.length === 0 ? 'h-0' : 'h-fit'}`}>
                     {" "}
                     Result :
                   </h4>
@@ -78,7 +78,7 @@ const Header = () => {
                       ))}
                     </div>
                   ) : (
-                    <div className="flex w-full items-center justify-center flex-col h-20 gap-y-2">
+                    <div className={`flex w-full items-center justify-center flex-col  gap-y-2 ${searchValue.length === 0 ? 'h-0' : 'h-fit'}`}>
                       <PiSelectionSlashBold className="text-8xl text-gray-800" />
                       <span className="font-semibold text-lg">
                         no result for {`"${searchValue}"`}

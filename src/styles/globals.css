@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 @tailwind base;
 @layer base {
-  div[tabindex="-1"] {
+  /* div[tabindex="-1"] {
     @apply max-w-xs min-w-[320px] md:min-w-[450px];
-  }
+  } */
   div[id=":r8m:"] {
     @apply md:min-w-[180px];
   }
@@ -21,6 +21,11 @@
 * {
   font-family: "Roboto" !important;
   /* overflow: hidden; */
+}
+
+button {
+  font-weight: 500 !important;
+  font-size: 13px !important;
 }
 
 ::-webkit-scrollbar {

@@ -15,7 +15,7 @@ const OrderTab = ({ children, data, btnHeader = "copied", onClick, text }) => {
   };
   return (
     <Tabs value={data[0].value}>
-      <div className="w-full flex items-center justify-between mb-4">
+      <div className="w-full flex items-center justify-between mb-4 ">
         <div className="flex flex-col lg:flex-row gap-y-2 items-center gap-x-10">
           <TabsHeader className="w-[88vw] lg:w-96  flex-1">
             {data.map(({ label, value }) => (

@@ -9,28 +9,52 @@ import {
 import { CheckIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-export default function SignalerPlans({ title, price, desc, id }) {
+export default function SignalerPlans({
+  title,
+  price,
+  desc,
+  id,
+  offPrice,
+  gift,
+}) {
   return (
-    <Card color="white" variant="filled" className="w-full  p-8 shadow-2xl">
+    <Card
+      color="white"
+      variant="filled"
+      className="w-full h-full flex flex-col justify-between  p-8 shadow-2xl"
+    >
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className="m-0 mb-8 rounded-none border-b border-white/10 pb-8 text-center"
+        className="m-0 mb-8 flex flex-col h-full justify-between items-center rounded-none border-b border-white/10 pb-8 text-center"
       >
-        <Typography variant="small" className="font-normal uppercase">
-          {title}
+        <Typography className=" uppercase flex text-center justify-center font-medium">
+          {title}{" "}
         </Typography>
+        {gift && (
+          <span className="text-sm text-center font-medium pt-1 text-blue-500">
+            {gift}
+          </span>
+        )}
         <Typography
           variant="h1"
           className="mt-6 flex justify-center gap-1 text-5xl font-normal text-[#0062FF]"
         >
           {price !== 0 ? (
-            <>
-              <span className="mt-2 text-4xl">$</span>
-              {price}
-              <span className="self-end text-4xl">/mo</span>
-            </>
+            offPrice !== 0 ? (
+              <>
+                <span className="mt-2 text-4xl">$</span>
+                {(price * (100 - offPrice)) / 100}
+                <span className="self-end text-4xl">/mo</span>
+                <span className="self-end text-sm">
+                  <b className="font-normal  line-through">{price}$</b>{" "}
+                  {`(${offPrice} % Off)`}
+                </span>
+              </>
+            ) : (
+              <></>
+            )
           ) : (
             <>
               <span className="mt-2 text-4xl">Free</span>

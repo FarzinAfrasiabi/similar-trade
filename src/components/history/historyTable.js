@@ -1,4 +1,8 @@
 import { Card, Typography, CardBody } from "@material-tailwind/react";
+import MainTable from "../@section/table";
+import { ClOSED_TABLE_ROWS } from "@/utils/fakeTabsApi";
+import TableRow from "../common/tableRow";
+import { BiEdit, BiTrash } from "react-icons/bi";
 
 const TABLE_HEAD = [
   "Order",
@@ -11,7 +15,10 @@ const TABLE_HEAD = [
   "T/P",
   "Time",
   "Price",
+  "swap",
+  "commission",
   "profit",
+  "Modify",
 ];
 
 export default function HistoryTable({ TABLE_ROWS, isScroll = false }) {
@@ -22,161 +29,75 @@ export default function HistoryTable({ TABLE_ROWS, isScroll = false }) {
           isScroll ? "max-h-[500px]" : "max-h-[82vh]"
         }  overflow-y-auto px-0`}
       >
-        <table className="mt-4 w-full min-w-max table-auto text-left">
-          <thead>
-            <tr>
-              {TABLE_HEAD.map((head, index) => (
-                <th
-                  key={index}
-                  className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 lg:p-2 xl:p-4"
-                >
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal leading-none opacity-70"
-                  >
-                    {head}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {TABLE_ROWS.map(
-              (
-                { order, time, type, size, symbol, price, sl, tp, profit },
-                index
-              ) => {
-                const isLast = index === TABLE_ROWS.length - 1;
-                const classes = isLast
-                  ? "p-4 lg:p-2 xl:p-4"
-                  : "p-4 lg:p-2 xl:p-4 border-b border-blue-gray-50";
-
-                return (
-                  <tr
-                    key={index}
-                    className={` border-l-8 ${
-                      type === "Sell" ? "border-red-700" : "border-blue-900"
-                    } rounded-md`}
-                  >
-                    {/* order */}
-                    <td className={classes}>
-                      <div className="flex flex-col">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {order.id}
-                        </Typography>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          {order.signal}
-                        </Typography>
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      {/* time */}
-                      <div className="flex flex-col">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {time.date}
-                        </Typography>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          {time.time}
-                        </Typography>
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        className={`${
-                          type === "Sell" ? "text-red-600" : "text-blue-900"
-                        }`}
-                      >
-                        {type}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        className={`${
-                          type === "Sell" ? "text-red-600" : "text-blue-900"
-                        }`}
-                      >
-                        {size}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography variant="small">{symbol}</Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography variant="small">{price}</Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography variant="small">{sl}</Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography variant="small">{tp}</Typography>
-                    </td>
-                    <td className={classes}>
-                      {/* time */}
-                      <div className="flex flex-col">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {time.date}
-                        </Typography>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          {time.time}
-                        </Typography>
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      <Typography variant="small">{price}</Typography>
-                    </td>
-                    <td className={classes}>
-                      <div className="flex flex-col">
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className={`${
-                            type === "Sell" ? "text-green-700" : "text-red-600"
-                          }`}
-                        >
-                          {profit.up}
-                        </Typography>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          {profit.down}
-                        </Typography>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
-          </tbody>
-        </table>
+        <MainTable header={TABLE_HEAD}>
+          {ClOSED_TABLE_ROWS.map((row, index) => {
+            return (
+              <tr key={index} className="py-2 border-b">
+                <TableRow>
+                  <div className="flex flex-col">
+                    <span>{row.order.id}</span>
+                    <span>{row.order.signal}</span>
+                  </div>
+                </TableRow>
+                <TableRow>
+                  <div className="flex flex-col">
+                    <span>{row.time.date}</span>
+                    <span>{row.time.time}</span>
+                  </div>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.type}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.size}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.symbol}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.price}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.sl}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.tp}</span>
+                </TableRow>
+                <TableRow>
+                  <div className="flex flex-col">
+                    <span>{row.time2.data}</span>
+                    <span>{row.time2.time}</span>
+                  </div>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.price2}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.swap}</span>
+                </TableRow>
+                <TableRow>
+                  <span className="text-sm">{row.commission}</span>
+                </TableRow>
+                <TableRow>
+                  <div className="flex flex-col">
+                    <span>{row.profit.up}</span>
+                    <span>{row.profit.down}</span>
+                  </div>
+                </TableRow>
+                <TableRow>
+                  <div className="flex gap-x-2 justify-center">
+                    <button className=" text-center hover:text-blue-500">
+                      <BiEdit className="text-2xl" />
+                    </button>
+                    <button className="text-2xl text-center hover:text-red-500">
+                      <BiTrash className="text-2xl" />
+                    </button>
+                  </div>
+                </TableRow>
+              </tr>
+            );
+          })}
+        </MainTable>
       </CardBody>
     </Card>
   );

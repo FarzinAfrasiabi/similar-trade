@@ -32,7 +32,7 @@ const SearchTrading = ({ title, onSubmit, onModal }) => {
     }
   };
   return (
-    <div className="col-span-12 lg:col-span-6 bg-white shadow-lg rounded-xl flex flex-col justify-between p-6 min-h-[200px] h-full">
+    <div className={`col-span-12 lg:col-span-6 bg-white shadow-lg rounded-xl flex flex-col justify-between p-6 transition-all ease-in-out duration-200 ${disable ? 'h-full ' : 'min-h-[200px] h-full'}`}>
       {/* header */}
       <div className="text-lg text-gray-800 capitalize font-bold">{title}</div>
       <div className="flex flex-col gap-y-2">

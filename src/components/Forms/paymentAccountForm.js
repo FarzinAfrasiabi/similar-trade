@@ -58,7 +58,7 @@ const PaymentAccountForm = () => {
           );
         })}
       </div>
-      <div className="flex flex-col pt-2">
+      <div className="flex flex-col pt-2 pb-4">
         {formsAccountsCheckbox.map(({ label, id }) => (
           <Checkbox
             id={id}

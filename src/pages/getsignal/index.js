@@ -33,13 +33,18 @@ const GetSignalPage = () => {
       {/* training video  */}
       {/* if not searching  */}
       <div className="grid grid-cols-12 gap-x-8 gap-y-16">
-        {[1, 2, 3, 4, 4, 4, 4].map((_, i) => (
+        {[1, 2, 3, 4, 4, 4].map((item, i) => (
           <div
             key={i}
-            className="col-span-12 md:col-span-6 rounded-lg shadow-lg h-48 bg-white"
+            className="col-span-12 md:col-span-6 rounded-lg shadow-lg h-full  bg-white"
           >
-            <video className="w-full rounded-lg h-auto  max-h-48" controls>
-              <source src="/videos/flowbite.mp4" type="video/mp4" />
+            <video className="h-full w-full rounded-lg" controls>
+              <source
+                src={`${
+                  item == 4 ? "/videos/flowbite.mp4" : "/videos/demo.mp4"
+                }`}
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>

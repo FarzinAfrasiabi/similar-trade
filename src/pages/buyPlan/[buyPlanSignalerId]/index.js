@@ -4,6 +4,7 @@ import InvoiceTotal from "@/components/invoice/invoiceTotal";
 import Layout from "@/container/layout";
 import { calcDate } from "@/utils/Date";
 import { Button, Checkbox, Input, Typography } from "@material-tailwind/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 const BuyPlanById = () => {
@@ -11,37 +12,47 @@ const BuyPlanById = () => {
   const { query } = useRouter();
   return (
     <Layout>
-      <div className="w-full flex flex-col gap-y-8">
+      <div className="w-full flex flex-col gap-y-8 pb-8">
         {/* invoice data */}
-        <div className="w-full container flex flex-col gap-2 md:flex-row justify-between">
-          <div className="flex-col gap-y-4">
-            <h1 className="font-semibold">Hello , {query.name}</h1>
-            <p className="text-sm text-gray-500 max-w-3xl px-2">
-              Please find below a cost-breakdown for the recent work completed.
-              Please make payment at your earliest convenience, and do not
-              hesitate to contact me with any questions.
-            </p>
+        <div className="w-full xl:container xl:mx-auto flex flex-col gap-y-8 gap-x-2 md:flex-row justify-between">
+          <div className="flex flex-col items-center md:items-start gap-y-2 md:flex-row  gap-x-2">
+            <div className="">
+              <Image
+                width={200}
+                height={200}
+                alt="payment"
+                src={"/images/pages/payment.svg"}
+              />
+            </div>
+            <div className="flex-col pt-6 gap-y-4">
+              <h1 className="font-semibold text-xl">Hello , {query.name}</h1>
+              <p className="text-sm text-gray-700  indent-2 max-w-sm px-2">
+                Please find below a cost-breakdown for the recent work
+                completed. Please make payment at your earliest convenience, and
+                do not hesitate to contact me with any questions.
+              </p>
+            </div>
           </div>
           {/* invoice Data */}
-          <div className="flex flex-col gap-y-2 w-full max-w-xs text-gray-800">
+          <div className="flex flex-col gap-y-2 w-full max-w-xs text-gray-800 pt-6">
             <h1 className="text-lg capitalize ">invoice</h1>
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Date */}
-              <span className="text-sm ">Payment Date : </span>
+              <span className="text-sm w-32">Payment Date : </span>
               <span className="text-sm text-gray-600">
                 {calcDate(new Date().toISOString())}
               </span>
             </div>
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Id */}
-              <span className="text-sm ">Payment Id : </span>
+              <span className="text-sm w-32">Payment Id : </span>
               <span className="text-sm text-gray-600">#245611445674</span>
             </div>
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Id */}
-              <span className="text-sm ">Payment Status : </span>
+              <span className="text-sm w-32">Payment Status : </span>
               <span
-                className={`px-2 py-1 bg-red-200 text-red-500 rounded-lg text-xs`}
+                className={`px-2 py-1 bg-red-200 text-red-500 self-center flex items-center  rounded-lg text-xs`}
               >
                 unpaid
               </span>

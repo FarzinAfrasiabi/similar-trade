@@ -34,6 +34,7 @@ const plans = [
   },
   {
     title: "Free Auto Signal copier",
+    gift :'+ Signaller Fee',
     desc: [
       { value: "Auto write signals in telegram" },
       { value: "View the signal as soon as it is sent" },
@@ -41,6 +42,7 @@ const plans = [
       { value: "View the signal as soon as it is sent" },
     ],
     price: 18,
+    offPrice: 10,
   },
   {
     title: "V.I.P Telegram Bot",
@@ -54,6 +56,7 @@ const plans = [
   },
   {
     title: "V.I.P Auto Signal copier",
+    gift :'+ Signaller Fee',
     desc: [
       { value: "Auto write signals in telegram" },
       { value: "View the signal as soon as it is sent" },
@@ -61,6 +64,7 @@ const plans = [
       { value: "View the signal as soon as it is sent" },
     ],
     price: 60,
+    offPrice: 30,
   },
 ];
 const TABLE_ROWS = [
@@ -138,7 +142,7 @@ const TABLE_ROWS = [
 const GetSignalById = () => {
   const [showHistory, setShowHistory] = useState(false);
   const router = useRouter();
-  const userLogin = false;
+  const userLogin = true;
   return (
     <Layout>
       <div className="grid grid-cols-12 gap-4">
@@ -149,8 +153,12 @@ const GetSignalById = () => {
           {/* profile header */}
           <div className="w-full px-4 py-4 bg-cover bg-no-repeat bg-center bg-hero-pattern rounded-t-2xl flex items-center justify-evenly relative">
             {/* avatar */}
-            <div className="absolute left-4 top-8">
-              {userLogin ? <Avatar src="/images/avatar/face-2.jpg" size="xxl" /> : <DefaultAvatar size="lg"  />}
+            <div className="absolute left-4 top-4">
+              {userLogin ? (
+                <Avatar src="/images/avatar/face-2.jpg" size="xxl" />
+              ) : (
+                <DefaultAvatar size="lg" />
+              )}
             </div>
             {/* user and Id */}
             <div className="flex flex-col flex-1 items-center justify-center gap-y-2 text-sm">
@@ -176,8 +184,8 @@ const GetSignalById = () => {
             </div>
           </div>
           {/* history data */}
-          <div className="max-w-screen-xl container mx-auto mt-16 md:mt-14 xl:mt-0 p-2 px-4  ">
-            <div className="w-full flex overflow-auto  items-center justify-between">
+          <div className="max-w-screen-xl 2xl:max-w-screen-lg container mx-auto mt-16 md:mt-14 xl:mt-8 2xl:mt-0 py-2 px-4   ">
+            <div className="w-full flex overflow-auto py-4  items-center justify-between">
               {history.map((history, i) => (
                 <HistoryProfile key={i} {...history} />
               ))}
@@ -196,7 +204,7 @@ const GetSignalById = () => {
             <HistoryTable TABLE_ROWS={TABLE_ROWS} isScroll={true} />
           ) : (
             <div>
-              <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2">
+              <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2 pt-4">
                 {`plan's`}
               </h1>
               <div className="mx-auto grid grid-cols-12 pt-4 mb-4 gap-3 px-4">

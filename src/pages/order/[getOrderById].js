@@ -320,7 +320,7 @@ const GetOrderIdPage = () => {
   return (
     <Layout>
       {/* tabs on Hedaer */}
-      <div className="w-full h-full xl:px-6 ">
+      <div className="w-full h-full xl:p-6 ">
         {/* tabs */}
         <OrderTab data = {data}>
           <TabPanel value={"activeOrder"}>
