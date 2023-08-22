@@ -5,6 +5,7 @@ import { useState } from "react";
 import { HiCamera } from "react-icons/hi2";
 import CountrySelect from "../Forms/CountrySelect";
 import DefaultAvatar from "../avatar/defaultavatar";
+import CountrySelect2 from "../Forms/countrySelect2";
 
 const initialValues = {
   name: "",
@@ -89,7 +90,7 @@ const EditProfile = () => {
           </div>
           <div className="flex flex-col 2xl:flex-row gap-y-4 gap-x-4 items-center w-full ">
             {/* user select country components */}
-            <CountrySelect
+            <CountrySelect2
               formik={formik}
               value={selectCountryId}
               isSmall={true}

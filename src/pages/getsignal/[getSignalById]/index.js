@@ -34,7 +34,7 @@ const plans = [
   },
   {
     title: "Free Auto Signal copier",
-    gift :'+ Signaller Fee',
+    gift: "+ Signaller Fee",
     desc: [
       { value: "Auto write signals in telegram" },
       { value: "View the signal as soon as it is sent" },
@@ -56,7 +56,7 @@ const plans = [
   },
   {
     title: "V.I.P Auto Signal copier",
-    gift :'+ Signaller Fee',
+    gift: "+ Signaller Fee",
     desc: [
       { value: "Auto write signals in telegram" },
       { value: "View the signal as soon as it is sent" },
@@ -67,12 +67,12 @@ const plans = [
     offPrice: 30,
   },
 ];
-const TABLE_ROWS = [
+const tableRows = [
   {
     order: { id: "#123455778", signal: "Black Signal" },
     time: {
       date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
+      time: new Date().toLocaleDateString(),
     },
     type: "Sell",
     size: "9999.99",
@@ -80,13 +80,18 @@ const TABLE_ROWS = [
     price: "1.2656",
     sl: "1.2",
     tp: "1.2 ",
+    time2: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleDateString(),
+    },
+    price2: "1.24565",
     profit: { up: "9999.999", down: "999" },
   },
   {
     order: { id: "#123455778", signal: "Black Signal" },
     time: {
       date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
+      time: new Date().toLocaleDateString(),
     },
     type: "Buy",
     size: "9999.99",
@@ -94,13 +99,18 @@ const TABLE_ROWS = [
     price: "1.2656",
     sl: "1.2",
     tp: "1.2 ",
+    time2: {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleDateString(),
+    },
+    price2: "1.24565",
     profit: { up: "9999.999", down: "999" },
   },
   {
     order: { id: "#123455778", signal: "Black Signal" },
     time: {
       date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
+      time: new Date().toLocaleDateString(),
     },
     type: "Sell",
     size: "9999.99",
@@ -108,35 +118,12 @@ const TABLE_ROWS = [
     price: "1.2656",
     sl: "1.2",
     tp: "1.2 ",
-    profit: { up: "9999.999", down: "999" },
-  },
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
+    time2: {
       date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
+      time: new Date().toLocaleDateString(),
     },
-    type: "Sell",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
+    price2: "1.24565",
     profit: { up: "9999.999", down: "999" },
-  },
-  {
-    order: { id: "#123455778", signal: "Black Signal" },
-    time: {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-    },
-    type: "Sell",
-    size: "9999.99",
-    symbol: "GBPUSD",
-    price: "1.2656",
-    sl: "1.2",
-    tp: "1.2 ",
-    profit: { up: "999.999", down: "999" },
   },
 ];
 const GetSignalById = () => {
@@ -192,16 +179,24 @@ const GetSignalById = () => {
             </div>
           </div>
           <div className=" gap-y-2 flex-1  flex flex-col lg:hidden px-4">
-            <button className=" px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
+            <button
+              onClick={() => setShowHistory(!showHistory)}
+              className=" px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg"
+            >
               Signaler history
             </button>
-            <button className="px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
-              Share signaler profile
-            </button>
+            <CopyToClipboard
+              text={`${process.env.NEXT_PUBLIC_BASE_URL}${router.asPath}`}
+              onCopy={() => toast.success("Profile copied to clipboard ")}
+            >
+              <button className="px-4 py-2 text-sm bg-[#171725] bg-opacity-40 text-white ring-2 ring-white  rounded-lg">
+                Share signaler profile
+              </button>
+            </CopyToClipboard>
           </div>
           <hr />
           {showHistory ? (
-            <HistoryTable TABLE_ROWS={TABLE_ROWS} isScroll={true} />
+            <HistoryTable TABLE_ROWS={tableRows} isScroll={true} />
           ) : (
             <div>
               <h1 className="text-xl font-bold text-gray-800 text-center w-full py-2 pt-4">

@@ -1,3 +1,6 @@
+import ServerDesktopTable from "@/components/@section/serverDesktopTable";
+import ServerMobileTable from "@/components/@section/serverMobileTable";
+import MainTable from "@/components/@section/table";
 import CollapsibleTable from "@/components/table/CollapseTable";
 import Layout from "@/container/layout";
 import {
@@ -209,10 +212,21 @@ const EXPIRED_ROWS = [
     new Date().toLocaleDateString()
   ),
 ];
+
+const tableHead = [
+  "server Id",
+  "Ip Address",
+  "Username",
+  "signaler",
+  "start in",
+  "expire in",
+  "",
+];
+
 const userId = () => {
   return (
     <Layout>
-      <div className="w-full px-2 ">
+      <div className="w-full px-2 lg:pt-8 ">
         <Tabs value="Active">
           <TabsHeader className="max-w-md ">
             {data.map(({ label, value }) => (
@@ -226,35 +240,33 @@ const userId = () => {
             ))}
           </TabsHeader>
           <TabsBody>
-            <TabPanel value={"Active"}>
-              <CollapsibleTable pendingServer={true} rows={ACTIVE_ROWS}>
-                <TableHead>
-                  <TableRow className="bg-gray-300">
-                    <TableCell />
-                    <TableCell />
-                    <TableCell>Server ID</TableCell>
-                    <TableCell align="right">IP Address</TableCell>
-                    <TableCell align="right">Username</TableCell>
-                    <TableCell align="right">Signaler</TableCell>
-                    <TableCell align="right"></TableCell>
-                  </TableRow>
-                </TableHead>
-              </CollapsibleTable>
+            <TabPanel className="p-0 pt-4 " value={"Active"}>
+              <div className="h-full xl:max-h-[70vh] overflow-y-auto">
+                <div className="hidden xl:block">
+                  <MainTable header={tableHead}>
+                    {ACTIVE_ROWS.map((row, index) => {
+                      return <ServerDesktopTable active key={index} row={row} />;
+                    })}
+                  </MainTable>
+                </div>
+                <div className="block xl:hidden">
+                  <ServerMobileTable active data={ACTIVE_ROWS} />
+                </div>
+              </div>
             </TabPanel>
-            <TabPanel value={"Expired"}>
-              <CollapsibleTable pendingServer={true} rows={EXPIRED_ROWS}>
-                <TableHead>
-                  <TableRow className="bg-gray-300">
-                    <TableCell />
-                    <TableCell />
-                    <TableCell>Server ID</TableCell>
-                    <TableCell align="right">IP Address</TableCell>
-                    <TableCell align="right">Username</TableCell>
-                    <TableCell align="right">Signaler</TableCell>
-                    <TableCell align="right"></TableCell>
-                  </TableRow>
-                </TableHead>
-              </CollapsibleTable>
+            <TabPanel className="p-0 pt-4" value={"Expired"}>
+              <div className="h-full xl:max-h-[70vh] overflow-y-auto">
+                <div className="hidden xl:block">
+                  <MainTable header={tableHead}>
+                    {EXPIRED_ROWS.map((row, index) => {
+                      return <ServerDesktopTable  key={index} row={row} />;
+                    })}
+                  </MainTable>
+                </div>
+                <div className="block xl:hidden">
+                  <ServerMobileTable  data={EXPIRED_ROWS} />
+                </div>
+              </div>
             </TabPanel>
           </TabsBody>
         </Tabs>

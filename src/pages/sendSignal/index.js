@@ -1,3 +1,4 @@
+import SendSignalMobileTable from "@/components/@section/SendSignalMobileTable";
 import MainTable from "@/components/@section/table";
 import CheckBoxes from "@/components/Forms/checkbox";
 import TableRow from "@/components/common/tableRow";
@@ -41,11 +42,13 @@ const SendSgnalPage = () => {
 
   const orderTypeEditHandler = (row) => {
     setOrder({ id: row.order.id, volume: row.size, sl: row.sl, tp: row.tp });
+    const modify = document.getElementById("modify");
+    modify.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <Layout>
-      <div className="w-full flex flex-col gap-y-4 xl:flex-row lg:gap-x-8 ">
+      <div className="w-full flex flex-col gap-y-4 2xl:flex-row lg:gap-x-8 ">
         {/* trading view Chart */}
         <div className="xl:flex-grow flex flex-col gap-y-6">
           {/* trading chart  */}
@@ -54,6 +57,7 @@ const SendSgnalPage = () => {
           </div>
 
           {/* trading tabale */}
+          {/* trading table desktop */}
           <div className="hidden xl:block h-full max-h-[500px] overflow-auto ">
             <MainTable header={TABLE_HEAD}>
               {ClOSED_TABLE_ROWS.map((row, index) => {
@@ -110,7 +114,13 @@ const SendSgnalPage = () => {
                       <span className="text-sm">{row.commission}</span>
                     </TableRow>
                     <TableRow>
-                      <div className={`flex flex-col ${row.type === "Sell" ? 'text-green-500' :"text-red-500"}`}>
+                      <div
+                        className={`flex flex-col ${
+                          row.type === "Sell"
+                            ? "text-green-500"
+                            : "text-red-500"
+                        }`}
+                      >
                         <span>{row.profit.up}</span>
                         <span>{row.profit.down}</span>
                       </div>
@@ -132,6 +142,13 @@ const SendSgnalPage = () => {
                 );
               })}
             </MainTable>
+          </div>
+          {/* trading table mobile */}
+          <div>
+            <SendSignalMobileTable
+              data={ClOSED_TABLE_ROWS}
+              onClick={orderTypeEditHandler}
+            />
           </div>
         </div>
         <div className="rounded-xl  flex flex-col gap-y-4 ">
@@ -262,7 +279,7 @@ const SendSgnalPage = () => {
               <h1 className="text-blue-500 ">Order Modify</h1>
               {/* icon */}
             </div>
-            <form className="w-full flex  flex-col gap-y-3">
+            <form id="modify" className="w-full flex  flex-col gap-y-3">
               <Input
                 onChange={(e) => console.log(e.target.value)}
                 label="order id"

@@ -54,7 +54,7 @@ const NewEmail = () => {
             {...formik.getFieldProps("newPhone")}
           />
         </div>
-        <div className="w-full flex items-center gap-x-4">
+        <div className="w-full flex items-center gap-x-5">
           <span className="text-sm w-full max-w-[150px]">Confirm Mobile</span>
           <div className="relative flex w-full ">
             <Input

@@ -1,12 +1,6 @@
 import Layout from "@/container/layout";
-import {
-  Input,
-  MenuItem,
-  Option,
-  Select,
-  Switch,
-} from "@material-tailwind/react";
-// import {  Switch, TextField } from "@mui/material";
+import { Input, Option, Select } from "@material-tailwind/react";
+import { Switch } from "@mui/material";
 
 const SubscribePrice = () => {
   return (
@@ -17,10 +11,11 @@ const SubscribePrice = () => {
           <HeaderSub title="Free Subscription" />
           <div className="flex flex-col gap-y-4 px-6 py-4 border-b border-b-gray-300">
             <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 ">
-              <Select label="Subscription period">
+              <Select
+                onChange={(e) => console.log(e)}
+                label="Subscription period"
+              >
                 <Option value="week">Week</Option>
-                <Option value="month">month</Option>
-                <Option value="year">year</Option>
               </Select>
               <Input label="Number of the Week" />
             </div>
@@ -35,15 +30,16 @@ const SubscribePrice = () => {
               <Select label="Commission period">
                 <Option value="week">Week</Option>
                 <Option value="month">month</Option>
-                <Option value="year">year</Option>
               </Select>
               <Input label="Commission percentage (%)" />
             </div>
             <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 ">
               <Select label="Allowed delay time (day)">
-                <Option value="week">Week</Option>
-                <Option value="month">month</Option>
-                <Option value="year">year</Option>
+                {[1, 2, 3, 4, 5].map((item, index) => (
+                  <Option key={index} value={`${item}`}>
+                    {item}
+                  </Option>
+                ))}
               </Select>
             </div>
           </div>
@@ -58,8 +54,6 @@ const SubscribePrice = () => {
             <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 ">
               <Select label="Commission period">
                 <Option value="week">Week</Option>
-                <Option value="month">month</Option>
-                <Option value="year">year</Option>
               </Select>
             </div>
           </div>
@@ -71,8 +65,6 @@ const SubscribePrice = () => {
             <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 ">
               <Select label="Subscription period">
                 <Option value="week">Week</Option>
-                <Option value="month">month</Option>
-                <Option value="year">year</Option>
               </Select>
               <Input label="Number of the Week" />
             </div>
@@ -87,15 +79,16 @@ const SubscribePrice = () => {
               <Select label="Commission period">
                 <Option value="week">Week</Option>
                 <Option value="month">month</Option>
-                <Option value="year">year</Option>
               </Select>
               <Input label="Commission percentage (%)" />
             </div>
             <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 ">
               <Select label="Allowed delay time (day)">
-                <Option value="week">Week</Option>
-                <Option value="month">month</Option>
-                <Option value="year">year</Option>
+                {[1, 2, 3, 4, 5].map((item, index) => (
+                  <Option key={index} value={`${item}`}>
+                    {item}
+                  </Option>
+                ))}
               </Select>
             </div>
           </div>
@@ -110,8 +103,6 @@ const SubscribePrice = () => {
             <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 ">
               <Select label="Commission period">
                 <Option value="week">Week</Option>
-                <Option value="month">month</Option>
-                <Option value="year">year</Option>
               </Select>
             </div>
           </div>

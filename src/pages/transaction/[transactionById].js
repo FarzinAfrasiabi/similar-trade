@@ -1,4 +1,8 @@
-import CollapsibleTable from "@/components/table/CollapseTable";
+import TransactionDesktopTable from "@/components/@section/TranActionDesktoptable";
+import TransactionMobileTable from "@/components/@section/TransActionMobileTable";
+import MainTable from "@/components/@section/table";
+import TransActionsModalContent from "@/components/Transactions/transactionModalContent";
+import CustomModals from "@/components/custom/customModal";
 import Layout from "@/container/layout";
 import {
   Tab,
@@ -6,14 +10,18 @@ import {
   Tabs,
   TabsBody,
   TabsHeader,
+  Textarea,
 } from "@material-tailwind/react";
 import { TableCell, TableHead, TableRow } from "@mui/material";
+import { useState } from "react";
+import { FaDatabase } from "react-icons/fa6";
+import { HiBarsArrowDown, HiOutlineArrowTrendingDown } from "react-icons/hi2";
 
 //* for create Data
 function createData(
   paymentId,
   type,
-  ammount,
+  amount,
   method,
   status,
   startTime,
@@ -22,7 +30,7 @@ function createData(
   return {
     paymentId,
     type,
-    ammount,
+    amount,
     method,
     status,
     expireTime,
@@ -118,10 +126,71 @@ const UNPAID_DATA = [
 
 const ALL_PAYMENT = [...PAID_DATA, ...UNPAID_DATA];
 
+const tableHeader = [
+  "payment Id",
+  "Type",
+  "Date& Time",
+  "Amount",
+  "Method",
+  "Status",
+  "Receipt",
+  "",
+];
+
 const TransActionById = () => {
+  const [open, setOpen] = useState(false);
+  const [row, setRow] = useState(null);
+  const [openModal, setOpenMOdal] = useState(false);
+  const clickHandler = (row) => {
+    setRow(row);
+    setOpenMOdal(true);
+  };
   return (
     <Layout>
-      <div className="w-full px-2 ">
+      {row && (
+        <CustomModals
+          openModal={openModal}
+          title={"Bank transfer Receipt"}
+          handleClose={() => setOpenMOdal(false)}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            <TransActionsModalContent
+              isStatus={true}
+              type={"Status"}
+              row={row.status}
+            />
+            <TransActionsModalContent
+              type={"Amount"}
+              row={row.ammount}
+              icon={<FaDatabase className="text-xl" />}
+            />
+            <TransActionsModalContent
+              icon={<HiBarsArrowDown />}
+              type={"type"}
+              row={"1224Zh5554sasdg"}
+            />
+            <TransActionsModalContent
+              icon={<HiBarsArrowDown />}
+              type={"Date & time"}
+              row={row.expireTime}
+            />
+            <TransActionsModalContent
+              type={"Sender address"}
+              row={"JHAEIF6374NXY3484748949"}
+              icon={<HiBarsArrowDown />}
+            />
+            <TransActionsModalContent
+              type={"Transaction link"}
+              row={"JHAEIF6374NXY3484748949"}
+              icon={<HiOutlineArrowTrendingDown />}
+            />
+          </div>
+          <div className="my-4">
+            <Textarea label="Description" className=""></Textarea>
+          </div>
+        </CustomModals>
+      )}
+      <div className="w-full px-2 lg:pt-8 ">
         <Tabs value="all">
           <TabsHeader className="max-w-md ">
             {data.map(({ label, value }) => (
@@ -135,20 +204,70 @@ const TransActionById = () => {
             ))}
           </TabsHeader>
           <TabsBody>
-            <TabPanel value={"all"}>
-              <CollapsibleTable rows={ALL_PAYMENT}>
-                <TableHeaders />
-              </CollapsibleTable>
+            <TabPanel className="p-0 pt-4" value={"all"}>
+              <div>
+                <div className="hidden xl:block">
+                  <MainTable header={tableHeader}>
+                    {ALL_PAYMENT.map((row, index) => {
+                      return (
+                        <TransactionDesktopTable
+                          key={index}
+                          row={row}
+                          onClick={clickHandler}
+                        />
+                      );
+                    })}
+                  </MainTable>
+                </div>
+                <div className="block xl:hidden">
+                  <TransactionMobileTable
+                    data={ALL_PAYMENT}
+                    onClick={clickHandler}
+                  />
+                </div>
+              </div>
             </TabPanel>
-            <TabPanel value={"paid"}>
-              <CollapsibleTable rows={PAID_DATA}>
-                <TableHeaders />
-              </CollapsibleTable>
+            <TabPanel className="p-0 pt-4" value={"paid"}>
+              <div className="hidden xl:block">
+                <MainTable header={tableHeader}>
+                  {PAID_DATA.map((row, index) => {
+                    return (
+                      <TransactionDesktopTable
+                        key={index}
+                        row={row}
+                        onClick={clickHandler}
+                      />
+                    );
+                  })}
+                </MainTable>
+              </div>
+              <div className="block xl:hidden">
+                <TransactionMobileTable
+                  data={PAID_DATA}
+                  onClick={clickHandler}
+                />
+              </div>
             </TabPanel>
-            <TabPanel value={"unpaid"}>
-              <CollapsibleTable rows={UNPAID_DATA}>
-                <TableHeaders />
-              </CollapsibleTable>
+            <TabPanel className="p-0 pt-4" value={"unpaid"}>
+              <div className="hidden xl:block">
+                <MainTable header={tableHeader}>
+                  {UNPAID_DATA.map((row, index) => {
+                    return (
+                      <TransactionDesktopTable
+                        key={index}
+                        row={row}
+                        onClick={clickHandler}
+                      />
+                    );
+                  })}
+                </MainTable>
+              </div>
+              <div className="block xl:hidden">
+                <TransactionMobileTable
+                  data={UNPAID_DATA}
+                  onClick={clickHandler}
+                />
+              </div>
             </TabPanel>
           </TabsBody>
         </Tabs>

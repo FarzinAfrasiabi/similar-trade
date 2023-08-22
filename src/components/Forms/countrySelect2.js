@@ -2,53 +2,45 @@ import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+
 import { countryCode } from "@/utils/CountryCode";
 import Inputs from "./Inputs";
 import { FormHelperText, TextField } from "@mui/material";
+import { Badge, Input, Option, Select } from "@material-tailwind/react";
 
-const CountrySelect = ({ formik, isSmall = false }) => {
+const CountrySelect2 = ({ formik, isSmall = false }) => {
   return (
     <div className="flex flex-col lg:flex-row w-full lg:items-center lg:justify-center gap-x-4 gap-y-4">
-      <FormControl className="flex-1">
-        <TextField
-          select
-          size={isSmall ? "small" : "medium"}
-          InputProps={{
-            className: "py-1 !rounded-lg focus:border-blue-500",
-          }}
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
+      <div className="flex-1">
+        <Select
           label={" Your Country"}
-          style={{ borderRadius: "10px", fontWeight: "400" }}
           name="countryCode"
+          size="lg"
           value={formik.values.countryCode}
-          onChange={formik.handleChange}
+          onChange={(e) => formik.setFieldValue("countryCode", e)}
           error={
             formik.touched.countryCode && Boolean(formik.errors.countryCode)
           }
         >
           {countryCode.map((code, index) => {
             return (
-              <MenuItem
+              <Option
                 className="flex items-center justify-evenly gap-x-6"
                 key={index}
                 value={`${code.dial_code}`}
               >
                 <span className="flex-1">{code.name}</span>
-              </MenuItem>
+              </Option>
             );
           })}
-        </TextField>
-        <FormHelperText className="text-red-600">
+        </Select>
+        <span className="text-red-600">
           {formik.touched.countryCode ? formik.errors.countryCode : ""}
-        </FormHelperText>
-      </FormControl>
+        </span>
+      </div>
       <div className="flex items-center gap-x-2 flex-1">
         <span
-          className={`w-12  ${
-            isSmall ? "h-[47px]" : "h-[50px]"
-          }  px-2  rounded-lg ring-1 flex items-center justify-center  ${
+          className={`w-12  h-10 px-2  rounded-lg ring-1 flex items-center justify-center  ${
             formik.values.countryCode.length !== 0
               ? "ring-blue-500 ring-2"
               : "ring-gray-400  "
@@ -58,9 +50,9 @@ const CountrySelect = ({ formik, isSmall = false }) => {
             ? formik.values.countryCode
             : "+"}
         </span>
-        <Inputs
-          isSmall={isSmall}
-          formik={formik}
+        <Input
+          size="lg"
+          {...formik.getFieldProps("phone")}
           name={"phone"}
           label={"phone Number"}
         />
@@ -69,4 +61,4 @@ const CountrySelect = ({ formik, isSmall = false }) => {
   );
 };
 
-export default CountrySelect;
+export default CountrySelect2;

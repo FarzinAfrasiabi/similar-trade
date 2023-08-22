@@ -1,4 +1,6 @@
-import { Dialog, Modal } from "@mui/material";
+// import { Dialog, DialogContent, Modal } from "@mui/material";
+
+import { Dialog, DialogBody } from "@material-tailwind/react";
 import { HiXMark } from "react-icons/hi2";
 
 const CustomModals = ({
@@ -9,15 +11,11 @@ const CustomModals = ({
   size = "sm",
 }) => {
   return (
-    <Modal className="!min-w-[600px]" open={openModal}>
-      <div
-        className={` absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg py-3 px-3 ${
-          size === "sm" ? "min-w-full" : "!min-w-[650px]"
-        } `}
-      >
+    <Dialog className="" size={size} open={openModal}>
+      <div className={`bg-white rounded-lg shadow-lg py-3 px-3 `}>
         {/* header */}
-        <div className="w-full flex items-center justify-between pb-2 border-b border-gray-400">
-          <div className="p-2 rounded-md ring-1 ring-gray-300 text-gray-600 text-sm">
+        <div className="w-full flex items-center justify-between pb-2 border-b border-gray-400 font-medium">
+          <div className="p-2 rounded-md ring-1 ring-gray-300 text-gray-800 text-sm">
             {title}
           </div>
           {/* close btn */}
@@ -26,14 +24,14 @@ const CustomModals = ({
               onClick={handleClose}
               className="bg-white rounded-md shadow-lg p-1 hover:scale-125 hover:rotate-180 transition-all ease-in-out duration-150"
             >
-              <HiXMark />
+              <HiXMark className="text-lg text-gray-900" />
             </button>
           </div>
         </div>
         {/* content */}
-        {children}
       </div>
-    </Modal>
+      <DialogBody className="bg-white  shadow-lg">{children}</DialogBody>
+    </Dialog>
   );
 };
 
