@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const RegisterLayout = ({ children }) => {
   return (
-    <div className="w-full  h-screen flex flex-col bg-[#FAFAFB] lg:overflow-hidden">
+    <div className="w-full  min-h-screen flex flex-col bg-[#FAFAFB] lg:overflow-hidden">
       <div className=" py-3 sticky top-0 z-50 backdrop-blur-xl blur-0 opacity-100 lg:hidden bg-white shadow-lg border-b border-gray-300">
         <div className="w-full flex items-center justify-center gap-x-3">
           {/* Brand */}

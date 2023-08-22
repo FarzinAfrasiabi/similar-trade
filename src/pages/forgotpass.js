@@ -22,7 +22,7 @@ const Forgot = () => {
             width={250}
             height={250}
             alt="verify_pic"
-            className="max-w-sm object-contain"
+            className="max-w-md object-contain"
           />
         </div>
         <h1 className="text-2xl lg:text-4xl text-slate-900">Forgot Password</h1>

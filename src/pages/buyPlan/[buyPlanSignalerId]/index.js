@@ -14,14 +14,15 @@ const BuyPlanById = () => {
     <Layout>
       <div className="w-full flex flex-col gap-y-8 pb-8">
         {/* invoice data */}
-        <div className="w-full xl:container xl:mx-auto flex flex-col gap-y-8 gap-x-2 md:flex-row justify-between">
-          <div className="flex flex-col items-center md:items-start gap-y-2 md:flex-row  gap-x-2">
+        <div className="w-full xl:container xl:mx-auto flex flex-col gap-y-8 gap-x-2 xl:flex-row justify-between">
+          <div className="flex flex-col items-center xl:items-start gap-y-2 xl:flex-row  gap-x-2">
             <div className="">
               <Image
-                width={200}
-                height={200}
+                width={500}
+                height={500}
                 alt="payment"
                 src={"/images/pages/payment.svg"}
+                className="object-cover max-w-md"
               />
             </div>
             <div className="flex-col pt-6 gap-y-4">
@@ -34,7 +35,7 @@ const BuyPlanById = () => {
             </div>
           </div>
           {/* invoice Data */}
-          <div className="flex flex-col gap-y-2 w-full max-w-xs text-gray-800 pt-6">
+          <div className="flex flex-col mx-auto xl:mx-0 gap-y-2 w-full max-w-xs text-gray-800 pt-6">
             <h1 className="text-lg capitalize ">invoice</h1>
             <div className=" flex items-center gap-x-8 font-normal">
               {/* payment Date */}
