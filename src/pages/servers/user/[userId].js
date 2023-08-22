@@ -1,7 +1,6 @@
 import ServerDesktopTable from "@/components/@section/serverDesktopTable";
 import ServerMobileTable from "@/components/@section/serverMobileTable";
 import MainTable from "@/components/@section/table";
-import CollapsibleTable from "@/components/table/CollapseTable";
 import Layout from "@/container/layout";
 import {
   Tab,
@@ -10,7 +9,6 @@ import {
   TabsBody,
   TabsHeader,
 } from "@material-tailwind/react";
-import { TableCell, TableHead, TableRow } from "@mui/material";
 
 //* for create Data
 function createData(

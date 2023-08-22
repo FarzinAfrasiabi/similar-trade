@@ -4,7 +4,6 @@ import Layout from "@/container/layout";
 import { Button, Input, TabPanel } from "@material-tailwind/react";
 import { useState } from "react";
 import MainTable from "../@section/table";
-import TableRow from "../common/tableRow";
 import { BiPlus } from "react-icons/bi";
 import CustomModals from "../custom/customModal";
 import SubDescTable from "../@section/subDesktopTable";
