@@ -33,7 +33,7 @@ const ChatPage = () => {
         <div className="w-full p-2 bg-white shadow-md rounded-xl h-full">
           <div className="w-full h-full flex relative overflow-hidden">
             {/* chat sidebar */}
-            <div>
+            <div className="hidden md:block">
               <div className="h-full block static border-r-2 border-gray-400 ">
                 <div className="w-80 flex flex-col static overflow-y-auto overflow-x-hidden h-full">
                   {/* search user and other */}
