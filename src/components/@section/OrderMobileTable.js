@@ -1,3 +1,4 @@
+import { calcDate } from "@/utils/Date";
 import {
   Accordion,
   AccordionBody,
@@ -6,6 +7,7 @@ import {
 
 import { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
+import { HiArrowRight } from "react-icons/hi2";
 
 function Icon({ id, open }) {
   return (
@@ -48,25 +50,36 @@ const OrderMobileTable = ({ data }) => {
               <span
                 className={`absolute left-0 w-2 h-full   ${
                   item.type === "Sell" ? "bg-red-500" : "bg-blue-500"
-                } rounded-full`}
+                } ${open === index + 1 ? "rounded-t-full" : "rounded-full"}`}
               ></span>
-
-              <TableItems
-                isCol={true}
-                mainData={item.order.id}
-                otherData={item.order.signal}
-              />
-              <div className="flex items-center gap-x-2">
-                <div className="block flex-1 pr-1 border-r border-r-gray-400">
-                  <TableItems mainData={item.type} size="text-sm" />
+              <div className="flex flex-col gap-y-2">
+                <div className="flex items-center gap-x-2">
+                  <TableItems mainData={item.symbol} />,
+                  <span
+                    className={`${
+                      item.type === "Sell" ? "text-red-500" : "text-blue-500"
+                    } font-semibold`}
+                  >
+                    {item.type === "Sell"
+                      ? `Sell ${item.size}`
+                      : `Buy${item.size}`}
+                  </span>
                 </div>
-
-                <div className="block pr-1 border-r border-r-gray-400">
-                  <TableItems mainData={item.symbol} size="text-xs" />
+                <div className="flex items-center gap-x-2 text-gray-600">
+                  <span className="text-sm">{item.price}</span>
+                  <HiArrowRight className="" />
+                  <span className="text-sm">{item.price2}</span>
                 </div>
               </div>
-              <div className="block lg:hidden">
-                <TableItems mainData={item.price} size="text-xs" />
+              <div className="flex-1"></div>
+              <div className="block lg:">
+                <span
+                  className={`font-medium ${
+                    item.type === "Sell" ? "text-red-500" : "text-blue-500"
+                  }`}
+                >
+                  {item.profit.up}
+                </span>
               </div>
             </AccordionHeader>
             <AccordionBody
@@ -74,56 +87,45 @@ const OrderMobileTable = ({ data }) => {
               style={{}}
             >
               <span
-                className={`absolute left-0 w-2 h-full  rounded-full ${
+                className={`absolute left-0 w-2 h-full  rounded-b-full ${
                   item.type === "Sell" ? "bg-red-500" : "bg-blue-500"
                 }`}
               ></span>
-              <div className="flex flex-col  gap-y-4 lg:items-center justify-between  py-4 w-full">
-                <div className="flex flex-col gap-y-2  border-b lg:border-b-0 w-full">
-                  <div className="w-full flex items-center justify-between   gap-x-8">
-                    <span className="flex-1 lg:flex-initial">size :</span>
-                    <TableItems mainData={item.size} />
+              <div className="flex items-center gap-x-2 text-gray-800 font-medium pt-2">
+                <span>{calcDate(item.time.date)}</span>
+                <span>{calcDate(item.time.time)}</span>
+              </div>
+              <div className="flex flex-col gap-y-3 pt-4">
+                <div className="flex items-center justify-between gap-x-10">
+                  <div className="flex items-center flex-1 justify-between">
+                    <span className="font-medium">SL : </span>
+                    <span className="font-medium">{item.sl}</span>
                   </div>
-                  <div className="w-full flex items-center justify-between   gap-x-8">
-                    <span className="flex-1 lg:flex-initial">Sl :</span>
-                    <TableItems mainData={item.sl} />
-                  </div>
-                  <div className="w-full flex items-center justify-between   gap-x-8">
-                    <span className="flex-1 lg:flex-initial">tp :</span>
-                    <TableItems mainData={item.tp} />
-                  </div>
-
-                  <div className="w-full flex items-center justify-between  gap-x-8">
-                    <span className="flex-1 lg:flex-initial gap-x-8">
-                      Profit :
-                    </span>
-                    <TableItems
-                      mainData={item.profit.up}
-                      otherData={item.order.down}
-                      color="text-blue-600"
-                    />
+                  <div className="flex flex-1 items-center justify-between ">
+                    <span className="font-medium">Swap : </span>
+                    <span className="font-medium">{item.swap}</span>
                   </div>
                 </div>
-
-                <div className="flex flex-col lg:hidden gap-y-2 border-b lg:border-b-0">
-                  <div className="w-full flex items-center justify-between">
-                    <span className="flex-1">start :</span>
-                    <TableItems
-                      mainData={item.time.date}
-                      otherData={item.time.time}
-                    />
+                <div className="flex items-center justify-between gap-x-10">
+                  <div className="flex items-center justify-between flex-1">
+                    <span className="font-medium">Tp : </span>
+                    <span className="font-medium">{item.tp}</span>
                   </div>
-                  <div className="w-full flex items-center justify-between">
-                    <span className="flex-1">Close :</span>
-                    <TableItems
-                      mainData={item.time2.date}
-                      otherData={item.time2.time}
-                    />
+                  <div className="flex items-center justify-between flex-1">
+                    <span className="font-medium">Texes : </span>
+                    <span className="font-medium">{item.size}</span>
                   </div>
                 </div>
-                {/* <div className="w-full flex items-center justify-center py-2">
-                  <SubScribeAction onClick={() => onClick(item)} />
-                </div> */}
+                <div className="flex items-center justify-between gap-x-10">
+                  <div className="flex items-center justify-between flex-1">
+                    <span className="font-medium">Id : </span>
+                    <span className="font-medium text-xs">{item.order.id}</span>
+                  </div>
+                  <div className="flex items-center  flex-1 justify-between">
+                    <span className="font-medium text-xs">Com : </span>
+                    <span className="font-medium ">{item.commission}</span>
+                  </div>
+                </div>
               </div>
             </AccordionBody>
           </Accordion>

@@ -1,92 +1,67 @@
 import Layout from "@/container/layout";
-import { FingerPrintIcon } from "@heroicons/react/24/outline";
+import { Drawer, IconButton, Typography } from "@material-tailwind/react";
+import { useState } from "react";
+import { HiMenu } from "react-icons/hi";
+
 import {
-  Badge,
-  Box,
-  Chip,
-  ListItem,
-  ListItemAvatar,
-  ListItemButton,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Children } from "react";
-import {
-  HiPaperAirplane,
-  HiPaperClip,
-  HiSearch,
-  HiSearchCircle,
-} from "react-icons/hi";
-import {
+  HiListBullet,
   HiMagnifyingGlass,
   HiMiniPaperAirplane,
   HiMiniPaperClip,
 } from "react-icons/hi2";
 const ChatPage = () => {
-  //* hooks
-  const theme = useTheme();
+  const [open, setOpen] = useState(false);
   return (
     <Layout>
       {/* chats */}
-      <div className="p-10 h-full">
+      <div className="p-2 lg:p-10 h-full">
+        <div className="lg:hidden block">
+          <Drawer open={open} onClose={() => setOpen(false)} className="p-4">
+            <div className="py-2">
+              <div className="mb-6 flex items-center justify-between">
+                <Typography variant="h5" color="blue-gray">
+                  Users
+                </Typography>
+                <IconButton
+                  variant="text"
+                  color="blue-gray"
+                  onClick={() => setOpen(false)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="h-5 w-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </IconButton>
+              </div>
+              <SideBarChat hidden={false} />
+            </div>
+          </Drawer>
+        </div>
         <div className="w-full p-2 bg-white shadow-md rounded-xl h-full">
           <div className="w-full h-full flex relative overflow-hidden">
             {/* chat sidebar */}
-            <div className="hidden md:block">
-              <div className="h-full block static border-r-2 border-gray-400 ">
-                <div className="w-80 flex flex-col static overflow-y-auto overflow-x-hidden h-full">
-                  {/* search user and other */}
-                  <div className="p-3 border-b  flex items-center gap-x-4  border-gray-300">
-                    <div className="w-9 h-9 rounded-full bg-gray-600"></div>
-                    <div className="relative flex items-center justify-between">
-                      <input
-                        type="text"
-                        className="border-none py-2 outline-none ring-1 ring-gray-400 rounded-md px-2 text-sm focus:shadow focus:ring-2 transition-all ease-in-out duration-100"
-                        placeholder="search"
-                      />
-                      <span className="absolute text-gray-600 right-2 text-xl">
-                        <HiMagnifyingGlass />
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* users */}
-                  <div className="h-[calc(100%-4.0625rem)]">
-                    <div className="relative h-full overflow-y-auto overflow-x-hidden ">
-                      <div className="p-2 flex flex-col gap-y-6">
-                        <h5>Chats</h5>
-                        <ul className="flex flex-col gap-y-4">
-                          {[1, 2, 2, 2, 2, 2, 2, 2, 3, 4, 5].map((_, i) => {
-                            return (
-                              <li
-                                key={i}
-                                className="p-2 w-full border-b-2 border-gray-300 flex gap-x-2 last:border-b-0 items-center"
-                              >
-                                {/* avatar */}
-                                <div className="w-9 h-9 rounded-full bg-gray-600"></div>
-                                <div className="flexx flex-col gap-y-2">
-                                  <h2 className="text-sm font-semibold">{`user__${
-                                    i + 1
-                                  }`}</h2>
-                                  <h4 className="text-xs text-gray-500">
-                                    @username
-                                  </h4>
-                                </div>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <SideBarChat />
             {/* chats main */}
             <div className="flex-grow-1 w-full h-full ">
               {/* chat user header */}
               <div className="w-full flex items-center justify-between p-4  border-b  border-gray-300">
+                <button
+                  onClick={() => setOpen(true)}
+                  type="button"
+                  className="text-2xl pr-4 flex lg:hidden"
+                >
+                  <HiListBullet className="text-2xl text-gray-600" />
+                </button>
                 <div className="  w-full flex items-center gap-x-2 ">
                   <div className="w-7 h-7 rounded-full bg-gray-600"></div>
                   <span className="text-sm">farzin afrasiabi</span>
@@ -208,14 +183,59 @@ function ContentData({ isReverse = false, content }) {
   );
 }
 
-/**
- * {[1, 2, 3, 4, 5, 6,7,7,7,7,7,7,8,8,8,8].map((item) => {
+function SideBarChat({ hidden = true }) {
+  return (
+    <div className={`${hidden ? "hidden" : "block"}`}>
+      <div className="h-full block static border-r-2 border-gray-400 ">
+        <div
+          className={`flex flex-col static overflow-y-auto overflow-x-hidden h-full ${
+            hidden ? "w-80" : ""
+          }`}
+        >
+          {/* search user and other */}
+          <div className="p-3 border-b  flex items-center gap-x-4  border-gray-300">
+            <div className="w-9 h-9 rounded-full bg-gray-600"></div>
+            <div className="relative flex items-center justify-between">
+              <input
+                type="text"
+                className="border-none py-2 outline-none ring-1 ring-gray-400 rounded-md px-2 text-sm focus:shadow focus:ring-2 transition-all ease-in-out duration-100"
+                placeholder="search"
+              />
+              <span className="absolute text-gray-600 right-2 text-xl">
+                <HiMagnifyingGlass />
+              </span>
+            </div>
+          </div>
+
+          {/* users */}
+          <div className="h-[calc(100%-4.0625rem)]">
+            <div className="relative h-full overflow-y-auto overflow-x-hidden ">
+              <div className="p-2 flex flex-col gap-y-6">
+                <h5>Chats</h5>
+                <ul className="flex flex-col gap-y-4">
+                  {[1, 2, 2, 2, 2, 2, 2, 2, 3, 4, 5].map((_, i) => {
                     return (
-                      <UserChat
-                        key={item}
-                        isReverse={item % 2 === 0 ? true : false}
-                        content={"hello my name is  matin-sangabi"}
-                      />
+                      <li
+                        key={i}
+                        className="p-2 w-full border-b-2 border-gray-300 flex gap-x-2 last:border-b-0 items-center"
+                      >
+                        {/* avatar */}
+                        <div className="w-9 h-9 rounded-full bg-gray-600"></div>
+                        <div className="flexx flex-col gap-y-2">
+                          <h2 className="text-sm font-semibold">{`user__${
+                            i + 1
+                          }`}</h2>
+                          <h4 className="text-xs text-gray-500">@username</h4>
+                        </div>
+                      </li>
                     );
                   })}
- */
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
