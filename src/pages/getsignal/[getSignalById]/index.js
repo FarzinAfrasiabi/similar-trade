@@ -207,7 +207,7 @@ const GetSignalById = () => {
                 {plans.map((plan, i) => (
                   <div
                     key={i}
-                    className="col-span-12 md:col-span-6 xl:col-span-3"
+                    className="col-span-12 md:col-span-6 xl:col-span-3 2xl:col-span-3"
                   >
                     <SignalerPlans id={router.query.getSignalById} {...plan} />
                   </div>

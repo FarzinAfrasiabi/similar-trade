@@ -36,12 +36,14 @@ const ResetPassFrom = () => {
           label={"new Password"}
           formik={formik}
           name={"newPassword"}
+          isSmall
         />
         <Inputs
           type="password"
           label={"Confirm new Password"}
           formik={formik}
           name={"newPassword2"}
+          isSmall
         />
       </div>
       <Buttons type="submit">Set New Password</Buttons>

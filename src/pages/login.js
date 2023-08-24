@@ -46,11 +46,13 @@ const Login = () => {
             formik={formik}
             name={"email"}
             label={"Youre Email / UserName"}
+            isSmall
           />
           <Password
             formik={formik}
             name={"password"}
             label={"Enter Password"}
+            isSmall
           />
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center">

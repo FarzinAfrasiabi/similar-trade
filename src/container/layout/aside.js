@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const Aside = () => {
   const router = useRouter();
   return (
-    <aside className="z-20 hidden lg:w-52 xl:w-64  bg-white shadow-xl  lg:block flex-shrink-0 ">
+    <aside className="z-20 hidden lg:w-52 xl:w-64  bg-white shadow-xl  lg:block flex-shrink-0 min-h-screen h-full overflow-auto">
       <div className="flex flex-col py-4 h-full justify-between">
         {/* brand */}
         <div className="flex items-end  px-6 gap-x-2 border-b  border-r-gray-300 pb-5">

@@ -37,30 +37,31 @@ export default function SignalerPlans({
             {gift}
           </span>
         )}
-        <Typography
-          variant="h1"
-          className="mt-6 flex justify-center gap-1 text-5xl font-normal text-[#0062FF]"
-        >
+        <Typography className="mt-6 flex  gap-1 text-4xl font-normal text-[#0062FF]">
           {price !== 0 ? (
             offPrice !== 0 ? (
               <>
-                <span className="mt-2 text-4xl">$</span>
+                <span className="mt-2 text-3xl">$</span>
                 {(price * (100 - offPrice)) / 100}
-                <span className="self-end text-4xl">/mo</span>
-                <span className="self-end text-sm">
-                  <b className="font-normal  line-through">{price}$</b>{" "}
-                  {`(${offPrice} % Off)`}
-                </span>
+                <span className="self-end text-3xl">/mo</span>
               </>
             ) : (
               <></>
             )
           ) : (
             <>
-              <span className="mt-2 text-4xl">Free</span>
+              <span className="mt-2 self-start h-16 text-4xl">Free</span>
             </>
           )}
         </Typography>
+        {price !== 0 ? (
+          offPrice !== 0 ? (
+            <span className=" text-sm text-blue-500">
+              <b className="font-normal  line-through">{price}$</b>{" "}
+              {`(${offPrice} % Off)`}
+            </span>
+          ) : null
+        ) : null}
       </CardHeader>
       <CardBody className="p-0">
         <ul className="flex flex-col gap-4">

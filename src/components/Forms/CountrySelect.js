@@ -13,11 +13,7 @@ const CountrySelect = ({ formik, isSmall = false }) => {
       <FormControl className="flex-1">
         <TextField
           select
-          size={isSmall ? "small" : "medium"}
-          InputProps={{
-            className: "py-1 !rounded-lg focus:border-blue-500",
-          }}
-          labelId="demo-simple-select-autowidth-label"
+          size={"small"}
           id="demo-simple-select-autowidth"
           label={" Your Country"}
           style={{ borderRadius: "10px", fontWeight: "400" }}
@@ -47,7 +43,7 @@ const CountrySelect = ({ formik, isSmall = false }) => {
       <div className="flex items-center gap-x-2 flex-1">
         <span
           className={`w-12  ${
-            isSmall ? "h-[47px]" : "h-[50px]"
+            isSmall ? "h-[38px]" : "h-[50px]"
           }  px-2  rounded-lg ring-1 flex items-center justify-center  ${
             formik.values.countryCode.length !== 0
               ? "ring-blue-500 ring-2"

@@ -76,17 +76,18 @@ const Signin = () => {
           </div>
           {/* name and last name */}
           <div className="w-full flex flex-col lg:flex-row items-center gap-4">
-            <Inputs name="name" formik={formik} label={"First Name"} />
-            <Inputs name={"lastName"} formik={formik} label={"Last Name"} />
+            <Inputs isSmall name="name" formik={formik} label={"First Name"} />
+            <Inputs isSmall name={"lastName"} formik={formik} label={"Last Name"} />
           </div>
           {/* userName and email */}
           <div className="w-full flex flex-col lg:flex-row items-center gap-4">
-            <Inputs name={"userName"} formik={formik} label={"UserName"} />
+            <Inputs isSmall name={"userName"} formik={formik} label={"UserName"} />
             <Inputs
               name={"email"}
               formik={formik}
               type="email"
               label={"Mail Address"}
+              isSmall
             />
           </div>
           {/* country coode */}
@@ -94,6 +95,7 @@ const Signin = () => {
             formik={formik}
             onChnage={changeHandler}
             value={selectCountryId}
+            isSmall
           />
           {/* password */}
           <div className="flex flex-col gap-y-1">

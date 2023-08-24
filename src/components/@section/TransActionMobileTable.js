@@ -60,22 +60,19 @@ const TransactionMobileTable = ({ data, onClick }) => {
               ></span>
 
               <TableItems mainData={row.paymentId} />
-              <div className="flex items-center gap-x-2 ">
-                <button
-                  type="button"
-                  className={`p-1 text-sm w-28 rounded-md font-medium ${
-                    row.status === "unpaid"
-                      ? "bg-orange-100 text-orange-700 hover:bg-orange-700 hover:text-white"
-                      : row.status === "progressing"
-                      ? "bg-blue-100 text-blue-600 hover:bg-blue-500 hover:text-white "
-                      : row.status === "Decliend"
-                      ? "bg-red-100 text-red-600 hover:bg-red-600 hover:text-white"
-                      : "bg-green-100 text-green-600 hover:bg-green-700 hover:text-white"
-                  }`}
-                >
-                  {row.status}
-                </button>
-              </div>
+              <span
+                className={`p-1 text-sm w-28 text-center cursor-pointer rounded-md font-medium ${
+                  row.status === "unpaid"
+                    ? "bg-orange-100 text-orange-700 hover:bg-orange-700 hover:text-white"
+                    : row.status === "progressing"
+                    ? "bg-blue-100 text-blue-600 hover:bg-blue-500 hover:text-white "
+                    : row.status === "Decliend"
+                    ? "bg-red-100 text-red-600 hover:bg-red-600 hover:text-white"
+                    : "bg-green-100 text-green-600 hover:bg-green-700 hover:text-white"
+                }`}
+              >
+                {row.status}
+              </span>
             </AccordionHeader>
             <AccordionBody
               className=" px-6 py-0 scale-100 relative rounded-b-xl"

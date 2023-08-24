@@ -6,7 +6,7 @@ const Password = ({ label, name, formik }) => {
   return (
     <div className="relative flex items-center ">
       <TextField
-        size="medium"
+        size="small"
         fullWidth
         type={showPassword ? "text" : "password"}
         InputLabelProps={{
@@ -22,17 +22,17 @@ const Password = ({ label, name, formik }) => {
         name={name}
         label={label}
         variant="outlined"
-        autoComplete="on"
+        autoComplete="off"
         value={formik.values[name]}
         onChange={formik.handleChange}
         error={formik.touched[name] && Boolean(formik.errors[name])}
         helperText={formik.touched[name] && formik.errors[name]}
       />
-      <button
+      {/* <button
         onClick={() => setShowPassword(!showPassword)}
         type="button"
         className={`absolute right-2 ${formik.touched[name] ? "top-5" : ""} `}
-      ></button>
+      ></button> */}
     </div>
   );
 };

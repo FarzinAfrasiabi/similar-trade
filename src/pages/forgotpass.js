@@ -35,6 +35,7 @@ const Forgot = () => {
               name={"forgotPass"}
               formik={formik}
               label={"Enter Email or Phone"}
+              isSmall
             />
           </div>
           <Buttons type="submit">Recover Password</Buttons>

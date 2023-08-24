@@ -35,8 +35,8 @@ const RegisterLayout = ({ children }) => {
             <div className="bg-[url(/images/logo/login_signup.svg)] bg-center w-[50vw]  h-[60vw] bg-contain bg-no-repeat  "></div>
           </div>
         </div>
-        <div className="col-span-12 lg:col-span-9 z-10  ">
-          <div className="w-full lg:h-screen flex items-center justify-center ">
+        <div className="col-span-12 lg:col-span-9 z-10  min-h-screen h-full overflow-auto ">
+          <div className="w-full h-full flex items-center justify-center ">
             {children}
           </div>
         </div>

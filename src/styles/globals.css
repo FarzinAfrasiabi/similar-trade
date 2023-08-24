@@ -27,7 +27,9 @@ button {
   font-weight: 500 !important;
   font-size: 13px !important;
 }
-
+fieldset {
+  border-radius: 10px !important;
+}
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
