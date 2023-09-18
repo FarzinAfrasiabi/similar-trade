@@ -98,9 +98,10 @@ const TicketPage = () => {
         title={"new Discount Code"}
         openModal={newTicket}
         handleClose={() => setNewTicket(false)}
+        size="md"
       >
         <form
-          className="flex flex-col gap-y-2 gap-x-4 lg:flex-row  mt-6 h-full max-w-2xl w-full"
+          className="flex flex-col gap-y-2 gap-x-4 lg:flex-row  mt-6 h-full  w-full"
           onSubmit={formik.handleSubmit}
         >
           <div className="flex-auto flex flex-col h-full gap-y-6">
