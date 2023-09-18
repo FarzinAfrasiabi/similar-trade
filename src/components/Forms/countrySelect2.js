@@ -1,16 +1,12 @@
 import * as React from "react";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 
 import { countryCode } from "@/utils/CountryCode";
-import Inputs from "./Inputs";
-import { FormHelperText, TextField } from "@mui/material";
-import { Badge, Input, Option, Select } from "@material-tailwind/react";
+
+import { Input, Option, Select } from "@material-tailwind/react";
 
 const CountrySelect2 = ({ formik, isSmall = false }) => {
   return (
-    <div className="flex flex-col lg:flex-row w-full lg:items-center lg:justify-center gap-x-4 gap-y-4">
+    <div className="flex flex-col lg:flex-row flex-wrap w-full lg:items-center lg:justify-center gap-x-4 gap-y-4">
       <div className="flex-1">
         <Select
           label={" Your Country"}

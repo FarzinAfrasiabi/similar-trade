@@ -1,4 +1,4 @@
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Input, Option, Select } from "@material-tailwind/react";
 import { useFormik } from "formik";
 
 const initialValues = {
@@ -60,13 +60,16 @@ const InformationAccount = () => {
             label="Account number"
             {...formik.getFieldProps("number")}
           />
-          <Input
-            type="text"
+          <Select
             label="Metatrader version"
-            {...formik.getFieldProps("version")}
-          />
+            onChange={(e) => formik.setFieldValue("version", e)}
+          >
+            <Option value="1">value_1</Option>
+            <Option value="2">value_2</Option>
+            <Option value="3">value_3</Option>
+          </Select>
           <div className="flex items-center justify-end">
-            <Button className="font-normal" type="submit">
+            <Button className="font-normal" size="sm" type="submit">
               Edit information
             </Button>
           </div>

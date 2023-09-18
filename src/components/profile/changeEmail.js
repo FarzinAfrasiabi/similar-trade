@@ -62,19 +62,20 @@ const NewEmail = () => {
               label="confirm Mobile"
               className="pr-20"
               {...formik.getFieldProps("mobileConfirm")}
+              maxLength={11}
             />
             <Button
               size="sm"
               color={"blue"}
               // disabled={!email}
-              className="!absolute right-1 top-1 rounded"
+              className="!absolute right-1 top-1 rounded lg:px-2 lg:text-xs xl:px-6 "
             >
               Confirm
             </Button>
           </div>
         </div>
         <div className="flex items-center justify-end">
-          <Button type="submit" className="font-normal">
+          <Button type="submit" size="sm" className="font-normal">
             Save Change
           </Button>
         </div>
@@ -141,7 +142,7 @@ const ChangePassword = () => {
           />
         </div>
         <div className="flex items-center justify-end">
-          <Button type="submit" className="font-normal">
+          <Button type="submit" size="sm" className="font-normal">
             Save Change
           </Button>
         </div>

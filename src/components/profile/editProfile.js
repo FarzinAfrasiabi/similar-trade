@@ -35,11 +35,17 @@ const EditProfile = () => {
   });
   const userLogin = false;
   return (
-    <div className="flex flex-col gap-y-2 bg-white rounded-md shadow-lg py-2">
+    <div className="flex flex-col gap-y-2 bg-white rounded-md shadow-lg ">
       {/* header */}
       <div className="w-full h-16 flex items-center justify-between px-6 bg-hero-pattern bg-center bg-no-repeat bg-cover relative  rounded-t-xl">
         <h2 className="text-gray-100 text-xl">Profile</h2>
-        <div className={`absolute right-2 top-4  rounded-full  flex items-center justify-center ${userLogin ? 'w-28 h-28   md:w-44 md:h-44 lg:w-32 lg:h-32 xl:w-24 xl:h-24 2xl:w-44 2xl:h-44' : ''} `}>
+        <div
+          className={`absolute right-2 top-4  rounded-full  flex items-center justify-center ${
+            userLogin
+              ? "w-28 h-28   md:w-44 md:h-44 lg:w-32 lg:h-32 xl:w-24 xl:h-24 2xl:w-44 2xl:h-44"
+              : ""
+          } `}
+        >
           {userLogin ? (
             <Image
               src={"/images/avatar/PP1.png"}
@@ -113,7 +119,7 @@ const EditProfile = () => {
           </div>
         </div>
         <div className="flex items-center justify-end pb-3 flex-1">
-          <Button type="submit" className="font-normal">
+          <Button type="submit" size="sm" className="font-normal">
             Edit Profile
           </Button>
         </div>
