@@ -2,19 +2,21 @@ import CustomModals from "@/components/custom/customModal";
 import GiftTable from "@/components/table/giftTable";
 import TicketTable from "@/components/table/ticketTable";
 import Layout from "@/container/layout";
+import { Button, MenuItem, Option, Select } from "@material-tailwind/react";
 import {
-  Button,
-  Input,
-  MenuItem,
-  Option,
-  Select,
-  Textarea,
-} from "@material-tailwind/react";
-import { TextField, TextareaAutosize } from "@mui/material";
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  TextField,
+  TextareaAutosize,
+} from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { BiSolidCloudUpload } from "react-icons/bi";
-
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { MobileDatePicker } from "@mui/x-date-pickers";
 function createData(
   DiscountCode,
   startIn,
@@ -108,42 +110,45 @@ const GiftPage = () => {
         title={"new Discount Code"}
         openModal={newTicket}
         handleClose={() => setNewTicket(false)}
+        size="md"
       >
         <form
-          className="flex flex-col gap-y-2 gap-x-4 lg:flex-row  mt-6 h-full"
+          className="flex flex-col gap-y-6 gap-x-4 lg:flex-row w-full  mt-6 h-full"
           onSubmit={formik.handleSubmit}
         >
-          <div className="flex flex-col gap-y-4">
-            <div className="flex flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
+          <div className="flex w-full flex-col gap-y-6">
+            <div className="flex w-full flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
               <TextField
                 label="Discount"
+                className="flex-auto"
                 size="small"
                 sx={{ borderRadius: "20px" }}
                 name="discount"
                 onChange={formik.handleChange}
                 value={formik.values.discount}
               />
-              <TextField
-                label="Start in"
-                size="small"
-                sx={{ borderRadius: "20px" }}
-                name="start"
-                onChange={formik.handleChange}
-                value={formik.values.start}
-              />
-              <TextField
-                label="Expire in"
-                size="small"
-                sx={{ borderRadius: "20px" }}
-                name="expire"
-                onChange={formik.handleChange}
-                value={formik.values.expire}
-              />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <MobileDatePicker
+                  className="flex-auto"
+                  onChange={(newValue) => console.log(newValue)}
+                  slotProps={{ textField: { size: "small" } }}
+                  label="Start in"
+                />
+              </LocalizationProvider>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <MobileDatePicker
+                  className="flex-auto"
+                  onChange={(newValue) => console.log(newValue)}
+                  slotProps={{ textField: { size: "small" } }}
+                  label="Expire in"
+                />
+              </LocalizationProvider>
             </div>
             <div className="flex flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
               <TextField
                 label="Discount for subscription "
                 size="small"
+                className="flex-auto"
                 sx={{ borderRadius: "20px" }}
                 name="disSub"
                 onChange={formik.handleChange}
@@ -152,6 +157,7 @@ const GiftPage = () => {
               <TextField
                 label="Discount for Commission "
                 size="small"
+                className="flex-auto"
                 sx={{ borderRadius: "20px" }}
                 name="disCom"
                 onChange={formik.handleChange}
@@ -161,17 +167,18 @@ const GiftPage = () => {
                 label="Number of uses"
                 size="small"
                 sx={{ borderRadius: "20px" }}
+                className="flex-auto"
                 name="numOfUse"
                 onChange={formik.handleChange}
                 value={formik.values.numOfUse}
               />
             </div>
-            <div className="flex flex-col lg:flex-row flex-wrap gap-x-4 gap-y-4">
+            <div className="flex items-center gap-x-4">
               <TextField
                 label="Disposables"
                 size="small"
                 select
-                fullWidth
+                className="flex-auto w-full max-w-xs"
                 sx={{ borderRadius: "20px" }}
                 name="disposables"
                 onChange={formik.handleChange}
@@ -180,12 +187,39 @@ const GiftPage = () => {
                 <MenuItem value={"yes"}>Yes</MenuItem>
                 <MenuItem value={"No"}>No</MenuItem>
               </TextField>
+              <div className="flex relative w-full flex-auto">
+                <FormControl sx={{ m: 1, width: "100%" }} variant="outlined">
+                  <InputLabel sx={{lineHeight : '1'}}  htmlFor="outlined-adornment-password">
+                    Subscribers
+                  </InputLabel>
+                  <OutlinedInput
+                    id="outlined-adornment-password"
+                    size="small"
+                    label="Subscribers"
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <button type="button" className="text-sm px-4 bg-blue-500 rounded-md p-1 text-white">
+                          select
+                        </button>
+                      </InputAdornment>
+                    }
+                    aria-describedby="outlined-weight-helper-text"
+                    inputProps={{
+                      "aria-label": "weight",
+                    }}
+                  />
+                </FormControl>
+
+                {/* <Button className="absolute right-0 ">Select</Button> */}
+              </div>
             </div>
             <TextField
               label="Description"
               name="desc"
               onChange={formik.handleChange}
               value={formik.values.desc}
+              multiline
+              rows={5}
             />
             <div className="flex items-center justify-end">
               <Button className="font-normal">Save Changes</Button>
