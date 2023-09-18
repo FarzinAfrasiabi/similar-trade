@@ -16,7 +16,7 @@ const ChatPage = () => {
       {/* chats */}
       <div className="p-2 lg:p-10 h-full">
         <div className="lg:hidden block">
-          <Drawer open={open} onClose={() => setOpen(false)} className="p-4">
+          <Drawer  open={open} onClose={() => setOpen(false)} className="p-4 ">
             <div className="py-2">
               <div className="mb-6 flex items-center justify-between">
                 <Typography variant="h5" color="blue-gray">
@@ -186,7 +186,7 @@ function ContentData({ isReverse = false, content }) {
 function SideBarChat({ hidden = true }) {
   return (
     <div className={`${hidden ? "hidden" : "block"}`}>
-      <div className="h-full block static border-r-2 border-gray-400 ">
+      <div className="h-full block static border-r-2 border-gray-400  overflow-auto max-h-[90vh] ">
         <div
           className={`flex flex-col static overflow-y-auto overflow-x-hidden h-full ${
             hidden ? "w-80" : ""
