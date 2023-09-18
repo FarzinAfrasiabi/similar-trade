@@ -7,6 +7,7 @@ import MainTable from "../@section/table";
 import { BiPlus } from "react-icons/bi";
 import CustomModals from "../custom/customModal";
 import SubDescTable from "../@section/subDesktopTable";
+import { InputAdornment, TextField } from "@mui/material";
 
 const ACTIVE_TABLE_ROWS = [
   {
@@ -280,14 +281,23 @@ const SubscribePage = ({ isAdmin = false }) => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row gap-y-2 items-center gap-x-2 pb-3 py-2 bg-white">
-            <Input
+            <TextField
               onChange={(e) => setValue(e.target.value)}
               className="font-normal"
               value={value}
+              size="small"
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">@</InputAdornment>
+                ),
+              }}
               type="text"
-              label="@telegramId"
+              label="telegramId"
             />
-            <Button className="w-full md:w-fit" type="submit">Add</Button>
+            <Button className="w-full md:w-fit" type="submit">
+              Add
+            </Button>
           </div>
         </form>
       </CustomModals>
