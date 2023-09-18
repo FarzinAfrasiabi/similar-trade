@@ -12,7 +12,7 @@ import {
   TabsHeader,
   Textarea,
 } from "@material-tailwind/react";
-import { TableCell, TableHead, TableRow } from "@mui/material";
+import { TableCell, TableHead, TableRow, TextField } from "@mui/material";
 import { useState } from "react";
 import { FaDatabase } from "react-icons/fa6";
 import { HiBarsArrowDown, HiOutlineArrowTrendingDown } from "react-icons/hi2";
@@ -185,8 +185,14 @@ const TransActionById = () => {
               icon={<HiOutlineArrowTrendingDown />}
             />
           </div>
-          <div className="my-4">
-            <Textarea label="Description" className=""></Textarea>
+          <div className="my-4 w-full">
+            <TextField
+              fullWidth
+              multiline
+              rows={5}
+              label="Description"
+              className=""
+            ></TextField>
           </div>
         </CustomModals>
       )}
