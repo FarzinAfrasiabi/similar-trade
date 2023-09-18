@@ -10,7 +10,7 @@ const NotificationSetting = () => {
       </div>
       {/* content */}
       <div className="bg-[#F9FAFC] py-3 w-full flex items-center justify-between px-6 text-[#8F95B2]">
-        <h1 className=" font-medium text-lg">Type</h1>
+        <h1 className=" font-medium ">Type</h1>
         <div className="flex items-center gap-x-10">
           <div className="flex flex-col items-center gap-y-1">
             <RiGlobalLine className="text-blue-gray-800 text-2xl" />
@@ -24,7 +24,7 @@ const NotificationSetting = () => {
       </div>
       {/* 1 */}
       <div className=" w-full flex items-center justify-between px-6">
-        <h1 className="text-[#8F95B2] font-medium text-lg"> Open Order</h1>
+        <h1 className="text-[#8F95B2] font-medium "> Open Order</h1>
         <div className="flex items-center gap-x-14">
           <Switch
             // checked={checked}
@@ -41,7 +41,7 @@ const NotificationSetting = () => {
 
       {/* 2 */}
       <div className=" w-full flex items-center justify-between px-6">
-        <h1 className="text-[#8F95B2] font-medium text-lg">Open Modify</h1>
+        <h1 className="text-[#8F95B2] font-medium ">Open Modify</h1>
         <div className="flex items-center gap-x-14">
           <Switch
             // checked={checked}
@@ -57,7 +57,7 @@ const NotificationSetting = () => {
       </div>
       {/* 3 */}
       <div className=" w-full flex items-center justify-between px-6">
-        <h1 className="text-[#8F95B2] font-medium text-lg">Closed Order</h1>
+        <h1 className="text-[#8F95B2] font-medium ">Closed Order</h1>
         <div className="flex items-center gap-x-14">
           <Switch
             // checked={checked}

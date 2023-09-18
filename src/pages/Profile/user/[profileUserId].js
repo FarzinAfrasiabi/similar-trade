@@ -6,7 +6,7 @@ import Layout from "@/container/layout";
 const ProfileUserId = () => {
   return (
     <Layout>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-6 pb-6">
         {/* edit */}
         <EditProfile />
         {/* email and pass */}
