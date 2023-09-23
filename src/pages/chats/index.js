@@ -16,7 +16,7 @@ const ChatPage = () => {
       {/* chats */}
       <div className="p-2 lg:p-10 h-full">
         <div className="lg:hidden block">
-          <Drawer  open={open} onClose={() => setOpen(false)} className="p-4 ">
+          <Drawer open={open} onClose={() => setOpen(false)} className="p-4 ">
             <div className="py-2">
               <div className="mb-6 flex items-center justify-between">
                 <Typography variant="h5" color="blue-gray">
@@ -50,7 +50,7 @@ const ChatPage = () => {
         <div className="w-full p-2 bg-white shadow-md rounded-xl h-full">
           <div className="w-full h-full flex relative overflow-hidden">
             {/* chat sidebar */}
-            <SideBarChat />
+            <SideBarChat hidden={false} />
             {/* chats main */}
             <div className="flex-grow-1 w-full h-full ">
               {/* chat user header */}
