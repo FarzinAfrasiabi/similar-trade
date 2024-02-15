@@ -54,8 +54,8 @@ const Header = () => {
                     : "h-0 opacity-0 blur-0 duration-100"
                 } transition-all ease-in-out `}
               >
-                <div className={`flex flex-col gap-y-3 bg-white rounded-xl ring-2 ring-gray-300 p-4 ${searchValue.length === 0 ? 'h-0' : 'h-fit'}`}>
-                  <h4 className={`text-blue-500 text-sm px-4 font-medium pb-3  ${searchValue.length === 0 ? 'h-0' : 'h-fit'}`}>
+                <div className={`flex flex-col gap-y-3 bg-white rounded-xl ring-2 ring-gray-300  ${searchValue.length === 0 ? 'h-0  ' : 'h-fit p-4'}`}>
+                  <h4 className={`text-blue-500 text-sm px-4 font-medium   ${searchValue.length === 0 ? 'h-0 pb-3' : 'h-fit'}`}>
                     {" "}
                     Result :
                   </h4>
